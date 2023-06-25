@@ -3,7 +3,8 @@ package co.in.codejava.mayankg.LamdaExpAndFunctionalInterface;
 public class TypeInferenceExample {
     public static void main(String[] args) {
         String str = "findLengthOfString";
-        StringLengthLambda myLambda = (String s) -> s.length();
+//        StringLengthLambda myLambda = (String s) -> s.length();
+        StringLengthLambda myLambda = String::length;
         printStringLengthUsingLambda(str, myLambda);
     }
 
