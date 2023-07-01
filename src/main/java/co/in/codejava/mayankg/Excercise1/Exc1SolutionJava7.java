@@ -1,39 +1,34 @@
-package co.in.codejava.mayankg.Unit1Excercise;
+package co.in.codejava.mayankg.Excercise1;
 
 import java.util.Comparator;
 import java.util.List;
 
-enum PROPERTY {
-    FIRST_NAME, LAST_NAME, JERSEY_NUM, POSITION;
-}
-
-
-public class Unit1SolutionJava7 {
+public class Exc1SolutionJava7 {
 
     // Q1. Sort the list by lastName & position
-    void sortPlayers(List<Footballers> players, PROPERTY property) {
-        if (property.equals(PROPERTY.FIRST_NAME)) {
+    void sortPlayers(List<Footballers> players, PlayerAttributes playerAttribute) {
+        if (PlayerAttributes.FIRST_NAME.equals(playerAttribute)) {
             players.sort(new Comparator<Footballers>() {
                 @Override
                 public int compare(Footballers p1, Footballers p2) {
                     return p1.getFirstName().compareTo(p2.getFirstName());
                 }
             });
-        } else if (property.equals(PROPERTY.LAST_NAME)) {
+        } else if (PlayerAttributes.LAST_NAME.equals(playerAttribute)) {
             players.sort(new Comparator<Footballers>() {
                 @Override
                 public int compare(Footballers p1, Footballers p2) {
                     return p1.getLastName().compareTo(p2.getLastName());
                 }
             });
-        } else if (property.equals(PROPERTY.POSITION)) {
+        } else if (PlayerAttributes.POSITION.equals(playerAttribute)) {
             players.sort(new Comparator<Footballers>() {
                 @Override
                 public int compare(Footballers p1, Footballers p2) {
                     return p1.getPosition().compareTo(p2.getPosition());
                 }
             });
-        } else if (property.equals(PROPERTY.JERSEY_NUM)) {
+        } else if (PlayerAttributes.JERSEY_NUMBER.equals(playerAttribute)) {
             players.sort(new Comparator<Footballers>() {
                 @Override
                 public int compare(Footballers p1, Footballers p2) {
@@ -89,9 +84,4 @@ public class Unit1SolutionJava7 {
             }
         });
     }
-}
-
-@FunctionalInterface
-interface Condition {
-    boolean test(Footballers player);
 }
