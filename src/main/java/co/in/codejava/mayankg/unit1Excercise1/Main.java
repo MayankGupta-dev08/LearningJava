@@ -1,4 +1,8 @@
-package co.in.codejava.mayankg.Excercise1;
+package co.in.codejava.mayankg.unit1Excercise1;
+
+import co.in.codejava.mayankg.common.Footballers;
+import co.in.codejava.mayankg.common.IndianFootballer;
+import co.in.codejava.mayankg.common.PlayerAttributes;
 
 import java.util.ArrayList;
 import java.util.List;

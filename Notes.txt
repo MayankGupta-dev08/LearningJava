@@ -22,4 +22,5 @@
         1. To implement an Interface with unrelated class (e.g. - Serializable, Runnable, Cloneable, etc.)
         2. If we want to use multiple inheritance in java we could indirectly achieve it using interfaces.
 
-    NOTE: many classes uses both abstract classes and interfaces, eg. - HashMap class which implements several interfaces and also extends AbstractMap class.
+    NOTE: many classes uses both abstract classes and interfaces, e.g. - HashMap class which implements several interfaces and also extends AbstractMap class.
+

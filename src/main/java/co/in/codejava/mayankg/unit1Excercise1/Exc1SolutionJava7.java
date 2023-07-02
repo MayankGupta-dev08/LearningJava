@@ -1,7 +1,11 @@
-package co.in.codejava.mayankg.Excercise1;
+package co.in.codejava.mayankg.unit1Excercise1;
+
+import co.in.codejava.mayankg.common.Footballers;
+import co.in.codejava.mayankg.common.PlayerAttributes;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Exc1SolutionJava7 {
 
