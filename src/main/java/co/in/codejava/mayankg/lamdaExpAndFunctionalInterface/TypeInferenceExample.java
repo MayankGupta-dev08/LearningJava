@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.LamdaExpAndFunctionalInterface;
+package co.in.codejava.mayankg.lamdaExpAndFunctionalInterface;
 
 public class TypeInferenceExample {
     public static void main(String[] args) {

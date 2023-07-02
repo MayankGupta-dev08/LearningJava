@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.Excercise1;
+package co.in.codejava.mayankg.common;
 
 public interface Footballers {
     String getFirstName();
