@@ -1,0 +1,25 @@
+# Naming Convention for classes, methods and interfaces
+    1. It is recommended that we should always keep the class name as Noun and method name as verb, but with interface it's not mandatory to keep it as noun (rather sometimes we use able in the end of the interface_name).
+    2. Class and Interface name as started with capital letter and CamelCase is followed, whereas for methods it's always advised to start with small letter like methodName.
+
+# From Java8 --> for Interfaces:
+    1. apart from having only method declarations (which are by default abstract and public) we could also define methods which could be either static or default.
+    2. When we define a method to be default we mean its definition would be available to classes implementing it by default and that method could be called using the object of those classes.
+    3. When we define a method to be static, similar to default its definition would be available to classes implementing it but that method could be called using those classes since its static for a class just like any other static method.
+    4. all the fields in an interface are public static and final by default.
+
+# Diff b/w Abstract class and interfaces
+    --Abstract class--
+        1. An abstract class must be declared with an abstract keyword. It cannot be instantiated (no object).
+        2. It can have abstract and non-abstract methods. It can have constructors and static methods also.
+        3. It can have final methods which will force the subclass not to change the body of the method.
+        [IMP]
+        4. to share code of an AbstractClass among the related classes using extend
+        5. if we want to use access modifier other than public for our methods (like private and protected).
+        6. if we want our fields to be non-static or non-final.
+
+    --Interfaces--
+        1. To implement an Interface with unrelated class (e.g. - Serializable, Runnable, Cloneable, etc.)
+        2. If we want to use multiple inheritance in java we could indirectly achieve it using interfaces.
+
+    NOTE: many classes uses both abstract classes and interfaces, eg. - HashMap class which implements several interfaces and also extends AbstractMap class.

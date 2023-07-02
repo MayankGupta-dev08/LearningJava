@@ -23,7 +23,7 @@ public class Main {
         ));
 
         performOperationUsingSolution1(players);
-//        performOperationUsingSolution2(players);
+        performOperationUsingSolution2(players);
     }
 
     private static void performOperationUsingSolution1(List<Footballers> players) {
@@ -31,7 +31,7 @@ public class Main {
         System.out.println("-- sorting players on the basis of last name --");
         solution1.sortPlayers(players, PlayerAttributes.LAST_NAME);
         solution1.printAll(players);
-        System.out.println("\n-- sorting players on the basis of position --");
+        System.out.println("\n-- sorting players on the basis of jersey number --");
         solution1.sortPlayers(players, PlayerAttributes.JERSEY_NUMBER);
         solution1.printAll(players);
         System.out.println("\n-----------------------------------------------");
@@ -42,23 +42,25 @@ public class Main {
         solution1.printOnBasisOfPosition(players, "GK");
         System.out.println("\n-----------------------------------------------");
         solution1.printOnBasisOfPosition(players, "MF");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     }
 
     private static void performOperationUsingSolution2(List<Footballers> players) {
         Exc1SolutionJava8 solution2 = new Exc1SolutionJava8();
-        System.out.println("-- sorting players on the basis of last name --");
-        solution2.sortPlayers(players, PlayerAttributes.LAST_NAME);
+        System.out.println("-- sorting players on the basis of position --");
+        solution2.sortPlayers(players, "position");
         solution2.printAll(players);
-        System.out.println("\n-- sorting players on the basis of position --");
-        solution2.sortPlayers(players, PlayerAttributes.JERSEY_NUMBER);
+        System.out.println("\n-- sorting players on the basis of first name --");
+        solution2.sortPlayers(players, "FIRST_name");
         solution2.printAll(players);
         System.out.println("\n-----------------------------------------------");
-        solution2.printIfFirstNameStartsWithLetter(players, 'S');
+        solution2.printIfFirstNameStartsWithLetter(players, 's');
         System.out.println("\n-----------------------------------------------");
-        solution2.printIfFirstNameStartsWithLetter(players, 'A');
+        solution2.printIfLastNameStartsWithLetter(players, 'C');
         System.out.println("\n-----------------------------------------------");
-        solution2.printOnBasisOfPosition(players, "GK");
+        solution2.printOnBasisOfPosition(players, "ST");
         System.out.println("\n-----------------------------------------------");
-        solution2.printOnBasisOfPosition(players, "MF");
+        solution2.printOnBasisOfPosition(players, "FW");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 }

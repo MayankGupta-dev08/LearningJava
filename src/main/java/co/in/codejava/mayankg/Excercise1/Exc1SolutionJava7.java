@@ -54,7 +54,7 @@ public class Exc1SolutionJava7 {
         }
     }
 
-    protected void printOnBasisOfPosition(List<Footballers> players, String position) {
+    void printOnBasisOfPosition(List<Footballers> players, String position) {
         if (!List.of("ST", "MF", "DF", "FW", "GK").contains(position)) {
             System.out.println("Invalid position entered, operation failed!!");
             return;
@@ -69,7 +69,7 @@ public class Exc1SolutionJava7 {
         });
     }
 
-    protected void printIfFirstNameStartsWithLetter(List<Footballers> players, Character letter) {
+    void printIfFirstNameStartsWithLetter(List<Footballers> players, Character letter) {
         if (!Character.isAlphabetic(letter)) {
             System.out.println("Invalid character entered, operation failed!!");
             return;
