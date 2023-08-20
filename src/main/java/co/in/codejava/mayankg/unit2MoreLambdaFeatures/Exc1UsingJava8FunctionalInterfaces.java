@@ -1,3 +1,6 @@
+/**
+ -> DocumentationLink - https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
+*/
 package co.in.codejava.mayankg.unit2MoreLambdaFeatures;
 
 import co.in.codejava.mayankg.common.Footballers;
@@ -13,7 +16,10 @@ import java.util.function.Predicate;
 public class Exc1UsingJava8FunctionalInterfaces {
     public static void main(String[] args) {
         List<Footballers> players = UtilClass.createListOfFootballPlayers();
+        performCertainOperations(players);
+    }
 
+    private static void performCertainOperations(List<Footballers> players) {
         System.out.println("-- sorting players on the basis of position --");
         sortPlayers(players, "position");
         printAll(players);
