@@ -1,6 +1,6 @@
 /**
- -> DocumentationLink - https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
-*/
+ * -> DocumentationLink - https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
+ */
 package co.in.codejava.mayankg.unit2MoreLambdaFeatures;
 
 import co.in.codejava.mayankg.common.Footballers;
@@ -55,11 +55,11 @@ public class Exc1UsingJava8FunctionalInterfaces {
     }
 
     // Q2. print all elements in the list
-    static void printAll(List<Footballers> players) {
+    private static void printAll(List<Footballers> players) {
         performConditionally(players, player -> true, System.out::println);
     }
 
-    static void printOnBasisOfPosition(List<Footballers> players, String position) {
+    private static void printOnBasisOfPosition(List<Footballers> players, String position) {
         if (!List.of("ST", "MF", "DF", "FW", "GK").contains(position))
             throw new UnsupportedCharsetException("Invalid position entered, operation failed!!");
 
@@ -67,7 +67,7 @@ public class Exc1UsingJava8FunctionalInterfaces {
         performConditionally(players, player -> player.getPosition().equalsIgnoreCase(position), System.out::println);
     }
 
-    static void printIfFirstNameStartsWithLetter(List<Footballers> players, Character letter) {
+    private static void printIfFirstNameStartsWithLetter(List<Footballers> players, Character letter) {
         if (!Character.isAlphabetic(letter))
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
@@ -75,7 +75,7 @@ public class Exc1UsingJava8FunctionalInterfaces {
         performConditionally(players, player -> player.getFirstName().toLowerCase().startsWith(String.valueOf(letter).toLowerCase()), p -> System.out.println(p.getFirstName()));
     }
 
-    static void printIfLastNameStartsWithLetter(List<Footballers> players, Character letter) {
+    private static void printIfLastNameStartsWithLetter(List<Footballers> players, Character letter) {
         if (!Character.isAlphabetic(letter))
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
