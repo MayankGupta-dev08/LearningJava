@@ -50,7 +50,7 @@ public class HandlingUncheckedExceptionsInLambdas {
                     E eClass = clazz.cast(ex);
                     System.out.println("Exception occurred: " + eClass.getMessage());
                 } catch (ClassCastException ccEx) {
-                    System.err.println("ClassCast Exception occurred!!");
+                    System.err.println("ClassCast Exception occurred!!" + ccEx.getMessage());
                 }
             }
         };
