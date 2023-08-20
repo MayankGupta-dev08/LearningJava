@@ -34,14 +34,14 @@ public class HandlingUncheckedExceptionsInLambdas {
     }
 
     private static void processNumbers_m2(List<Integer> integers, Consumer<Integer> integerConsumer) {
-        integers.forEach(throwingConsumer(integerConsumer, ArithmeticException.class));
+        integers.forEach(consumerWrapper(integerConsumer, ArithmeticException.class));
     }
 
     /**
      * The wrapper method works as expected but, you may argue that it's basically removing the try-catch block from lambda expression and moving it to another method, and it doesn't reduce the actual number of lines of code being written.
      * This is true in this case where the wrapper is specific to a particular use case but we can make use of generics to improve this method and use it for a variety of other scenarios
      */
-    static <T, E extends Exception> Consumer<T> throwingConsumer(Consumer<T> consumer, Class<E> clazz) {
+    static <T, E extends Exception> Consumer<T> consumerWrapper(Consumer<T> consumer, Class<E> clazz) {
         return i -> {
             try {
                 consumer.accept(i);
