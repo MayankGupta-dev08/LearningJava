@@ -40,15 +40,13 @@ public class Exc1UsingJava8FunctionalInterfaces {
     // Q1. Sort the list of players
     static void sortPlayers(List<Footballers> players, String playerAttribute) {
         if (PlayerAttributes.FIRST_NAME.name().equalsIgnoreCase(playerAttribute)) {
-            players.sort((Footballers p1, Footballers p2) -> {
-                return p1.getFirstName().compareTo(p2.getFirstName());
-            });
+            players.sort(Comparator.comparing(Footballers::getFirstName));
         } else if (PlayerAttributes.LAST_NAME.name().equalsIgnoreCase(playerAttribute)) {
-            players.sort((p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
+            players.sort(Comparator.comparing(Footballers::getLastName));
         } else if (PlayerAttributes.JERSEY_NUMBER.name().equalsIgnoreCase(playerAttribute)) {
             players.sort(Comparator.comparing(Footballers::getJerseyNum));
         } else if (PlayerAttributes.POSITION.name().equalsIgnoreCase(playerAttribute)) {
-            players.sort((p1, p2) -> p1.getPosition().compareTo(p2.getPosition()));
+            players.sort(Comparator.comparing(Footballers::getPosition));
         } else {
             System.out.println("Invalid player attribute: " + " used, operation failed!!");
         }
@@ -67,27 +65,35 @@ public class Exc1UsingJava8FunctionalInterfaces {
         performConditionally(players, player -> player.getPosition().equalsIgnoreCase(position), System.out::println);
     }
 
-    private static void printIfFirstNameStartsWithLetter(List<Footballers> players, Character letter) {
-        if (!Character.isAlphabetic(letter))
+    private static void printIfFirstNameStartsWithLetter(List<Footballers> players, Character alpha) {
+        if (!Character.isAlphabetic(alpha))
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
-        System.out.println("Players with first name starting with " + letter + ":");
-        performConditionally(players, player -> player.getFirstName().toLowerCase().startsWith(String.valueOf(letter).toLowerCase()), p -> System.out.println(p.getFirstName()));
+        System.out.println("Players with first name starting with " + alpha + ":");
+        performConditionally(
+                players,
+                p -> p.getFirstName().toLowerCase().startsWith(String.valueOf(alpha).toLowerCase()),
+                p -> System.out.println(p.getFirstName())
+        );
     }
 
-    private static void printIfLastNameStartsWithLetter(List<Footballers> players, Character letter) {
-        if (!Character.isAlphabetic(letter))
+    private static void printIfLastNameStartsWithLetter(List<Footballers> players, Character alpha) {
+        if (!Character.isAlphabetic(alpha))
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
-        System.out.println("Players with last name starting with " + letter + ":");
-        performConditionally(players, player -> player.getLastName().toLowerCase().startsWith(String.valueOf(letter).toLowerCase()), p -> System.out.println(p.getLastName()));
+        System.out.println("Players with last name starting with " + alpha + ":");
+        performConditionally(
+                players,
+                player -> player.getLastName().toLowerCase().startsWith(String.valueOf(alpha).toLowerCase()),
+                p -> System.out.println(p.getLastName())
+        );
     }
 
-    // Q3. print all elements on basis of Condition
-    private static void performConditionally(List<Footballers> players, Predicate<Footballers> predicate, Consumer<Footballers> consumer) {
+    // Q3. perform a specific action on provided elements when the condition/predicate is satisfied
+    private static void performConditionally(List<Footballers> players, Predicate<Footballers> predicate, Consumer<Footballers> performingAction) {
         for (Footballers player : players) {
             if (predicate.test(player)) {
-                consumer.accept(player);
+                performingAction.accept(player);
             }
         }
     }
