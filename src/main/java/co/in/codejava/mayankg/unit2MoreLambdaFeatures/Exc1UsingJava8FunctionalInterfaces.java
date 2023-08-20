@@ -1,11 +1,10 @@
 package co.in.codejava.mayankg.unit2MoreLambdaFeatures;
 
 import co.in.codejava.mayankg.common.Footballers;
-import co.in.codejava.mayankg.common.IndianFootballer;
 import co.in.codejava.mayankg.common.PlayerAttributes;
+import co.in.codejava.mayankg.common.UtilClass;
 
 import java.nio.charset.UnsupportedCharsetException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -13,7 +12,7 @@ import java.util.function.Predicate;
 
 public class Exc1UsingJava8FunctionalInterfaces {
     public static void main(String[] args) {
-        List<Footballers> players = createListOfFootballPlayers();
+        List<Footballers> players = UtilClass.createListOfFootballPlayers();
 
         System.out.println("-- sorting players on the basis of position --");
         sortPlayers(players, "position");
@@ -30,23 +29,6 @@ public class Exc1UsingJava8FunctionalInterfaces {
         System.out.println("\n-----------------------------------------------");
         printOnBasisOfPosition(players, "FW");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~~~~");
-    }
-
-    private static List<Footballers> createListOfFootballPlayers() {
-        return new ArrayList<>(List.of(
-                new IndianFootballer("Gurpreet", "Sandhu", 1, "GK"),
-                new IndianFootballer("Jeakson", "Thounaojam", 14, "MF"),
-                new IndianFootballer("Sandesh", "Jhingan", 5, "DF"),
-                new IndianFootballer("Anwar", "Ali", 4, "DF"),
-                new IndianFootballer("Akash", "Mishra", 6, "DF"),
-                new IndianFootballer("Udanta", "Kumam", 15, "MF"),
-                new IndianFootballer("Naorem", "Mahesh", 8, "MF"),
-                new IndianFootballer("Anirudh", "Thapa", 7, "MF"),
-                new IndianFootballer("Nikhil", "Poojary", 21, "MF"),
-                new IndianFootballer("Lallianzuala", "Chhangte", 17, "FW"),
-                new IndianFootballer("Sunil", "Chhetri", 11, "ST"),
-                new IndianFootballer("Ashique", "Kuruniyan", 22, "FW")
-        ));
     }
 
     // Q1. Sort the list of players
