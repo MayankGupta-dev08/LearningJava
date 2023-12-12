@@ -2,7 +2,7 @@
  * This time we are trying to write into a file instead of printing out on the screen.
  * So in this scenario we have to deal with a checked exception (IOException) which must be handled explicitly.
  */
-package co.in.codejava.mayankg.unit3ExceptionHandling;
+package dev.mayankg.lambdas.unit3ExceptionHandling;
 
 import java.io.IOException;
 import java.util.Arrays;

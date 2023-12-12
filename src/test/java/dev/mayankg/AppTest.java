@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg;
+package dev.mayankg;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

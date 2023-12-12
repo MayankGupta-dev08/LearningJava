@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.lamdaExpAndFunctionalInterface;
+package dev.mayankg.lambdas.lamdaExpAndFunctionalInterface;
 
 public class Greeter {
     public void greet(Greeting greeting) {

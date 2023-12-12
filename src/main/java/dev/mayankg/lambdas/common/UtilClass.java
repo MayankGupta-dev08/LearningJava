@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.common;
+package dev.mayankg.lambdas.common;
 
 import java.util.ArrayList;
 import java.util.List;

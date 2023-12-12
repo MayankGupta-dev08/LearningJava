@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.unit4ClosuresInLambdaExpressions;
+package dev.mayankg.lambdas.unit4ClosuresInLambdaExpressions;
 
 import java.util.function.Consumer;
 

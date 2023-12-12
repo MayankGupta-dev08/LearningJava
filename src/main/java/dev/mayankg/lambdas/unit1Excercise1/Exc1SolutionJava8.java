@@ -1,7 +1,7 @@
-package co.in.codejava.mayankg.unit1Excercise1;
+package dev.mayankg.lambdas.unit1Excercise1;
 
-import co.in.codejava.mayankg.common.Footballers;
-import co.in.codejava.mayankg.common.PlayerAttributes;
+import dev.mayankg.lambdas.common.Footballers;
+import dev.mayankg.lambdas.common.PlayerAttributes;
 
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.Comparator;

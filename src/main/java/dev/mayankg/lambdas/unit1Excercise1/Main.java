@@ -1,8 +1,8 @@
-package co.in.codejava.mayankg.unit1Excercise1;
+package dev.mayankg.lambdas.unit1Excercise1;
 
-import co.in.codejava.mayankg.common.Footballers;
-import co.in.codejava.mayankg.common.PlayerAttributes;
-import co.in.codejava.mayankg.common.UtilClass;
+import dev.mayankg.lambdas.common.Footballers;
+import dev.mayankg.lambdas.common.PlayerAttributes;
+import dev.mayankg.lambdas.common.UtilClass;
 import java.util.List;
 
 public class Main {

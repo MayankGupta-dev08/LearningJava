@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.lamdaExpAndFunctionalInterface;
+package dev.mayankg.lambdas.lamdaExpAndFunctionalInterface;
 
 public class HelloWorldGreeting implements Greeting {
     @Override

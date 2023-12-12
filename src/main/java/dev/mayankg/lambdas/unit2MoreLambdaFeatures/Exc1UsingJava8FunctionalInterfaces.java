@@ -1,11 +1,11 @@
 /**
  * -> DocumentationLink - https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
  */
-package co.in.codejava.mayankg.unit2MoreLambdaFeatures;
+package dev.mayankg.lambdas.unit2MoreLambdaFeatures;
 
-import co.in.codejava.mayankg.common.Footballers;
-import co.in.codejava.mayankg.common.PlayerAttributes;
-import co.in.codejava.mayankg.common.UtilClass;
+import dev.mayankg.lambdas.common.Footballers;
+import dev.mayankg.lambdas.common.PlayerAttributes;
+import dev.mayankg.lambdas.common.UtilClass;
 
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.Comparator;

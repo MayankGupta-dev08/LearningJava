@@ -1,4 +1,4 @@
-package co.in.codejava.mayankg.unit3ExceptionHandling;
+package dev.mayankg.lambdas.unit3ExceptionHandling;
 
 import java.util.Arrays;
 import java.util.List;
