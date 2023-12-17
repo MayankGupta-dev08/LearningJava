@@ -1,3 +1,11 @@
+# Topics
+    1. Lambda expressions
+    2. Functional Interfaces
+    3. Consumers
+    4. Suppliers
+    5. Functions
+    6. Predicate
+
 # Naming Convention for classes, methods and interfaces
     1. It is recommended that we should always keep the class name as Noun and method name as verb, but with interface it's not mandatory to keep it as noun (rather sometimes we use able at the end of the interface_name).
     2. Class and Interface name as started with a capital letter and CamelCase is followed, whereas for methods it's always advised to start with a small letter like methodName.
