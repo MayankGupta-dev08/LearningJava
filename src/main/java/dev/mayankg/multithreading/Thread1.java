@@ -1,6 +1,6 @@
 package dev.mayankg.multithreading;
 
-public class Thread1 extends Thread {
+class Thread1 extends Thread {
     public Thread1(String threadName) {
         super(threadName);
     }

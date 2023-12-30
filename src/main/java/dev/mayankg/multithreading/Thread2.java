@@ -1,6 +1,6 @@
 package dev.mayankg.multithreading;
 
-public class Thread2 implements Runnable {
+class Thread2 implements Runnable {
     public Thread2() {}
 
     @Override

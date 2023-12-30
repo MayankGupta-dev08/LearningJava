@@ -85,4 +85,11 @@ public class LambdaPractice {
         list.stream().distinct().forEach(unique_nums::add);
         return unique_nums;
     }
+
+    /**
+     * 8. Write a lambda expression to implement a lambda expression to calculate the factorial of a given number.
+     */
+    private static void qNA8(List<Integer> list) {
+
+    }
 }
