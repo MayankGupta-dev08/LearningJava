@@ -70,3 +70,11 @@
 - The general form of the synchronized statement is as follows:
   - synchronized (object ref expression) {<code_block>}
 - The object ref expression must evaluate to a non-null reference value, otherwise a NullPointerException is thrown.
+ 
+#### *SUMMARY:*
+- A thread can hold a lock on an object:
+  - By executing a synchronized instance method of the object. (this)
+  - By executing the body of a synchronized block that synchronizes on the object. (this)
+  - By executing a synchronized static method of a class or a block inside a static method (in this case, the object is the Class object representing the class in the JVM)
+
+##### Thread Safety: It's the term used to describe the design of classes that ensures that the state of their object is always consistent, even when the objects are used concurrently by multiple threads. E.g., StringBuffer.
