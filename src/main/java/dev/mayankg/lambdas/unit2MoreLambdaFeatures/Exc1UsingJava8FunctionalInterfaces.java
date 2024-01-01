@@ -70,8 +70,7 @@ public class Exc1UsingJava8FunctionalInterfaces {
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
         System.out.println("Players with first name starting with " + alpha + ":");
-        performConditionally(
-                players,
+        performConditionally(players,
                 p -> p.getFirstName().toLowerCase().startsWith(String.valueOf(alpha).toLowerCase()),
                 p -> System.out.println(p.getFirstName())
         );
@@ -82,8 +81,7 @@ public class Exc1UsingJava8FunctionalInterfaces {
             throw new UnsupportedCharsetException("Invalid character entered, operation failed!!");
 
         System.out.println("Players with last name starting with " + alpha + ":");
-        performConditionally(
-                players,
+        performConditionally(players,
                 player -> player.getLastName().toLowerCase().startsWith(String.valueOf(alpha).toLowerCase()),
                 p -> System.out.println(p.getLastName())
         );
