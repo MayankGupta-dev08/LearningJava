@@ -9,9 +9,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Checked Exceptions:
+ * Think of checked exceptions like the security checks you go through at an airport before boarding a flight.
+ * These checks are mandatory, and you must deal with them before proceeding to your destination.
+ * Similarly, checked exceptions are those that the Java compiler insists you handle (via try-catch or declaring with throws).
+ * The compiler is like the airport authorities ensuring you address potential issues before your program "takes off."
+ * For example, IOException, SQLException, FileNotFoundException, ParseException, ClassNotFoundException, InterruptedException etc.
+ */
 public class HandlingCheckedExceptionsInLambdas {
     public static void main(String[] args) {
         List<Integer> integers = Arrays.asList(3, 9, 7, 0, 10, 20);
+
         //approach1: verbose and cumbersome
         processNumbers_m1(integers, i -> {
             try {
@@ -21,8 +30,10 @@ public class HandlingCheckedExceptionsInLambdas {
                 throw new RuntimeException(e);
             }
         });
+
         //approach2: better
         processNumbers_m2(integers, i -> writeToFile(i));
+
         //approach3: best
         integers.forEach(handlingConsumerWrapper(i -> writeToFile(i), IOException.class));
     }
@@ -69,7 +80,7 @@ public class HandlingCheckedExceptionsInLambdas {
             } catch (Exception ex) {
                 try {
                     E exCast = exceptionClass.cast(ex);
-                    System.err.println("Exception occured : " + exCast.getMessage());
+                    System.err.println("Exception occurred : " + exCast.getMessage());
                 } catch (ClassCastException ccEx) {
                     throw new RuntimeException(ex);
                 }

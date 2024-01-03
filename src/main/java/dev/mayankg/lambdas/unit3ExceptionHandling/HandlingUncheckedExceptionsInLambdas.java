@@ -8,7 +8,7 @@ import java.util.function.Consumer;
  * Unchecked Exceptions:
  * Unchecked exceptions are like unexpected situations during your journey that you couldn't have anticipated.
  * These are unforeseen events that are beyond your control.
- * For example, NullPointerException or ArrayIndexOutOfBoundsException, ArithmeticException, ClassCastException,
+ * For example, NullPointerException or ArrayIndexOutOfBoundsException, ArithmeticException, ClassCastException, RuntimeException
  * often indicate unexpected and critical errors during program execution.
  */
 public class HandlingUncheckedExceptionsInLambdas {
