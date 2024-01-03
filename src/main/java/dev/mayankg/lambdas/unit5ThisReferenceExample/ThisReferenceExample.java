@@ -15,7 +15,7 @@ public class ThisReferenceExample {
 
     void execute() {
         doSomeProcess(30, i -> {
-            System.out.println("using lambda expression through member function");
+            System.out.println("inside lambda expression from member function");
             System.out.println("Value of i is " + i);
             System.out.println(this); // 'this' works here, since outside the lambda; we are in scope of an instance method which has the reference for 'this'.
             System.out.println("-----------------------------------------------------------------");
@@ -29,13 +29,15 @@ public class ThisReferenceExample {
 
     // NOTE: we can't call an instance method (doSomeProcess, execute) from a static method (main)
     public static void main(String[] args) {
+        // System.out.println(this); // 'this' will not work here, as main() is a static method
+
         ThisReferenceExample thisReferenceExampleObj = new ThisReferenceExample();
 
         // POC1 - using anonymous inner class
         thisReferenceExampleObj.doSomeProcess(10, new Process() {
             @Override
             public void process(int i) {
-                System.out.println("using anonymous inner class");
+                System.out.println("inside method of anonymous inner class");
                 System.out.println("Value of i is " + i);
                 System.out.println(this);   // 'this' is the part of the anonymous inner class of Process interface
                 System.out.println("-----------------------------------------------------------------");
@@ -49,7 +51,7 @@ public class ThisReferenceExample {
 
         //POC2 - using lambda expression
         thisReferenceExampleObj.doSomeProcess(20, i -> {
-            System.out.println("using lambda expression through obj");
+            System.out.println("inside lambda expression through method call using obj from main()");
             System.out.println("Value of i is " + i);
             // System.out.println(this); // 'this' will not work here as outside the lambda, we are in the scope of the main() which is static method, hence 'this' doesn't refer to anything
             System.out.println("-----------------------------------------------------------------");
