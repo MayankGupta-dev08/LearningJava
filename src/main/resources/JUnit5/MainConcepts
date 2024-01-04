@@ -1,0 +1,7 @@
+- JUnit5 architecture
+- Setting up JUnit test
+- Assertions, Lifecycles
+- Execution control
+- Exceptional handling
+- Conditional execution
+- Repeated tests

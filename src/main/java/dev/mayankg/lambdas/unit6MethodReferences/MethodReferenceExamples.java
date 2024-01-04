@@ -4,9 +4,11 @@ import java.util.function.BiFunction;
 
 public class MethodReferenceExamples {
     public static void main(String[] args) {
+        //POC1
         Thread t1 = new Thread(MethodReferenceExamples::printMessage); // () -> method() === ClassName::methodName
         t1.start();
 
+        //POC2
         int sum = compute(10, 20, MethodReferenceExamples::printSum); // (a, b) -> printSum(a, b)
         System.out.println(sum);
     }
