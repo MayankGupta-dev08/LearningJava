@@ -2,8 +2,11 @@ package dev.mayankg;
 
 import dev.mayankg.junit5.ComputeUtil;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD) //By default its PER_METHOD
 class ComputeUtilTest {
@@ -52,5 +55,21 @@ class ComputeUtilTest {
     @DisplayName("TDD method, shouldn't run")
     void testToBeWritten() {
         fail("Not yet implemented");
+    }
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    @DisplayName("Test runs only on linux")
+    void testOnLinuxMachine() {
+        OS os = OS.LINUX;
+        assertTrue(() -> os.equals(OS.LINUX));
+    }
+
+    @Test
+    @DisplayName("check if server is up and running...")
+    void testServerCondition() {
+        boolean isServerUp = false;
+        assumeTrue(isServerUp);
+        System.out.println("Does some work is server is up...");
     }
 }
