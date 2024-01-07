@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 @DisplayName("When running ComputeUtils...")
 class ComputeUtilTest {
     private ComputeUtil computer;
+    private TestInfo testInfo;
+    private TestReporter testReporter;
 
     @BeforeAll
     static void init() {
@@ -19,9 +21,12 @@ class ComputeUtilTest {
     }
 
     @BeforeEach
-    void setUp() {
+    void setUp(TestInfo testInfo, TestReporter testReporter) {
+        this.testInfo = testInfo;
+        this.testReporter = testReporter;
         this.computer = new ComputeUtil();
         System.out.println("This runs before each test...");
+        testReporter.publishEntry("Running [" + testInfo.getDisplayName() + "] with tag as " + testInfo.getTags());
     }
 
     @AfterEach
@@ -84,7 +89,8 @@ class ComputeUtilTest {
 
         @RepeatedTest(3)
         @DisplayName("check if server is up and running and only then does some work...")
-        void testServerCondition() {
+        void testServerCondition(RepetitionInfo repetitionInfo) {
+            System.out.println("This is the " + repetitionInfo.getCurrentRepetition() + " repetition of the test!");
             boolean isServerUp = false;
             assumeTrue(isServerUp);
             System.out.println("Does some work if and only if the server is up...");
