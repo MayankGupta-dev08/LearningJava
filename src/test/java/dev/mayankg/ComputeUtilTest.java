@@ -30,6 +30,7 @@ class ComputeUtilTest {
     }
 
     @Test
+    @Tag("Math")
     @DisplayName("sum of two numbers")
     void testSum() {
         // fail("Not yet implemented");
@@ -46,12 +47,14 @@ class ComputeUtilTest {
     }
 
     @Test
+    @Tag("Math")
     @DisplayName("divide by 0 should throw arithmetic exception")
     void testDivideByZero() {
         assertThrows(ArithmeticException.class, () -> computer.divide(10, 0));
     }
 
     @Test
+    @Tag("Math")
     @DisplayName("test multiply with bunch of assertion scenarios")
     void testMultiply() {
         assertAll(
