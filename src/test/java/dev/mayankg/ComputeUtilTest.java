@@ -3,8 +3,7 @@ package dev.mayankg;
 import dev.mayankg.junit5.ComputeUtil;
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD) //By default its PER_METHOD
 class ComputeUtilTest {
@@ -46,5 +45,12 @@ class ComputeUtilTest {
     @DisplayName("divide by 0 should throw arithmetic exception")
     void testDivideByZero() {
         assertThrows(ArithmeticException.class, () -> computer.divide(10, 0));
+    }
+
+    @Test
+    @Disabled
+    @DisplayName("TDD method, shouldn't run")
+    void testToBeWritten() {
+        fail("Not yet implemented");
     }
 }
