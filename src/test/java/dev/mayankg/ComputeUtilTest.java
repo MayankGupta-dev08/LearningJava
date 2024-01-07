@@ -19,13 +19,17 @@ class ComputeUtilTest {
     void tearDown() {
     }
 
-    @Test
-    @DisplayName("sum of two numbers")
+    @Test @DisplayName("sum of two numbers")
     void testSum() {
         // fail("Not yet implemented");
-        ComputeUtil computeUtil = new ComputeUtil();
         int expected = 3;
-        int actual = computeUtil.sum(1, 2);
+        int actual = ComputeUtil.sum(1, 2);
         assertEquals(expected, actual, "The method should add two numbers");
+    }
+
+    @Test @DisplayName("area of a circle")
+    void testAreaOfCircle(){
+        double expected = 314.1592653589793;
+        assertEquals(expected, ComputeUtil.computeCircleArea(10), "should return area of a circle");
     }
 }
