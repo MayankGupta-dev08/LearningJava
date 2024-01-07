@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD) //By default its PER_METHOD
+@DisplayName("When running ComputeUtils...")
 class ComputeUtilTest {
     private ComputeUtil computer;
 
@@ -51,25 +52,39 @@ class ComputeUtilTest {
     }
 
     @Test
-    @Disabled
-    @DisplayName("TDD method, shouldn't run")
-    void testToBeWritten() {
-        fail("Not yet implemented");
+    @DisplayName("test multiply with bunch of assertion scenarios")
+    void testMultiply() {
+        assertAll(
+                () -> assertEquals(0, computer.multiply(4, 0), "X x 0 = 0"),
+                () -> assertEquals(8, computer.multiply(8, 1), "X x 1 = X"),
+                () -> assertEquals(-6, computer.multiply(2, -3), "X x -Y = -Z")
+        );
     }
 
-    @Test
-    @EnabledOnOs(OS.LINUX)
-    @DisplayName("Test runs only on linux")
-    void testOnLinuxMachine() {
-        OS os = OS.LINUX;
-        assertTrue(() -> os.equals(OS.LINUX));
-    }
+    @Nested
+    @DisplayName("Checking extras...")
+    class TestAdditional {
+        @Test
+        @Disabled
+        @DisplayName("TDD method, shouldn't run")
+        void testToBeWritten() {
+            fail("Not yet implemented");
+        }
 
-    @Test
-    @DisplayName("check if server is up and running...")
-    void testServerCondition() {
-        boolean isServerUp = false;
-        assumeTrue(isServerUp);
-        System.out.println("Does some work is server is up...");
+        @Test
+        @EnabledOnOs(OS.WINDOWS)
+        @DisplayName("Test runs only on windows")
+        void testCheckOS() {
+            OS os = OS.WINDOWS;
+            assertTrue(() -> os.equals(OS.WINDOWS), "checks if os is WINDOWS");
+        }
+
+        @Test
+        @DisplayName("check if server is up and running and only then does some work...")
+        void testServerCondition() {
+            boolean isServerUp = false;
+            assumeTrue(isServerUp);
+            System.out.println("Does some work if and only if the server is up...");
+        }
     }
 }
