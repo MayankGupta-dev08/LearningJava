@@ -79,7 +79,7 @@ class ComputeUtilTest {
             assertTrue(() -> os.equals(OS.WINDOWS), "checks if os is WINDOWS");
         }
 
-        @Test
+        @RepeatedTest(3)
         @DisplayName("check if server is up and running and only then does some work...")
         void testServerCondition() {
             boolean isServerUp = false;
