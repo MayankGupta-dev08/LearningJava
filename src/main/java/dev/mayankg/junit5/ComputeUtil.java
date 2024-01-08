@@ -1,6 +1,9 @@
 package dev.mayankg.junit5;
 
 public class ComputeUtil {
+    public static <T extends Comparable<T>> T max(T first, T second) {
+        return (first.compareTo(second) < 0) ? second : first;
+    }
 
     public int sum(int a, int b) {
         return a + b;
