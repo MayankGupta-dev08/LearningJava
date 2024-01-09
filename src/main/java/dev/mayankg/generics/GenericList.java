@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Iterator;
 
 /**
- * GenericList - for all Numeric types and User class objects
+ * GenericList - for all Numeric types and User class objects | Iterable and Iterator interfaces
  */
 
 public class GenericList<T extends Comparable<T>> implements Iterable<T> {
