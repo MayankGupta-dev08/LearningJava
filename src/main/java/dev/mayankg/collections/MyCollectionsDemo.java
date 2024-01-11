@@ -3,16 +3,34 @@ package dev.mayankg.collections;
 import dev.mayankg.generics.EmailComparator;
 import dev.mayankg.generics.User;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MyCollectionsDemo {
     public static void main(String[] args) {
         usingCollectionInterface();
         usingListInterface();
         usingComparableInterface();
+        workingWithSet();
+    }
+
+    private static void workingWithSet() {
+        Set<String> set1 = new HashSet<>(List.of("a", "b", "c"));
+        Set<String> set2 = new HashSet<>(List.of("b", "c", "d"));
+
+        // Union
+        Set<String> unionSet = new HashSet<>(set1);
+        unionSet.addAll(set2);
+        System.out.println("Union Set: " + unionSet);
+
+        // Intersection
+        Set<String> intersectionSet = new HashSet<>(set1);
+        intersectionSet.retainAll(set2);
+        System.out.println("Intersection Set: " + intersectionSet);
+
+        // Difference (Set1 - Set2)
+        Set<String> differenceSet = new HashSet<>(set1);
+        differenceSet.removeAll(set2);
+        System.out.println("Difference Set (Set1 - Set2): " + differenceSet);
     }
 
     private static void usingComparableInterface() {
