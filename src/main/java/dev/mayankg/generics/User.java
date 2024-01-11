@@ -1,7 +1,5 @@
 package dev.mayankg.generics;
 
-import java.util.Comparator;
-
 public class User implements Comparable<User> {
     private String name;
     private int age;
@@ -27,11 +25,7 @@ public class User implements Comparable<User> {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", emailId='" + emailId + '\'' +
-                '}';
+        return "User{name='%s', age=%d, emailId='%s'}".formatted(getName(), getAge(), getEmailId());
     }
 
     @Override
@@ -39,21 +33,3 @@ public class User implements Comparable<User> {
         return this.name.compareTo(that.name);
     }
 }
-
-/**
- * We need to use Java Comparator interface because Comparable.compareTo(Object o) method implementation can provide default sorting & we can’t change it dynamically.
- * Whereas with Comparator, we can define multiple methods with different ways of sorting and then chose the sorting method based on our requirements.
- */
-class EmailComparator implements Comparator<User> {
-    @Override
-    public int compare(User o1, User o2) {
-        return o1.getEmailId().compareTo(o2.getEmailId());
-    }
-};
-
-class AgeComparator implements Comparator<User> {
-    @Override
-    public int compare(User o1, User o2) {
-        return o1.getAge() - o2.getAge();
-    }
-};
