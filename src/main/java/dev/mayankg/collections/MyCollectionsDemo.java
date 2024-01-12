@@ -3,14 +3,31 @@ package dev.mayankg.collections;
 import dev.mayankg.generics.EmailComparator;
 import dev.mayankg.generics.User;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 public class MyCollectionsDemo {
+    private static final List<User> users = new ArrayList<>(List.of(
+            new User("mukesh", 30, "e3@gmail.com"),
+            new User("sachin", 25, "e1@gmail.com"),
+            new User("ashok", 40, "e2@gmail.com")
+    ));
+
     public static void main(String[] args) {
-        usingCollectionInterface();
-        usingListInterface();
-        usingComparableInterface();
-        workingWithSet();
+        Method[] methods = MyCollectionsDemo.class.getDeclaredMethods();
+        for (Method method : methods) {
+            if (!method.getName().startsWith("main")) {
+                try {
+                    System.out.printf("---initiating: %s()---%n", method.getName());
+                    method.invoke(null);
+                    System.out.println("--------------------------------------------");
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     private static void workingWithSet() {
@@ -34,17 +51,13 @@ public class MyCollectionsDemo {
     }
 
     private static void usingComparableInterface() {
-        List<User> users = new ArrayList<>();
-        users.add(new User("mukesh", 30, "e1@gmail.com"));
-        users.add(new User("sachin", 25, "e2@gmail.com"));
-        users.add(new User("ashok", 40, "e3@gmail.com"));
+        System.out.println("using name for comparison via comparable interface");
         Collections.sort(users);
         System.out.println(users);
-
-        usingComparatorInterface(users);
     }
 
-    private static void usingComparatorInterface(List<User> users) {
+    private static void usingComparatorInterface() {
+        System.out.println("using email comparator to sort the list");
         Collections.sort(users, new EmailComparator());
         System.out.println(users);
     }
