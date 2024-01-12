@@ -3,7 +3,6 @@ package dev.mayankg.collections;
 import dev.mayankg.generics.EmailComparator;
 import dev.mayankg.generics.User;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -20,8 +19,12 @@ public class MyCollectionsDemo {
         for (Method method : methods) {
             if (!method.getName().startsWith("main")) {
                 try {
+                    // Set accessible if the method is not public
+                    if (!method.isAccessible()) method.setAccessible(true);
+
+                    // Invoke the method
                     System.out.printf("---initiating: %s()---%n", method.getName());
-                    method.invoke(null);
+                    method.invoke(null);// pass null for static methods
                     System.out.println("--------------------------------------------");
                 } catch (IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);
