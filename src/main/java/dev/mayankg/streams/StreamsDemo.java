@@ -1,16 +1,26 @@
 package dev.mayankg.streams;
 
 import dev.mayankg.streams.Util.Movie;
+import dev.mayankg.streams.Util.MovieRatingComparator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
+    private static final List<Movie> movies = List.of(
+            new Movie("c", 8.0f),
+            new Movie("a", 4.5f),
+            new Movie("d", 7.5f),
+            new Movie("b", 5.3f)
+    );
+
     public static void main(String[] args) {
+        /**PAGINATION USING STREAMS*/
         /* Suppose we are getting the response after making a http request and the result has 50 elements */
         Stream<Integer> resultStream = Stream.iterate(1, n -> n + 1).limit(50);
         /*
@@ -26,13 +36,7 @@ public class StreamsDemo {
                 .limit(pageSize)
                 .forEach(x -> System.out.print(x + " "));
 
-        List<Movie> movies = List.of(
-                new Movie("a", 8.0f),
-                new Movie("b", 4.5f),
-                new Movie("d", 7.5f),
-                new Movie("c", 5.3f)
-        );
-
+        /**SLICING IN STREAMS*/
         // The takeWhile operation will take elements from the stream until the first non-conforming element is encountered (won't check till the end)
         System.out.printf("%n--->Result from takeWhile()<---%n");
         movies.stream().takeWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
@@ -41,6 +45,15 @@ public class StreamsDemo {
         // The result will be a stream containing only the remaining elements after dropping those that satisfy the condition.
         System.out.printf("--->Result from dropWhile()<---%n");
         movies.stream().dropWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
+
+        /**SORTING IN STREAMS*/
+        System.out.println("-->Movies sorted by name<--");
+        List<Movie> moviesSortedByName = movies.stream().sorted().collect(Collectors.toList());
+        System.out.println(moviesSortedByName);
+
+        System.out.println("-->Movies sorted by rating (hi to low)<--");
+        List<Movie> moviesSortedByRating = movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
+        System.out.println(moviesSortedByRating);
     }
 
     private static void differentWaysOfCreatingStream() {
