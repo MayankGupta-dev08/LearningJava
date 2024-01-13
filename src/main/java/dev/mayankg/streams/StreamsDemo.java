@@ -1,5 +1,7 @@
 package dev.mayankg.streams;
 
+import dev.mayankg.streams.Util.Movie;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +24,23 @@ public class StreamsDemo {
         resultStream
                 .skip((page - 1) * pageSize)
                 .limit(pageSize)
-                .forEach(System.out::println);
+                .forEach(x -> System.out.print(x + " "));
+
+        List<Movie> movies = List.of(
+                new Movie("a", 8.0f),
+                new Movie("b", 4.5f),
+                new Movie("d", 7.5f),
+                new Movie("c", 5.3f)
+        );
+
+        // The takeWhile operation will take elements from the stream until the first non-conforming element is encountered (won't check till the end)
+        System.out.printf("%n--->Result from takeWhile()<---%n");
+        movies.stream().takeWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
+
+        // The dropWhile operation will drop elements from the stream until the first non-conforming element is encountered.
+        // The result will be a stream containing only the remaining elements after dropping those that satisfy the condition.
+        System.out.printf("--->Result from dropWhile()<---%n");
+        movies.stream().dropWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
     }
 
     private static void differentWaysOfCreatingStream() {
