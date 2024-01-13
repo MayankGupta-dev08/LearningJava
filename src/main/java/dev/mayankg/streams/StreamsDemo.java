@@ -3,10 +3,7 @@ package dev.mayankg.streams;
 import dev.mayankg.streams.Util.Movie;
 import dev.mayankg.streams.Util.MovieRatingComparator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -52,7 +49,11 @@ public class StreamsDemo {
         System.out.println(moviesSortedByName);
 
         System.out.println("-->Movies sorted by rating (hi to low)<--");
-        List<Movie> moviesSortedByRating = movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
+        List<Movie> moviesSortedByRating =
+        // movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
+                movies.stream()
+                        .sorted(Comparator.comparing(Movie::getRating).reversed())
+                        .collect(Collectors.toList());
         System.out.println(moviesSortedByRating);
     }
 
