@@ -50,11 +50,32 @@ public class StreamsDemo {
 
         System.out.println("-->Movies sorted by rating (hi to low)<--");
         List<Movie> moviesSortedByRating =
-        // movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
+                // movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
                 movies.stream()
                         .sorted(Comparator.comparing(Movie::getRating).reversed())
                         .collect(Collectors.toList());
         System.out.println(moviesSortedByRating);
+
+        /**GETTING DISTINCT RESULTS IN STREAMS*/
+        System.out.println("-->Getting distinct results<--");
+        Stream.of(11, 22, 33, 11, 55, 44, 22, 88, 66, 77, 99)
+                .distinct()
+                .forEach(x -> System.out.print(x + " "));
+        System.out.println();
+
+        /**PEEKING IN STREAMS: FOR DEBUGGING/CHECKING INTERMEDIATE RESULTS*/
+        peekingInStreams();
+    }
+
+    private static void peekingInStreams() {
+
+        List<String> res = movies.stream()
+                .filter(m -> m.getRating() >= 7.0f)
+                .peek(m -> System.out.printf("Filtered: {%s:%s}%n", m.getName(), m.getRating()))
+                .map(Movie::getName)
+                .peek(m -> System.out.println("Mapped: " + m))
+                .toList();
+        System.out.println(res);
     }
 
     private static void differentWaysOfCreatingStream() {
