@@ -7,7 +7,8 @@ class ThreadTester {
 
 //        example_simple();
 //        example_synchronization();
-        demoOnThreadStateExplanation();
+//        demoOnThreadStateExplanation();
+        example_join();
 
         System.out.println("main is exiting");
     }
@@ -62,4 +63,21 @@ class ThreadTester {
         }
     }
 
+    /**
+     * join() method on a thread forces the completion of that particular thread and all its child thread
+     * and blocks all other threads till those are completed.
+     * */
+    private static void example_join() {
+        Thread thread = new Thread(() -> {
+            System.out.println(Thread.currentThread());
+        }, "Our thread");
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
