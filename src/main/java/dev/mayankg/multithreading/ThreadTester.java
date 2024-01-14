@@ -6,7 +6,8 @@ class ThreadTester {
         System.out.println("main is starting");
 
 //        example_simple();
-        example_synchronization();
+//        example_synchronization();
+        demoOnThreadStateExplanation();
 
         System.out.println("main is exiting");
     }
@@ -38,6 +39,27 @@ class ThreadTester {
         // This option is better, since the here we don't have to extend a class rather implement an interface which prevents the multiple inheritance scenario from happening
         Thread thread2 = new Thread(new Thread2(), "thread2");
         thread2.start();
+    }
+
+    private static void demoOnThreadStateExplanation() {
+        Thread thread3 = new Thread(
+                () -> {
+                    try {
+                        Thread.sleep(1);
+                        for (int i = 10000; i > 0; i--) ;    //hot loop
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                },
+                "stateThread"
+        );
+        thread3.start();
+
+        while (true) {
+            Thread.State state = thread3.getState();
+            System.out.println(state);
+            if (state == Thread.State.TERMINATED) break;
+        }
     }
 
 }
