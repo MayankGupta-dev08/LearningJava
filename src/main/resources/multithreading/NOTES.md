@@ -56,7 +56,7 @@
 - A thread must acquire the object lock associated with a shared resource before it can enter the shared resource.
 - The runtime system ensures that no other thread can enter a shared resource if another thread holds the object lock associated with it.
 - If a thread cannot immediately acquire the object lock, it is blocked, i.e., it must wait for the lock to become available.
-- When a thread exists a shared resource, the runtime system ensures that the object lock is also relinquished. If another thread is waiting for this object lock, it can try to acquire the lock inorder to gain the access to the shared resource.
+- When a thread exists a shared resource, the runtime system ensures that the object lock is also relinquished. If another thread is waiting for this object lock, it can try to acquire the lock to gain access to the shared resource.
 - It should be made clear that the programs should not make any assumptions about the order in which threads are granted ownership of a lock.
  
 #### Static Synchronization Methods:
@@ -71,10 +71,37 @@
   - synchronized (object ref expression) {<code_block>}
 - The object ref expression must evaluate to a non-null reference value, otherwise a NullPointerException is thrown.
  
+#### Waiting and Notifying:
+- WAITING: A thread in the waiting-for-notification state can be awakened by the occurrence of any one of these 3 incidents:
+  - The waiting thread times out.
+  - Another thread interrupts the waiting thread (in this case, it might throw an exception once its waiting time is over).
+  - Another thread invokes the notify() method on the object of the waiting thread, and the waiting thread is selected as the thread to be awakened.
+- NOTIFY:
+  - Invoking the notify() method on an object wakes up a single thread which is waiting for the lock of this object.
+  - The selection of a thread to awaken is dependent on the thread policies implemented by the JVM.
+  - On being notified, a waiting thread first transits to the Blocked-for-lock-acquisition state to acquire the lock on the object, and not directly to the Ready-to-run state.
+  - The thread is also removed from the wait set of the object.
+- IMPORTANT METHODS:
+  - final void wait(long timeout) throws InterruptedException
+  - final void wait(long timeout, int nanos) throws InterruptedException
+  - final void wait() throws InterruptedException
+  - final void notify()
+  - final void notifyAll()
+- TIMED OUT:
+  - When passing timeout as an argument, in the wait() method then the thread should wait before being timed out for that time, if already it wasn't awakened by being notified.
+  - The awakened thread has no way of knowing whether it was timed out or woken up by one of the notification methods.
+- INTERRUPTED:
+  - When another thread invoked the interrupt() method on the waiting thread.
+  - When the awakened thread is enabled, but the return from the wait() call will result in an InterruptedException if and when the awakened thread finally gets a chance to run.
+  - The coed invoking the wait() method must be prepared to handle this checked exception.
+
+ 
 #### *SUMMARY:*
 - A thread can hold a lock on an object:
   - By executing a synchronized instance method of the object. (this)
   - By executing the body of a synchronized block that synchronizes on the object. (this)
   - By executing a synchronized static method of a class or a block inside a static method (in this case, the object is the Class object representing the class in the JVM)
+  - Whenever a thread is sleeping, it doesn't relinquish its lock, it will only relinquish when it is waiting for a notification. 
+  - Also, it only relinquishes the lock on the object on which wait method was invoked, it doesn't relinquish any other object lock that it might hold, and it will remain locked when the thread is waiting.
 
 ##### Thread Safety: It's the term used to describe the design of classes that ensures that the state of their object is always consistent, even when the objects are used concurrently by multiple threads. E.g., StringBuffer.
