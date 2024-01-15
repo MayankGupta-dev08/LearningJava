@@ -95,6 +95,14 @@
   - When the awakened thread is enabled, but the return from the wait() call will result in an InterruptedException if and when the awakened thread finally gets a chance to run.
   - The coed invoking the wait() method must be prepared to handle this checked exception.
 
+#### Thread Priorities:
+- Threads are assigned priorities that the thread scheduler can use to determine how the threads can be scheduled.
+- Priorities are integer value from 1 (Thread.MIN_PRIORITY) to 10 (Thread.MAX_PRIORITY) and the default priority is 5 (Thread.NORM_PRIORITY).
+- A thread inherits the priority of its parent thread.
+- We could use the <threadName>.getPriority() and <threadName>.setPriority() as getter and setter which are predefined in Thread class.
+- The setPriority() method is an advisory method, as it provides hints to the JVM for scheduling which the JVM has no obligation to honor.
+  - So what do we achieve by setting the thread priority??
+    - The thread scheduler **favors** giving CPU time to the thread with the highest priority in the ready-to-run state, but there is no guarantee of the same, hence heavy reliance on thread priority for the behavior of the program can lead the program unportable across platforms as thread scheduling algorithms are host platform dependent.
  
 #### *SUMMARY:*
 - A thread can hold a lock on an object:
