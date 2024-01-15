@@ -1,20 +1,23 @@
-# MULTITHREADING
+# MULTITHREADING NOTES
 
-### Multitasking
+## Multitasking
 - It Allows several activities to occur simultaneously on the computer.
 - It is of two types:
-  1. Process based multitasking (Multitasking) [Allows process/programs to run concurrently on the computer ]  
-  2. Thread based multitasking (Multithreading) [Allows parts of the same program to run concurrently on the computer]
+    1. Process based multitasking (Multitasking) [Allows process/programs to run concurrently on the computer ]
+    2. Thread based multitasking (Multithreading) [Allows parts of the same program to run concurrently on the computer]
 
-### THREADS VS PROCESSES
+### Thread vs. Process
 1. Two threads share the same address space.
 2. Context switching b/w the threads is usually less expensive than between processes.
 3. The cost of communication b/w threads is relatively low.
 
-### Why Multithreading??
+---
+
+## Multithreading
+### Why multithreading??
 - To utilize the idle CPU time by running some other thread when one thread is waiting (for some user input or performing some output operation ie. not using the CPU).
 
-### WHAT IS A THREAD?
+### What is a thread?
 - A thread is an independent sequential path of execution within a program.
 - Many threads can run concurrently within a program.
 - At runtime threads in a program exist in a common memory space and can therefore share both data and code (i.e., they are lightweight as compared to the program).
@@ -35,12 +38,11 @@
 - A daemon thread is at the mercy of the runtime system: it is stopped if there are no more user threads running (including the main thread), thus terminating the program.
 - When we are using aThread.start(), then it doesn't mean that the thread will run at that instant, but it is at JVM's mercy, so as soon as it is free it will run that thread.
 
----
-### **THREAD CREATION:**
+### **Thread Creation:**
 - A Thread in java is represented by the object of the thread class.
     - Creating a thread in java can be achieved by two ways:
-      1. Implementing the java.lang.Runnable interface (better option).
-      2. Extending the java.lang.Thread class.
+        1. Implementing the java.lang.Runnable interface (better option).
+        2. Extending the java.lang.Thread class.
 
 ### Synchronization:
 - Threads share the same memory space, i.e., they can share the resources (objects).
@@ -58,7 +60,7 @@
 - If a thread cannot immediately acquire the object lock, it is blocked, i.e., it must wait for the lock to become available.
 - When a thread exists a shared resource, the runtime system ensures that the object lock is also relinquished. If another thread is waiting for this object lock, it can try to acquire the lock to gain access to the shared resource.
 - It should be made clear that the programs should not make any assumptions about the order in which threads are granted ownership of a lock.
- 
+
 #### Static Synchronization Methods:
 - A thread acquiring the lock of a class to execute a static synchronized method has no effect on any thread acquiring the lock on any object of the class to execute a synchronized instance method.
 - In other words, synchronization of static methods in a class is independent of the synchronization of instance methods on objects of the class.
@@ -68,48 +70,90 @@
 #### Synchronized Blocks:
 - Whereas execution of synchronized methods of an object is synchronized on the lock of the object, the synchronized block allows execution of arbitrary code to be synchronized on the lock of an arbitrary object.
 - The general form of the synchronized statement is as follows:
-  - synchronized (object ref expression) {<code_block>}
+    - synchronized (object ref expression) {<code_block>}
 - The object ref expression must evaluate to a non-null reference value, otherwise a NullPointerException is thrown.
- 
-#### Waiting and Notifying:
-- WAITING: A thread in the waiting-for-notification state can be awakened by the occurrence of any one of these 3 incidents:
+
+### Waiting and Notifying:
+
+#### Waiting: 
+  - A thread in the waiting-for-notification state can be awakened by the occurrence of any one of these 3 incidents:
   - The waiting thread times out.
   - Another thread interrupts the waiting thread (in this case, it might throw an exception once its waiting time is over).
   - Another thread invokes the notify() method on the object of the waiting thread, and the waiting thread is selected as the thread to be awakened.
-- NOTIFY:
+
+#### Notify:
   - Invoking the notify() method on an object wakes up a single thread which is waiting for the lock of this object.
   - The selection of a thread to awaken is dependent on the thread policies implemented by the JVM.
   - On being notified, a waiting thread first transits to the Blocked-for-lock-acquisition state to acquire the lock on the object, and not directly to the Ready-to-run state.
   - The thread is also removed from the wait set of the object.
-- IMPORTANT METHODS:
+
+#### Important Methods:
   - final void wait(long timeout) throws InterruptedException
   - final void wait(long timeout, int nanos) throws InterruptedException
   - final void wait() throws InterruptedException
   - final void notify()
   - final void notifyAll()
-- TIMED OUT:
+#### Timed Out:
   - When passing timeout as an argument, in the wait() method then the thread should wait before being timed out for that time, if already it wasn't awakened by being notified.
   - The awakened thread has no way of knowing whether it was timed out or woken up by one of the notification methods.
-- INTERRUPTED:
+#### Interrupted:
   - When another thread invoked the interrupt() method on the waiting thread.
   - When the awakened thread is enabled, but the return from the wait() call will result in an InterruptedException if and when the awakened thread finally gets a chance to run.
   - The coed invoking the wait() method must be prepared to handle this checked exception.
 
-#### Thread Priorities:
+### Thread Priorities:
 - Threads are assigned priorities that the thread scheduler can use to determine how the threads can be scheduled.
 - Priorities are integer value from 1 (Thread.MIN_PRIORITY) to 10 (Thread.MAX_PRIORITY) and the default priority is 5 (Thread.NORM_PRIORITY).
 - A thread inherits the priority of its parent thread.
 - We could use the <threadName>.getPriority() and <threadName>.setPriority() as getter and setter which are predefined in Thread class.
 - The setPriority() method is an advisory method, as it provides hints to the JVM for scheduling which the JVM has no obligation to honor.
-  - So what do we achieve by setting the thread priority??
-    - The thread scheduler **favors** giving CPU time to the thread with the highest priority in the ready-to-run state, but there is no guarantee of the same, hence heavy reliance on thread priority for the behavior of the program can lead the program unportable across platforms as thread scheduling algorithms are host platform dependent.
- 
-#### *SUMMARY:*
+    - So what do we achieve by setting the thread priority??
+        - The thread scheduler **favors** giving CPU time to the thread with the highest priority in the ready-to-run state, but there is no guarantee of the same, hence heavy reliance on thread priority for the behavior of the program can lead the program unportable across platforms as thread scheduling algorithms are host platform dependent.
+
+### Thread Scheduler:
+Schedulers in JVM implementations generally employ one of the two following strategies:
+####  1. Preemptive Scheduling:
+In preemptive scheduling, the operating system can interrupt a running thread at any time, allowing it to efficiently manage and allocate CPU time among multiple threads. Key features include:
+
+- **Thread Interruption:** The OS can interrupt a running thread.
+- **Priority-Based:** Threads are assigned priorities for execution.
+- **Efficient Resource Utilization:** Enables optimal utilization of system resources.
+
+#### 2. Time-Sliced (Round Robin) Scheduling:
+
+Time-sliced scheduling assigns each thread a fixed time slice or quantum during which it can execute. After the time slice expires, the scheduler moves to the next thread in a cyclic manner. Key features include:
+
+- **Fixed Time Slices:** Threads are given fixed time for execution.
+- **Cyclic Execution:** Threads execute in a circular manner.
+- **Fairness:** Ensures fair distribution of CPU time.
+- **Predictable Behavior:** Suitable for scenarios with real-time requirements.
+
+#### Comparison:
+
+| Criteria                | Preemptive Scheduling          | Time-Sliced (Round Robin) Scheduling |
+|-------------------------|--------------------------------|---------------------------------------|
+| **Thread Interruption**  | Can be interrupted at any time  | Switches threads at fixed time slices |
+| **Priority-Based**       | Yes                            | Not solely based on priority          |
+| **Resource Utilization** | Efficient resource utilization | Fair distribution of CPU time          |
+| **Predictability**       | Less predictable               | More predictable                      |
+
+#### Selection Criteria:
+
+- **Preemptive Scheduling:**
+    - Suitable for scenarios prioritizing thread priorities.
+    - Efficient resource utilization is a priority.
+
+- **Time-Sliced Scheduling:**
+    - Suitable for scenarios prioritizing fairness and predictability.
+    - Useful in scenarios with real-time requirements.
+
+### Thread Safety: 
+- It's the term used to describe the design of classes that ensures that the state of their object is always consistent, even when the objects are used concurrently by multiple threads. E.g., StringBuffer.
+
+## *SUMMARY:*
 - A thread can hold a lock on an object:
   - By executing a synchronized instance method of the object. (this)
   - By executing the body of a synchronized block that synchronizes on the object. (this)
   - By executing a synchronized static method of a class or a block inside a static method (in this case, the object is the Class object representing the class in the JVM)
   - Whenever a thread is sleeping, it doesn't relinquish its lock, it will only relinquish when it is waiting for a notification. 
   - Also, it only relinquishes the lock on the object on which wait method was invoked, it doesn't relinquish any other object lock that it might hold, and it will remain locked when the thread is waiting.
-
-##### Thread Safety: It's the term used to describe the design of classes that ensures that the state of their object is always consistent, even when the objects are used concurrently by multiple threads. E.g., StringBuffer.
