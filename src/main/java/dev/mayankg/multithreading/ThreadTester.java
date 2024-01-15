@@ -5,10 +5,13 @@ class ThreadTester {
     public static void main(String[] args) {
         System.out.println("main is starting");
 
+        // run/test all the below methods 1 by 1
         example_simple();
         example_synchronization();
         demoOnThreadStateExplanation();
         example_join();
+
+        // will cause the program to run infinitely
         deadlockSituation();
 
         System.out.println("main is exiting");
