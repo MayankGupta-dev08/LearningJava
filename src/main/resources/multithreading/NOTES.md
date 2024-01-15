@@ -93,9 +93,11 @@
   - final void wait() throws InterruptedException
   - final void notify()
   - final void notifyAll()
+
 #### Timed Out:
   - When passing timeout as an argument, in the wait() method then the thread should wait before being timed out for that time, if already it wasn't awakened by being notified.
   - The awakened thread has no way of knowing whether it was timed out or woken up by one of the notification methods.
+
 #### Interrupted:
   - When another thread invoked the interrupt() method on the waiting thread.
   - When the awakened thread is enabled, but the return from the wait() call will result in an InterruptedException if and when the awakened thread finally gets a chance to run.
@@ -146,6 +148,11 @@ Time-sliced scheduling assigns each thread a fixed time slice or quantum during 
 - **Time-Sliced Scheduling:**
     - Suitable for scenarios prioritizing fairness and predictability.
     - Useful in scenarios with real-time requirements.
+
+### Deadlocks:
+- A deadlock is a situation where a thread is waiting for an object lock that another thread holds, and this other thread is waiting for an object lock that the earlier thread holds.
+- Since each thread is waiting for the other thread to relinquish the lock, hence they both remain waiting forever in the blocked-for-lock-acquisition state.
+- The threads are said to be deadlocked.
 
 ### Thread Safety: 
 - It's the term used to describe the design of classes that ensures that the state of their object is always consistent, even when the objects are used concurrently by multiple threads. E.g., StringBuffer.

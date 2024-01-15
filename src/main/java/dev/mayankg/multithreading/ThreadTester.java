@@ -5,10 +5,11 @@ class ThreadTester {
     public static void main(String[] args) {
         System.out.println("main is starting");
 
-//        example_simple();
-//        example_synchronization();
-//        demoOnThreadStateExplanation();
+        example_simple();
+        example_synchronization();
+        demoOnThreadStateExplanation();
         example_join();
+        deadlockSituation();
 
         System.out.println("main is exiting");
     }
@@ -66,7 +67,7 @@ class ThreadTester {
     /**
      * join() method on a thread forces the completion of that particular thread and all its child thread
      * and blocks all other threads till those are completed.
-     * */
+     */
     private static void example_join() {
         Thread thread = new Thread(() -> {
             System.out.println(Thread.currentThread());
@@ -79,5 +80,43 @@ class ThreadTester {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void deadlockSituation() {
+        String lock1 = "myLock";
+        String lock2 = "myOtherLock";
+
+        Thread t1 = new Thread(() -> {
+            synchronized (lock1) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                synchronized (lock2) {
+                    System.out.println("both the locks are acquired!");
+                    System.out.println("work1 in progress...");
+                }
+            }
+        }, "t1");
+
+        Thread t2 = new Thread(() -> {
+            synchronized (lock2) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                synchronized (lock1) {
+                    System.out.println("both the locks are acquired!");
+                    System.out.println("work2 in progress...");
+                }
+            }
+        }, "t2");
+
+        t1.start();
+        t2.start();
     }
 }
