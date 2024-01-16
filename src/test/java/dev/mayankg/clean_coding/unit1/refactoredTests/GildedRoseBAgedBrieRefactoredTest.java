@@ -9,7 +9,6 @@ import static dev.mayankg.clean_coding.unit1.refactoredTests.TestUtil.assertItem
 import static dev.mayankg.clean_coding.unit1.refactoredTests.TestUtil.createGildedRoseWith1Item;
 
 public class GildedRoseBAgedBrieRefactoredTest {
-
     private static final String AGED_BRIE_ITEM = "Aged Brie";
     private static final int UNEXPIRED_SELL_IN = 4;
     private static final int DEF_QUALITY = 3;
@@ -37,8 +36,8 @@ public class GildedRoseBAgedBrieRefactoredTest {
     }
 
     @Test
-    @DisplayName("Method to test the variation in quality of maxed quality Aged Brie")
-    public void testQualityVariationForMaxedQAgedBrie() {
+    @DisplayName("Method to test the variation in quality of an unexpired but maxed quality Aged Brie")
+    public void testQualityVariationForUnexpiredMaxedQAgedBrie() {
         GildedRose app = createGildedRoseWith1Item(AGED_BRIE_ITEM, UNEXPIRED_SELL_IN, MAX_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];

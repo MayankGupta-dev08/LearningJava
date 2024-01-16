@@ -5,7 +5,7 @@ import dev.mayankg.clean_coding.unit1.gildedrose.Item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestUtil {
+class TestUtil {
     static void assertItem(Item expected, Item actual) {
         assertEquals(expected.name, actual.name);
         assertEquals(expected.sellIn, actual.sellIn);
