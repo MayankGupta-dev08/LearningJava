@@ -1,4 +1,4 @@
-package dev.mayankg.clean_coding.unit1.gildedrose;
+package dev.mayankg.clean_coding.unit1Gildedrose;
 
 import java.util.Arrays;
 

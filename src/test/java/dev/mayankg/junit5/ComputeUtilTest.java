@@ -1,4 +1,4 @@
-package dev.mayankg;
+package dev.mayankg.junit5;
 
 import dev.mayankg.junit5.ComputeUtil;
 import org.junit.jupiter.api.*;

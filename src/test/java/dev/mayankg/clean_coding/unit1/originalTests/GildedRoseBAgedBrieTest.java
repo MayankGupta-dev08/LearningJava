@@ -2,8 +2,8 @@ package dev.mayankg.clean_coding.unit1.originalTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dev.mayankg.clean_coding.unit1.gildedrose.GildedRose;
-import dev.mayankg.clean_coding.unit1.gildedrose.Item;
+import dev.mayankg.clean_coding.unit1Gildedrose.GildedRose;
+import dev.mayankg.clean_coding.unit1Gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
 public class GildedRoseBAgedBrieTest {
