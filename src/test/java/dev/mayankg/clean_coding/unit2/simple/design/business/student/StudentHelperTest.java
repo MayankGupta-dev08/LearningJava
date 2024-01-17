@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import static dev.mayankg.clean_coding.unit2_4PrinciplesOfDesign.simple.design.business.student.StudentHelperRefactored.Grade;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StudentHelperTest {
-    StudentHelperRefactored helper = new StudentHelperRefactored();
+class StudentHelperTest {
+    private final StudentHelperRefactored helper = new StudentHelperRefactored();
 
     @Test
-    public void testIsGradeB() {
+    void testIsGradeB() {
         assertFalse(helper.isGradeB(30, false));
         assertFalse(helper.isGradeB(50, false));
         assertTrue(helper.isGradeB(51, false));
@@ -28,8 +28,7 @@ public class StudentHelperTest {
     }
 
     @Test
-    public void testGetGrade() {
-
+    void testGetGrade() {
         assertEquals(Grade.A, helper.getGrade(99, false));
         assertEquals(Grade.A, helper.getGrade(91, false));
         assertEquals(Grade.B, helper.getGrade(85, false));
@@ -45,13 +44,13 @@ public class StudentHelperTest {
         assertEquals(Grade.C, helper.getGrade(50, true));
         assertEquals(Grade.C, helper.getGrade(45, true));
 
-        //Will fail due to wrong implementation
-        //assertEquals("Grade.B",helper.getGrade(95, true));
-        //assertEquals("Grade.B",helper.getGrade(90, false));
+        // Will fail due to wrong implementation
+        // assertEquals(Grade.B, helper.getGrade(95, true));
+        // assertEquals(Grade.B, helper.getGrade(90, false));
     }
 
     @Test
-    public void testWillQualifyForQuiz() {
+    void testWillQualifyForQuiz() {
         assertEquals(Grade.NO, helper.willQualifyForQuiz(15, 25, false));
         assertEquals(Grade.NO, helper.willQualifyForQuiz(20, 20, false));
         assertEquals(Grade.MAYBE, helper.willQualifyForQuiz(21, 21, false));
@@ -71,6 +70,5 @@ public class StudentHelperTest {
         assertEquals(Grade.MAYBE, helper.willQualifyForQuiz(80, 84, true));
         assertEquals(Grade.YES, helper.willQualifyForQuiz(85, 30, true));
         assertEquals(Grade.YES, helper.willQualifyForQuiz(30, 90, true));
-
     }
 }
