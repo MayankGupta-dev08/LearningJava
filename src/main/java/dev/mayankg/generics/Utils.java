@@ -4,7 +4,7 @@ package dev.mayankg.generics;
  * Utility Class which itself is not generic but its methods are generic.
  */
 
-public class Utils {
+class Utils {
     static <T extends Comparable<T>> T min(T first, T second) {
         return (first.compareTo(second) < 0) ? first : second;
     }

@@ -7,7 +7,7 @@ import java.util.Iterator;
  * GenericList - for all Numeric types and User class objects | Iterable and Iterator interfaces
  */
 
-public class GenericList<T extends Comparable<T>> implements Iterable<T> {
+class GenericList<T extends Comparable<T>> implements Iterable<T> {
     private T[] list;
     private int count;
 

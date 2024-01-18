@@ -9,7 +9,7 @@ import java.util.List;
  * Understanding Java Generics using CodeWithMosh Tutorials
  */
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         GenericList<User> userList = new GenericList<User>(User.class, 4);
         userList.add(new User("mayank", 25, "myemail@gmail.com"));
