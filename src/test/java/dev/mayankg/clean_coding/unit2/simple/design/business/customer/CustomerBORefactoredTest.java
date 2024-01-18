@@ -50,17 +50,12 @@ class CustomerBORefactoredTest {
 
 
     @Test
-    void testCustomerProductSum_WithNoProducts() {
+    void testCustomerProductSum_WithNoProducts() throws DifferentCurrenciesException{
         Amount[] amounts = {};
         List<Product> products = createProductsWithAmount(amounts);
 
-        Amount actualSum = null;
-        try {
-            actualSum = customerBO.getCustomerProductsSum(products);
-        } catch (DifferentCurrenciesException ignored) {
-        }
+        Amount actualSum = customerBO.getCustomerProductsSum(products);
 
-        //assertion
         Amount expectedSum = new AmountImpl(BigDecimal.ZERO, Currency.EURO);
         assertCurrency(expectedSum, actualSum);
     }
