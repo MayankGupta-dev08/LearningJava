@@ -50,7 +50,7 @@ class CustomerBORefactoredTest {
 
 
     @Test
-    void testCustomerProductSum_WithNoProducts() throws DifferentCurrenciesException{
+    void testCustomerProductSum_WithNoProducts() throws DifferentCurrenciesException {
         Amount[] amounts = {};
         List<Product> products = createProductsWithAmount(amounts);
 
