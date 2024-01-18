@@ -7,13 +7,11 @@ import dev.mayankg.clean_coding.unit2_4PrinciplesOfDesign.simple.design.model.cu
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerBORefactoredTest {
     private CustomerBO customerBO = new CustomerBOImpl();
@@ -31,7 +29,7 @@ class CustomerBORefactoredTest {
 
         //assertion
         Amount expectedSum = new AmountImpl(new BigDecimal("11.0"), Currency.EURO);
-        assertion(expectedSum, actualSum);
+        assertCurrency(expectedSum, actualSum);
     }
 
     @Test
@@ -41,12 +39,15 @@ class CustomerBORefactoredTest {
                 new AmountImpl(new BigDecimal("6.0"), Currency.INDIAN_RUPEE)};
         List<Product> products = createProductsWithAmount(amounts);
 
-        try {
-            Amount actualSum = customerBO.getCustomerProductsSum(products);
-            fail("DifferentCurrenciesException is expected");
-        } catch (DifferentCurrenciesException ignored) {
-        }
+
+        DifferentCurrenciesException exception = assertThrows(DifferentCurrenciesException.class, () -> {
+            customerBO.getCustomerProductsSum(products);
+        });
+
+        // Optionally, you can assert details about the exception
+        assertNotNull(exception.getMessage());
     }
+
 
     @Test
     void testCustomerProductSum_WithNoProducts() {
@@ -61,10 +62,10 @@ class CustomerBORefactoredTest {
 
         //assertion
         Amount expectedSum = new AmountImpl(BigDecimal.ZERO, Currency.EURO);
-        assertion(expectedSum, actualSum);
+        assertCurrency(expectedSum, actualSum);
     }
 
-    private void assertion(Amount expectedSum, Amount actualSum) {
+    private void assertCurrency(Amount expectedSum, Amount actualSum) {
         assertEquals(expectedSum.getValue(), actualSum.getValue());
         assertEquals(expectedSum.getCurrency(), actualSum.getCurrency());
     }

@@ -22,7 +22,7 @@ public class CustomerBOImpl implements CustomerBO {
         Currency firstProductCurrency = products.get(0).getAmount().getCurrency();
         for (Product product : products)
             if (!product.getAmount().getCurrency().equals(firstProductCurrency))
-                throw new DifferentCurrenciesException();
+                throw new DifferentCurrenciesException("Invalid operation. Currency for sum don't match!!");
 
         // Calculate the Sum of Products
         for (Product product : products) {
