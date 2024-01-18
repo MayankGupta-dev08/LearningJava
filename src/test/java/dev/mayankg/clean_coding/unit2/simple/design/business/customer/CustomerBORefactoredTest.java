@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class CustomerBORefactoredTest {
+class CustomerBORefactoredTest {
     private CustomerBO customerBO = new CustomerBOImpl();
 
     @Test
-    public void testCustomerProductSum_TwoProductsOfSameCurrencies() throws DifferentCurrenciesException {
+    void testCustomerProductSum_TwoProductsOfSameCurrencies() throws DifferentCurrenciesException {
         //setup
         Amount[] amounts = {
                 new AmountImpl(new BigDecimal("5.0"), Currency.EURO),
@@ -35,7 +35,7 @@ public class CustomerBORefactoredTest {
     }
 
     @Test
-    public void testCustomerProductSum_TwoProductsOfDifferentCurrencies() {
+    void testCustomerProductSum_TwoProductsOfDifferentCurrencies() {
         Amount[] amounts = {
                 new AmountImpl(new BigDecimal("5.0"), Currency.EURO),
                 new AmountImpl(new BigDecimal("6.0"), Currency.INDIAN_RUPEE)};
@@ -49,7 +49,7 @@ public class CustomerBORefactoredTest {
     }
 
     @Test
-    public void testCustomerProductSum_WithNoProducts() {
+    void testCustomerProductSum_WithNoProducts() {
         Amount[] amounts = {};
         List<Product> products = createProductsWithAmount(amounts);
 
