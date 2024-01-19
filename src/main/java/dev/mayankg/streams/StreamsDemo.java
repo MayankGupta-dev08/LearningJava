@@ -39,6 +39,10 @@ class StreamsDemo {
         tSO.countInStream();
         tSO.anyMatchInStream();
         tSO.allMatchInStream();
+        tSO.findFirstInStream();
+        tSO.findAnyInStream();
+        tSO.findMaxInStream();
+        tSO.findMinInStream();
     }
 
     private static void differentWaysOfCreatingStream() {
