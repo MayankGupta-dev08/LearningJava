@@ -11,15 +11,13 @@ class StreamIntermediateOperations {
     private final List<Movie> movies;
 
     public StreamIntermediateOperations() {
-        this.movies = List.of(
-                new Movie("c", 8.0f),
-                new Movie("a", 4.5f),
-                new Movie("d", 7.5f),
-                new Movie("b", 5.3f)
-        );
+        StreamsDemo sd = new StreamsDemo();
+        this.movies = sd.getMovies();
     }
 
-    /**GETTING DISTINCT RESULTS IN STREAMS*/
+    /**
+     * GETTING DISTINCT RESULTS IN STREAMS
+     */
     void distinctInStream() {
         System.out.println("-->Getting distinct results<--");
         Stream.of(11, 22, 33, 11, 55, 44, 22, 88, 66, 77, 99)
@@ -28,7 +26,9 @@ class StreamIntermediateOperations {
         System.out.println();
     }
 
-    /**SORTING IN STREAMS*/
+    /**
+     * SORTING IN STREAMS
+     */
     void sortingInStream() {
         System.out.println("-->Movies sorted by name<--");
         List<Movie> moviesSortedByName = movies.stream().sorted().collect(Collectors.toList());
@@ -43,7 +43,9 @@ class StreamIntermediateOperations {
         System.out.println(moviesSortedByRating);
     }
 
-    /**SLICING IN STREAMS*/
+    /**
+     * SLICING IN STREAMS
+     */
     void slicingInStream() {
         // The takeWhile operation will take elements from the stream until the first non-conforming element is encountered (won't check till the end)
         System.out.printf("%n--->Result from takeWhile()<---%n");
@@ -55,7 +57,9 @@ class StreamIntermediateOperations {
         movies.stream().dropWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
     }
 
-    /**PAGINATION USING STREAMS*/
+    /**
+     * PAGINATION USING STREAMS
+     */
     void paginationInStream() {
         /* Suppose we are getting the response after making a http request and the result has 50 elements */
         Stream<Integer> resultStream = Stream.iterate(1, n -> n + 1).limit(50);
@@ -73,7 +77,9 @@ class StreamIntermediateOperations {
                 .forEach(x -> System.out.print(x + " "));
     }
 
-    /**PEEKING IN STREAMS: FOR DEBUGGING/CHECKING INTERMEDIATE RESULTS*/
+    /**
+     * PEEKING IN STREAMS: FOR DEBUGGING/CHECKING INTERMEDIATE RESULTS
+     */
     void peekingInStreams() {
         System.out.printf("--->Peeking in stream api<---%n");
         List<String> res = movies.stream()

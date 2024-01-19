@@ -1,6 +1,6 @@
 package dev.mayankg.generics;
 
-class User implements Comparable<User> {
+public class User implements Comparable<User> {
     private String name;
     private int age;
     private String emailId;

@@ -1,5 +1,7 @@
 package dev.mayankg.streams;
 
+import dev.mayankg.streams.Util.Movie;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +13,17 @@ import java.util.stream.Stream;
  * Intermediate Operations in Stream: peek(), filter(), map(), flatMap(), limit(), skip(), sorted(), distinct(), takeWhile(), dropWhile()
  * Reducing/Terminal Operations in Stream: count(), collect(), reduce(), forEach(), min(), max(), findFirst(), findAny(), anyMatch(), allMatch(), noneMatch()
  */
-public class StreamsDemo {
+class StreamsDemo {
+    private final List<Movie> movies;
+
+    public StreamsDemo() {
+        this.movies = List.of(
+                new Movie("c", 8.0f),
+                new Movie("a", 4.5f),
+                new Movie("d", 7.5f),
+                new Movie("b", 5.3f)
+        );
+    }
 
     public static void main(String[] args) {
         differentWaysOfCreatingStream();
@@ -24,6 +36,9 @@ public class StreamsDemo {
         iSO.peekingInStreams();
 
         StreamTerminalOperations tSO = new StreamTerminalOperations();
+        tSO.countInStream();
+        tSO.anyMatchInStream();
+        tSO.allMatchInStream();
     }
 
     private static void differentWaysOfCreatingStream() {
@@ -46,5 +61,9 @@ public class StreamsDemo {
 
         // 6th way
         Stream<Integer> stream6 = Stream.iterate(0, n -> n++).limit(10);
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
     }
 }
