@@ -1,5 +1,6 @@
 package dev.mayankg.streams;
 
+import dev.mayankg.streams.Util.Genre;
 import dev.mayankg.streams.Util.Movie;
 
 import java.util.DoubleSummaryStatistics;
@@ -7,9 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class StreamOtherOperations {
+class StreamOtherOperations {
     private final List<Movie> movies;
 
     StreamOtherOperations() {
@@ -18,6 +18,17 @@ public class StreamOtherOperations {
     }
 
     void collectInStreams() {
+        toListOrSetOrMap();
+        summingCollector();
+        summarizingCollector();
+        joiningCollector();
+        groupingCollector();
+    }
+
+    /**
+     * Collectors.toList(), Collectors.toSet(), Collectors.toMap()
+     */
+    private void toListOrSetOrMap() {
         List<Movie> movieList =
                 movies.stream()
                         .filter(m1 -> m1.rating() >= 7.5)
@@ -35,19 +46,34 @@ public class StreamOtherOperations {
                         .filter(m -> m.rating() >= 7.5)
                         .collect(Collectors.toMap(Movie::name, Movie::rating));
         System.out.println(movieMap);
+    }
 
+    /**
+     * Collectors.summingDouble()
+     */
+    private void summingCollector() {
         Double sum =
                 movies.stream()
                         .filter(m -> m.rating() >= 7.5)
                         .collect(Collectors.summingDouble(Movie::rating));
         System.out.println(sum);
+    }
 
+    /**
+     * Collectors.summarizingDouble()
+     */
+    private void summarizingCollector() {
         DoubleSummaryStatistics summaryStatistics =
                 movies.stream()
                         .filter(m11 -> m11.rating() >= 7.5)
                         .collect(Collectors.summarizingDouble(Movie::rating));
         System.out.println(summaryStatistics);
+    }
 
+    /**
+     * Collectors.joining()
+     */
+    private void joiningCollector() {
         String goodMovieNames =
                 movies.stream()
                         .filter(m1 -> m1.rating() >= 7.5)
@@ -56,5 +82,32 @@ public class StreamOtherOperations {
         System.out.println(goodMovieNames);
     }
 
+    /**
+     * Collectors.groupingBy()
+     */
+    private void groupingCollector() {
+        Map<Genre, List<Movie>> group1 =
+                movies.stream()
+                        .collect(Collectors.groupingBy(Movie::genre));
+        System.out.println(group1);
 
+        Map<Genre, Set<Movie>> group2 =
+                movies.stream()
+                        .collect(Collectors.groupingBy(Movie::genre, Collectors.toSet()));
+        System.out.println(group2);
+
+        Map<Genre, Long> group3 =
+                movies.stream()
+                        .collect(Collectors.groupingBy(Movie::genre, Collectors.counting()));
+        System.out.println(group3);
+
+        Map<Genre, String> group4 =
+                movies.stream()
+                        .collect(Collectors.groupingBy(
+                                        Movie::genre,
+                                        Collectors.mapping(Movie::name, Collectors.joining(", "))
+                                )
+                        );
+        System.out.println(group4);
+    }
 }
