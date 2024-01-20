@@ -52,6 +52,18 @@ class StreamTerminalOperations {
     }
 
     /**
+     * NONEMATCH IN STREAMS
+     */
+    void noneMatchInStream() {
+        System.out.println("-->get true only when none of the elements satisfy the condition<--");
+        boolean areAllMoviesGood =
+                movies.stream()
+                        .map(Movie::getRating)
+                        .noneMatch(r -> r == 10.0);
+        System.out.println(areAllMoviesGood);
+    }
+
+    /**
      * FINDFIRST IN STREAMS
      */
     void findFirstInStream() {
@@ -97,5 +109,17 @@ class StreamTerminalOperations {
                         .min(Comparator.comparing(Movie::getRating));
         Movie movie = optionalOfMovie.get();
         System.out.println("Movie with min rating " + movie);
+    }
+
+    /**
+     * REDUCE IN STREAMS
+     */
+    void reduceInStreams() {
+        System.out.println("-->get your stream reduced to a single entity<--");
+        Optional<Float> sumOfRatings =
+                movies.stream()
+                        .map(Movie::getRating)
+                        .reduce(Float::sum);
+        System.out.println(sumOfRatings.orElse(0.0f));
     }
 }
