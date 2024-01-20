@@ -1,29 +1,6 @@
 package dev.mayankg.streams.Util;
 
-public class Movie implements Comparable<Movie>{
-    private String name;
-    private float rating;
-
-    public Movie(String name, float rating) {
-        this.name = name;
-        this.rating = rating;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getRating() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
+public record Movie(String name, float rating, Genre genre) implements Comparable<Movie> {
 
     @Override
     public String toString() {
@@ -32,6 +9,6 @@ public class Movie implements Comparable<Movie>{
 
     @Override
     public int compareTo(Movie that) {
-        return this.getName().compareTo(that.getName());
+        return this.name().compareTo(that.name());
     }
 }

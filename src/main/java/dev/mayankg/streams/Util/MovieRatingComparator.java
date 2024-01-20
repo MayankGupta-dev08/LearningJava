@@ -6,6 +6,6 @@ public class MovieRatingComparator implements Comparator<Movie> {
     @Override
     public int compare(Movie m1, Movie m2) {
         // reverse order (desc)
-        return (int) (m2.getRating() - m1.getRating());
+        return (int) (m2.rating() - m1.rating());
     }
 }

@@ -1,5 +1,6 @@
 package dev.mayankg.streams;
 
+import dev.mayankg.streams.Util.Genre;
 import dev.mayankg.streams.Util.Movie;
 
 import java.util.ArrayList;
@@ -16,25 +17,32 @@ import java.util.stream.Stream;
 class StreamsDemo {
     private final List<Movie> movies;
 
-    public StreamsDemo() {
+    StreamsDemo() {
         this.movies = List.of(
-                new Movie("c", 8.0f),
-                new Movie("a", 4.5f),
-                new Movie("d", 7.5f),
-                new Movie("b", 5.3f)
+                new Movie("c", 8.0f, Genre.ACTION),
+                new Movie("a", 4.5f, Genre.COMEDY),
+                new Movie("d", 7.5f, Genre.THRILLER),
+                new Movie("b", 5.3f, Genre.ACTION)
         );
     }
 
     public static void main(String[] args) {
         differentWaysOfCreatingStream();
+        intermediateOperationsDemo();
+        terminalOperationsDemo();
+        collectorOperationsDemo();
+    }
 
+    private static void intermediateOperationsDemo() {
         StreamIntermediateOperations iSO = new StreamIntermediateOperations();
         iSO.paginationInStream();
         iSO.slicingInStream();
         iSO.sortingInStream();
         iSO.distinctInStream();
         iSO.peekingInStreams();
+    }
 
+    private static void terminalOperationsDemo() {
         StreamTerminalOperations tSO = new StreamTerminalOperations();
         tSO.countInStream();
         tSO.anyMatchInStream();
@@ -44,6 +52,12 @@ class StreamsDemo {
         tSO.findAnyInStream();
         tSO.findMaxInStream();
         tSO.findMinInStream();
+        tSO.reduceInStreams();
+    }
+
+    private static void collectorOperationsDemo() {
+        StreamOtherOperations scm = new StreamOtherOperations();
+        scm.collectInStreams();
     }
 
     private static void differentWaysOfCreatingStream() {
@@ -68,7 +82,7 @@ class StreamsDemo {
         Stream<Integer> stream6 = Stream.iterate(0, n -> n++).limit(10);
     }
 
-    public List<Movie> getMovies() {
+    List<Movie> getMovies() {
         return movies;
     }
 }

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class StreamIntermediateOperations {
     private final List<Movie> movies;
 
-    public StreamIntermediateOperations() {
+    StreamIntermediateOperations() {
         StreamsDemo sd = new StreamsDemo();
         this.movies = sd.getMovies();
     }
@@ -38,7 +38,7 @@ class StreamIntermediateOperations {
         List<Movie> moviesSortedByRating =
                 // movies.stream().sorted(new MovieRatingComparator()).collect(Collectors.toList());
                 movies.stream()
-                        .sorted(Comparator.comparing(Movie::getRating).reversed())
+                        .sorted(Comparator.comparing(Movie::rating).reversed())
                         .collect(Collectors.toList());
         System.out.println(moviesSortedByRating);
     }
@@ -49,12 +49,12 @@ class StreamIntermediateOperations {
     void slicingInStream() {
         // The takeWhile operation will take elements from the stream until the first non-conforming element is encountered (won't check till the end)
         System.out.printf("%n--->Result from takeWhile()<---%n");
-        movies.stream().takeWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
+        movies.stream().takeWhile(m -> m.rating() >= 7.0f).forEach(System.out::println);
 
         // The dropWhile operation will drop elements from the stream until the first non-conforming element is encountered.
         // The result will be a stream containing only the remaining elements after dropping those that satisfy the condition.
         System.out.printf("--->Result from dropWhile()<---%n");
-        movies.stream().dropWhile(m -> m.getRating() >= 7.0f).forEach(System.out::println);
+        movies.stream().dropWhile(m -> m.rating() >= 7.0f).forEach(System.out::println);
     }
 
     /**
@@ -83,9 +83,9 @@ class StreamIntermediateOperations {
     void peekingInStreams() {
         System.out.printf("--->Peeking in stream api<---%n");
         List<String> res = movies.stream()
-                .filter(m -> m.getRating() >= 7.0f)
-                .peek(m -> System.out.printf("Filtered: {%s:%s}%n", m.getName(), m.getRating()))
-                .map(Movie::getName)
+                .filter(m -> m.rating() >= 7.0f)
+                .peek(m -> System.out.printf("Filtered: {%s:%s}%n", m.name(), m.rating()))
+                .map(Movie::name)
                 .peek(m -> System.out.println("Mapped: " + m))
                 .toList();
         System.out.println(res);

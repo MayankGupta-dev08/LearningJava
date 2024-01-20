@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class StreamTerminalOperations {
     private final List<Movie> movies;
 
-    public StreamTerminalOperations() {
+    StreamTerminalOperations() {
         StreamsDemo sd = new StreamsDemo();
         this.movies = sd.getMovies();
     }
@@ -34,7 +34,7 @@ class StreamTerminalOperations {
         System.out.println("-->get true if any of the element satisfy the condition<--");
         boolean isAnyHitMovie =
                 movies.stream()
-                        .map(Movie::getRating)
+                        .map(Movie::rating)
                         .anyMatch(r -> r > 9.5);
         System.out.println(isAnyHitMovie);
     }
@@ -46,7 +46,7 @@ class StreamTerminalOperations {
         System.out.println("-->get true only when all the elements satisfy the condition<--");
         boolean areAllMoviesGood =
                 movies.stream()
-                        .map(Movie::getRating)
+                        .map(Movie::rating)
                         .allMatch(r -> r > 7.5);
         System.out.println(areAllMoviesGood);
     }
@@ -58,7 +58,7 @@ class StreamTerminalOperations {
         System.out.println("-->get true only when none of the elements satisfy the condition<--");
         boolean areAllMoviesGood =
                 movies.stream()
-                        .map(Movie::getRating)
+                        .map(Movie::rating)
                         .noneMatch(r -> r == 10.0);
         System.out.println(areAllMoviesGood);
     }
@@ -94,7 +94,7 @@ class StreamTerminalOperations {
         System.out.println("-->get max element from the incoming stream<--");
         Optional<Movie> optionalOfMovie =
                 movies.stream()
-                        .max(Comparator.comparing(Movie::getRating));
+                        .max(Comparator.comparing(Movie::rating));
         Movie movie = optionalOfMovie.get();
         System.out.println("Movie with max rating " + movie);
     }
@@ -106,7 +106,7 @@ class StreamTerminalOperations {
         System.out.println("-->get min element from the incoming stream<--");
         Optional<Movie> optionalOfMovie =
                 movies.stream()
-                        .min(Comparator.comparing(Movie::getRating));
+                        .min(Comparator.comparing(Movie::rating));
         Movie movie = optionalOfMovie.get();
         System.out.println("Movie with min rating " + movie);
     }
@@ -118,7 +118,7 @@ class StreamTerminalOperations {
         System.out.println("-->get your stream reduced to a single entity<--");
         Optional<Float> sumOfRatings =
                 movies.stream()
-                        .map(Movie::getRating)
+                        .map(Movie::rating)
                         .reduce(Float::sum);
         System.out.println(sumOfRatings.orElse(0.0f));
     }
