@@ -1,7 +1,9 @@
-package dev.mayankg.multithreading;
+package dev.mayankg.multithreading.m1;
 
-class Thread2 implements Runnable {
-    public Thread2() {}
+class Thread1 extends Thread {
+    public Thread1(String threadName) {
+        super(threadName);
+    }
 
     @Override
     public void run() {

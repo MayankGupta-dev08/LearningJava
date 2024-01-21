@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading;
+package dev.mayankg.multithreading.m1;
 
 class MyStack {
     private int stackTop;

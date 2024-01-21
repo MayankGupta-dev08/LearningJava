@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading;
+package dev.mayankg.multithreading.m1;
 
 import java.util.LinkedList;
 import java.util.Queue;
