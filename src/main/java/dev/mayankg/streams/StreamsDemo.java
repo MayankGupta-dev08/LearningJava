@@ -80,6 +80,10 @@ class StreamsDemo {
 
         // 6th way
         Stream<Integer> stream6 = Stream.iterate(0, n -> n++).limit(10);
+
+        //Using a primitive stream type
+        IntStream.rangeClosed(1, 10).forEachOrdered(x -> System.out.print(x + " "));
+        System.out.println();
     }
 
     List<Movie> getMovies() {
