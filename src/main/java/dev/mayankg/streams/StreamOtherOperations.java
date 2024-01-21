@@ -22,7 +22,9 @@ class StreamOtherOperations {
         summingCollector();
         summarizingCollector();
         joiningCollector();
+        partitioningBy();
         groupingCollector();
+        partitioningBy();
     }
 
     /**
@@ -109,5 +111,26 @@ class StreamOtherOperations {
                                 )
                         );
         System.out.println(group4);
+    }
+
+    /**
+     * Collectors.partitioningBy()
+     */
+    private void partitioningBy() {
+        Map<Boolean, List<Movie>> group5 =
+                movies.stream()
+                        .collect(Collectors.partitioningBy(m -> m.rating() >= 7.0));
+        System.out.println("Partitioning of movies on basis of rating=7.0");
+        System.out.println(group5);
+
+        Map<Boolean, String> group6 =
+                movies.stream()
+                        .collect(Collectors.partitioningBy(
+                                        m -> m.rating() >= 7.0,
+                                        Collectors.mapping(Movie::name, Collectors.joining(", "))
+                                )
+                        );
+        System.out.println("Partitioning of movies on basis of rating=7.0, and also mapping the result to get the names of movies, separated with ','.");
+        System.out.println(group6);
     }
 }
