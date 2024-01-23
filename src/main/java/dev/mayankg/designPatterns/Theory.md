@@ -27,6 +27,7 @@ _[Design Patterns: Elements of Reusable Object-Oriented Software By GangOfFour](
 #### The design patterns in this category deal with the class structure such as Inheritance and Composition. Composition is better than Inheritance
 
 ### 01. ADAPTOR
+- Provides an interface between two unrelated entities so that they can work together
 
 ### 02. COMPOSITE
 
