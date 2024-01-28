@@ -4,19 +4,26 @@
 _[Design Patterns: Elements of Reusable Object-Oriented Software By GangOfFour](https://www.amazon.com/gp/product/0201633612/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0201633612&linkCode=as2&tag=triatcraft-20&linkId=XRGUDJCGWC6AJNZM)_
 **
 
+**
+[LucidChart/uml](https://lucid.app/lucidchart/47952aff-1811-40d0-9675-56fcb993ae7d/edit?from_internal=true)
+**
+
 ----
 
 ## CREATIONAL DESIGN PATTERNS
+
 #### The design patterns that deal with the creation of an object.
 
 ### 01. SINGLETON
 
 ### 02. FACTORY
+
 - The factory pattern takes out the responsibility of instantiating a object from the class to a Factory class.
 
 ### 03. ABSTRACT FACTORY
 
 ### 04. BUILDER
+
 - Creating an object step by step and a method to finally get the object instance.
 
 ### 05. PROTOTYPE
@@ -24,9 +31,11 @@ _[Design Patterns: Elements of Reusable Object-Oriented Software By GangOfFour](
 -----
 
 ## STRUCTURAL DESIGN PATTERNS
+
 #### The design patterns in this category deal with the class structure such as Inheritance and Composition. Composition is better than Inheritance
 
 ### 01. ADAPTOR
+
 - Provides an interface between two unrelated entities so that they can work together
 
 ### 02. COMPOSITE
