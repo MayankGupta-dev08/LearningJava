@@ -1,4 +1,5 @@
 # DESIGN PATTERNS #23
+- Erich Gamma, John Vlissides, Ralph Johnson, and Richard Helm. In 1994, they published Design Patterns: Elements of Reusable Object-Oriented Software.
 
 - [Design Patterns: Elements of Reusable Object-Oriented Software By GangOfFour](https://www.amazon.com/gp/product/0201633612/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0201633612&linkCode=as2&tag=triatcraft-20&linkId=XRGUDJCGWC6AJNZM)
 - [LucidChart/uml](https://lucid.app/lucidchart/47952aff-1811-40d0-9675-56fcb993ae7d/edit?from_internal=true)

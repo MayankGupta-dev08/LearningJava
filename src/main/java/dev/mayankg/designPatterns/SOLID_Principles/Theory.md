@@ -1,4 +1,5 @@
 # SOLID PRINCIPLES
+- Robert Martin introduced them in the book Agile Software Development, Principles, Patterns, and Practices.
 
 ## 1. Single Responsibility Principle
 
