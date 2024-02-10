@@ -3,7 +3,7 @@ package dev.mayankg.design.principles.solid.SRP.orginal;
 import java.io.IOException;
 
 //Main class to test
-public class Main {
+class Main {
     //A valid USER JSON String
     private static final String VALID_USER_JSON = "{\"name\": \"Randy\", \"email\": \"randy@email.com\", \"address\":\"110 Sugar lane\"}";
 

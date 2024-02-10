@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //Stores data in memory
-public class Store {
+class Store {
     private static final Map<String, User> STORAGE = new HashMap<>();
 
     //Adds user to in memory hash map

@@ -1,7 +1,7 @@
 package dev.mayankg.design.principles.solid.SRP.orginal;
 
 //User entity
-public class User {
+class User {
     private String name;
     private String email;
     private String address;

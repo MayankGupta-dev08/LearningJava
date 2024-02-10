@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //Handles incoming JSON requests that work on User resource/entity
-public class UserController {
+class UserController {
     //Store used by controller
     private Store store = new Store();
 
@@ -65,5 +65,4 @@ public class UserController {
         Matcher matcher = pattern.matcher(value);
         return matcher.find();
     }
-
 }
