@@ -1,4 +1,4 @@
-package dev.mayankg.design.principles.solid.LSP.orginal;
+package dev.mayankg.design.principles.solid.LSP.refactored;
 
 class Main {
     public static void main(String[] args) {
@@ -9,8 +9,7 @@ class Main {
         System.out.println(square.computeArea());
 
         useRectangle(rectangle);
-
-        useRectangle(square);
+        useSquare(square);
     }
 
     private static void useRectangle(Rectangle rectangle) {
@@ -18,5 +17,10 @@ class Main {
         rectangle.setWidth(30);
         assert rectangle.getHeight() == 20 : "Height Not equal to 20";
         assert rectangle.getWidth() == 30 : "Width Not equal to 30";
+    }
+
+    private static void useSquare(Square square) {
+        square.setSide(20);
+        assert square.getSide() == 20 : "Side Not equal to 20";
     }
 }
