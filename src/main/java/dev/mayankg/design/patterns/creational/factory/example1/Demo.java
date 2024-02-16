@@ -1,8 +1,8 @@
-package dev.mayankg.design.patterns.creational.factory.example;
+package dev.mayankg.design.patterns.creational.factory.example1;
 
-import dev.mayankg.design.patterns.creational.factory.example.factory.Dialog;
-import dev.mayankg.design.patterns.creational.factory.example.factory.HtmlDialog;
-import dev.mayankg.design.patterns.creational.factory.example.factory.WindowsDialog;
+import dev.mayankg.design.patterns.creational.factory.example1.factory.Dialog;
+import dev.mayankg.design.patterns.creational.factory.example1.factory.HtmlDialog;
+import dev.mayankg.design.patterns.creational.factory.example1.factory.WindowsDialog;
 
 /**
  * Demo class. Everything comes together here.

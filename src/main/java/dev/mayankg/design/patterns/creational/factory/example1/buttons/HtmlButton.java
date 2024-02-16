@@ -1,4 +1,4 @@
-package dev.mayankg.design.patterns.creational.factory.example.buttons;
+package dev.mayankg.design.patterns.creational.factory.example1.buttons;
 
 /**
  * HTML button implementation.

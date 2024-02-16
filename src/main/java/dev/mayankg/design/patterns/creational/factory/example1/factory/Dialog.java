@@ -1,6 +1,6 @@
-package dev.mayankg.design.patterns.creational.factory.example.factory;
+package dev.mayankg.design.patterns.creational.factory.example1.factory;
 
-import dev.mayankg.design.patterns.creational.factory.example.buttons.Button;
+import dev.mayankg.design.patterns.creational.factory.example1.buttons.Button;
 
 /**
  * Base factory class. Note that "factory" is merely a role for the class. It
