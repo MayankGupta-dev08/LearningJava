@@ -1,4 +1,4 @@
-package dev.mayankg.design.principles.solid.DIP.orginal;
+package dev.mayankg.design.principles.solid.DIP.refactored;
 
 //Formats Message to plain text
 class TextFormatter implements Formatter {

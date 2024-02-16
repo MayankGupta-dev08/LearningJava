@@ -1,4 +1,4 @@
-package dev.mayankg.design.principles.solid.DIP.orginal;
+package dev.mayankg.design.principles.solid.DIP.refactored;
 
 //Common interface for classes formatting Message object
 interface Formatter {

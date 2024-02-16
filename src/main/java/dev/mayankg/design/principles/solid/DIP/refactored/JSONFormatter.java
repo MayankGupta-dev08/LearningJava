@@ -1,4 +1,4 @@
-package dev.mayankg.design.principles.solid.DIP.orginal;
+package dev.mayankg.design.principles.solid.DIP.refactored;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

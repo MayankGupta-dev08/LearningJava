@@ -1,4 +1,4 @@
-package dev.mayankg.design.principles.solid.DIP.orginal;
+package dev.mayankg.design.principles.solid.DIP.refactored;
 
 import java.io.FileWriter;
 import java.io.IOException;
