@@ -1,5 +1,13 @@
 # LearningJava
-  1. Lambda Expression
-  2. Functional Interfaces | [Oracle Doc](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html) 
-  3. Higher Order Functions
-  4. Currying
+  01. [Bit Manipulation](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/bit_manipulation)
+  02. [Clean Coding](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/clean_coding)
+  03. [Collections](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/collections)
+  04. [Design Principles and Patterns](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/design)
+  05. [File Handling](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/file_handling)
+  06. [Generics in Java](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/generics)
+  07. [Lambdas in Java](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/lambdas)
+    i. [Oracle Doc](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
+  08. [Stream in Java](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/streams)
+  09. [Multithreading](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/multithreading)
+  10. [Serialization](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/serialization_deserialization)
+  11. [Junit5](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/junit5)
