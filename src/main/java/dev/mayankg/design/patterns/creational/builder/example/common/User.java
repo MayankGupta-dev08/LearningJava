@@ -1,9 +1,9 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.common;
 
 import java.time.LocalDate;
 
 /**Class used to construct Product*/
-class User {
+public class User {
     private String firstName;
     private String lastName;
     private LocalDate birthDay;

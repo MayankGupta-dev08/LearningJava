@@ -1,11 +1,11 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.common;
 
 import java.time.LocalDate;
 
 /**
  * Abstract Builder
  */
-interface UserDTOBuilder {
+public interface UserDTOBuilder {
 
     // Methods to build the product
     UserDTOBuilder withFirstName(String firstName);

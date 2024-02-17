@@ -1,4 +1,8 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.approach1;
+
+import dev.mayankg.design.patterns.creational.builder.example.common.Address;
+import dev.mayankg.design.patterns.creational.builder.example.common.UserDTO;
+import dev.mayankg.design.patterns.creational.builder.example.common.UserDTOBuilder;
 
 import java.time.LocalDate;
 import java.time.Period;

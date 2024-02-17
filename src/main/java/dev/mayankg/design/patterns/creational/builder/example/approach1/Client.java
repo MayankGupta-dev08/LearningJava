@@ -1,8 +1,13 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.approach1;
+
+import dev.mayankg.design.patterns.creational.builder.example.common.Address;
+import dev.mayankg.design.patterns.creational.builder.example.common.User;
+import dev.mayankg.design.patterns.creational.builder.example.common.UserDTO;
+import dev.mayankg.design.patterns.creational.builder.example.common.UserDTOBuilder;
 
 import java.time.LocalDate;
 
-public class Client {
+class Client {
     public static void main(String[] args) {
         User user = createUser();
         UserWebDTOBuilder userWebDTOBuilder = new UserWebDTOBuilder();
@@ -10,7 +15,9 @@ public class Client {
         System.out.println(userDTO);
     }
 
-    /**Director*/
+    /**
+     * Director
+     */
     private static UserDTO directBuild(UserDTOBuilder userDTOBuilder, User user) {
         return userDTOBuilder
                 .withFirstName(user.getFirstName())
@@ -23,7 +30,7 @@ public class Client {
     /**
      * @Returns a sample user.
      */
-    public static User createUser() {
+    static User createUser() {
         User user = new User();
         user.setBirthDay(LocalDate.of(1960, 5, 6));
         user.setFirstName("Ron");

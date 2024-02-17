@@ -1,4 +1,6 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.approach1;
+
+import dev.mayankg.design.patterns.creational.builder.example.common.UserDTO;
 
 /** Concrete Product*/
 class UserWebDTO implements UserDTO {
@@ -34,6 +36,5 @@ class UserWebDTO implements UserDTO {
                 "Age: %s" +
                 "%n" +
                 "Address: %s").formatted(name, age, address);
-
     }
 }

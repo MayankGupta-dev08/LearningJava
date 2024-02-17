@@ -1,6 +1,6 @@
-package dev.mayankg.design.patterns.creational.builder.example1;
+package dev.mayankg.design.patterns.creational.builder.example.common;
 
-class Address {
+public class Address {
     private String houseNo;
     private String street;
     private String city;
