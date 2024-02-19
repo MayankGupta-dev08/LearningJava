@@ -6,6 +6,7 @@ package dev.mayankg.design.patterns.creational.singleton.example3;
  * getInstance() method is called. The Java class loading mechanism ensures that a class is loaded by only one class loader in a JVM. When a class is loaded, its static initializers are executed in a thread-safe manner by the JVM.
  */
 class LazySingletonIH {
+    // Lazy Initialisation on Demand Holder Idiom
     private LazySingletonIH() {
         System.out.println("Initialized LazySingletonIH object");
     }
