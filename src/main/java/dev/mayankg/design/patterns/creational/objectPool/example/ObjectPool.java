@@ -5,7 +5,9 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.function.Supplier;
 
 /**
- * Object Pool, here we are pre-creating objects in the pool
+ * Object Pool, here we are pre-creating objects in the pool.
+ * When object creation cost is very high and each object is used for a short duration as well as large number of such objects are needed,
+ * Object Pool can improve application performance.
  */
 class ObjectPool<T extends Poolable> {
     private BlockingQueue<T> availablePool;
