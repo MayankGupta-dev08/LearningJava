@@ -18,5 +18,4 @@ class SystemErrorMessage implements ErrorMessage {
     public String getText(String code) {
         return messageTemplate.replace("$errorCode", code) + helpUrlBase + code;
     }
-
 }
