@@ -23,6 +23,7 @@ class Client {
             ball.setCoordY(getYCoord());
             ball.setRadius((int) (Math.random() * 100));
             ball.draw();
+            System.out.println(ball.hashCode());
         }
     }
 
