@@ -96,9 +96,9 @@
 ### 04. PROXY
 
 - An object representing another object in order to provide access in either way
-    - remote
-    - virtual
-    - protected
+    - remote proxy: provides a local representation of an original remote object
+    - virtual proxy: delays construction of the original object until necessary
+    - protected proxy: controls access to the original object's operations
 
 ### 05. FACADE
 
@@ -129,7 +129,7 @@
 5. **Composite** and **Decorator** have similar structure diagrams, reflecting the fact that both rely on recursive
    composition
    to organize an open-ended number of objects.
-6. **Composite** can be traversed with **Iterator**. **Visitor** can apply an operation over a **Composite**. *   *Composite**
+6. **Composite** can be traversed with **Iterator**. **Visitor** can apply an operation over a **Composite**. **Composite**
    could use **Chain of responsibility** to let components access global properties through their parent. It could also
    use
    **Decorator** to
