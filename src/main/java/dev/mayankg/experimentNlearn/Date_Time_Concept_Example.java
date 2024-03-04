@@ -2,7 +2,7 @@ package dev.mayankg.experimentNlearn;
 
 import java.time.*;
 
-public class LearnDateTimeClass {
+class Date_Time_Concept_Example {
     public static void main(String[] args) {
         System.out.println(Instant.now().atZone(ZoneId.of("Asia/Kolkata")));
 
