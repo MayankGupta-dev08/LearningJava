@@ -2,18 +2,18 @@ package dev.mayankg.experimentNlearn;
 
 import java.util.regex.Pattern;
 
-public class RegexTesting {
+class Regex_UseCase {
     private static final Pattern INVALID_START_NAME_PATTERN = Pattern.compile("^([^/°a-zA-Z]).*");
     private static final Pattern INVALID_NOT_STARTING_NAME_PATTERN = Pattern.compile("^..*([^a-zA-Z0-9_/°-]).*");
 
     public static void main(String[] args) {
         String calName = "/°CALnm°-2";
 
-//        NewFolder/°Cal
+        // NewFolder/°Cal
         System.out.println(isValidName(calName));
     }
 
-    public static boolean isValidName(String value)  {
+    public static boolean isValidName(String value) {
         return hasValidNameStartChar(value) && hasValidNotStartingNameChars(value);
     }
 
