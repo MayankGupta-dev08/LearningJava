@@ -7,9 +7,11 @@
     public class MyClass {
         static {
             // Static block 1
+            System.out.println("Static block1 executed.");
         }
         static {
             // Static block 2
+            System.out.println("Static block2 executed.");
         }
     }
     ```
@@ -27,6 +29,10 @@
         }
     }
     ```
+- Note: In Java, classes are loaded by the class loader when they are first referenced in the code, typically during
+  the execution of the program. This means that even if you don't explicitly create an object of a class or use that
+  class in any other class, the static variables and static initializer blocks will still be initialized when the
+  class is loaded.
 
 3. **Instance Variables Initialization**: Instance variables are initialized next, before the constructor is invoked.
    This includes both variable initialization and instance initializer blocks.
