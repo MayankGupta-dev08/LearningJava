@@ -19,6 +19,7 @@ class BTBasicQuestions {
         printSumOfNodesInBT(bt1);
         printDepthOfBT(bt1);
         printDiameterOfBT(bt1);
+        printSumOfNodesAtKthLevelInBT(bt1, 3);
     }
 
     /**
@@ -114,6 +115,16 @@ class BTBasicQuestions {
     }
 
     /**
+     * Question 12: Sum of Nodes at Kth Level of binary tree
+     */
+    static void printSumOfNodesAtKthLevelInBT(BinaryTree binaryTree, int k) {
+        System.out.println("Sum of Nodes @ " + k + "th level of BinaryTree: " +
+                binaryTree.sumOfNodesAtKthLevel_BFS(binaryTree.getRoot(), k));
+        System.out.println("Sum of Nodes @ " + k + "th level of BinaryTree: " +
+                binaryTree.sumOfNodesAtKthLevel_DFS(binaryTree.getRoot(), k));
+    }
+
+    /**
      * Node class
      */
     static class Node {
@@ -187,20 +198,17 @@ class BTBasicQuestions {
         }
 
         void levelOrderTraversal(Node root, ArrayList<Integer> ans) {
-            if (root == null)
-                return;
+            if (root == null) return;
 
             Queue<Node> queue = new LinkedList<>();
             queue.add(root);
-            queue.add(null);
             while (!queue.isEmpty()) {
-                Node currNode = queue.poll();
-                if (currNode != null) {
+                int levelSize = queue.size(); // Number of nodes at the current level
+                for (int i = 0; i < levelSize; i++) {
+                    Node currNode = queue.poll();
                     ans.add(currNode.data);
                     if (currNode.left != null) queue.add(currNode.left);
                     if (currNode.right != null) queue.add(currNode.right);
-                } else if (currNode == null && !queue.isEmpty()) {
-                    queue.add(null); //at level end
                 }
             }
         }
@@ -267,10 +275,41 @@ class BTBasicQuestions {
         }
 
         boolean isSubBTree(Node root, Node subRoot) {
+            if (subRoot == null) return true;   //null is always a subBTree of a BT
             if (root == null) return false;
             if (isSameBTree(root, subRoot)) return true;
 
             return isSubBTree(root.left, subRoot) || isSubBTree(root.right, subRoot);
+        }
+
+        int sumOfNodesAtKthLevel_BFS(Node root, int k) {
+            if (root == null) return 0;
+
+            int sum = 0, level = 0;
+            Queue<Node> queue = new LinkedList<>();
+            queue.add(root);
+            while (!queue.isEmpty() && level <= k) {
+                level++;
+                int levelSize = queue.size(); // Number of nodes at the current level
+                for (int i = 0; i < levelSize; i++) {
+                    Node node = queue.poll();
+                    if (level == k) sum += node.data;
+                    if (node.left != null) queue.add(node.left);
+                    if (node.right != null) queue.add(node.right);
+                }
+            }
+            return sum;
+        }
+
+        int sumOfNodesAtKthLevel_DFS(Node root, int k) {
+            return sumAtKthLevel_helper(root, k, 1);
+        }
+
+        private int sumAtKthLevel_helper(Node node, int k, int level) {
+            if (node == null) return 0;
+            if (level == k) return node.data;
+            return sumAtKthLevel_helper(node.left, k, level + 1)
+                    + sumAtKthLevel_helper(node.right, k, level + 1);
         }
     }
 }
