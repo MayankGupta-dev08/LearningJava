@@ -96,6 +96,24 @@ class BTBasicQuestions {
     }
 
     /**
+     * Question 10: Are both identical binary trees
+     */
+    static void printWhetherBothBTsAreIdentical(BinaryTree binaryTree, BinaryTree subBinaryTree) {
+        if (binaryTree.isSameBTree(binaryTree.getRoot(), subBinaryTree.getRoot()))
+            System.out.println("Both are identical BinaryTrees");
+        System.out.println("They are not identical BinaryTrees");
+    }
+
+    /**
+     * Question 11: Sub binary tree of another binary tree
+     */
+    static void printWhetherBtIsSubBTreeOfAnotherBt(BinaryTree binaryTree, BinaryTree subBinaryTree) {
+        if (binaryTree.isSubBTree(binaryTree.getRoot(), subBinaryTree.getRoot()))
+            System.out.println("It is a SubBinaryTree of the BinaryTree");
+        System.out.println("It isn't a SubBinaryTree of the BinaryTree");
+    }
+
+    /**
      * Node class
      */
     static class Node {
@@ -126,6 +144,7 @@ class BTBasicQuestions {
             this.root = buildBinaryTree(arr);
         }
 
+        //root --> main BT and subRoot --> smaller BT
         Node getRoot() {
             return root;
         }
@@ -199,13 +218,14 @@ class BTBasicQuestions {
         }
 
         // depth or height of the BT
+
         int depthOfBT(Node root) {
             if (root == null) return 0;
 
             return 1 + Math.max(depthOfBT(root.left), depthOfBT(root.right));
         }
-
         // O(n*n) approach
+
         int diameterOfBT(Node root) {
             if (root == null) return 0;
 
@@ -213,9 +233,9 @@ class BTBasicQuestions {
             int maxDiaOfSubTree = Math.max(diameterOfBT(root.left), diameterOfBT(root.right));
             return Math.max(maxDiaOfSubTree, 1 + depthOfBT(root.left) + depthOfBT(root.right));
         }
-
         // O(n) approach
         // Note: Height of root will be the max height of all the nodes, but the Diameter of root node may or may not be the maximum
+
         int diameterOfBT_optimized(Node root) {
             return heightAndDiameter(root).get_2(); //diameter
         }
@@ -237,6 +257,20 @@ class BTBasicQuestions {
                     curr_H,
                     Math.max(curr_D, Math.max(left_HnD.get_2(), right_HnD.get_2()))
             );
+        }
+
+        boolean isSameBTree(Node rt, Node sRt) {
+            if (rt == null && sRt == null) return true;
+            if (rt == null || sRt == null) return false;
+
+            return (rt.data == sRt.data) && isSameBTree(rt.left, sRt.left) && isSameBTree(rt.right, sRt.right);
+        }
+
+        boolean isSubBTree(Node root, Node subRoot) {
+            if (root == null) return false;
+            if (isSameBTree(root, subRoot)) return true;
+
+            return isSubBTree(root.left, subRoot) || isSubBTree(root.right, subRoot);
         }
     }
 }
