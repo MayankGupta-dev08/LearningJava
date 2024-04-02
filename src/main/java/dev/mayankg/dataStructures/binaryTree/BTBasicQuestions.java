@@ -1,5 +1,7 @@
 package dev.mayankg.dataStructures.binaryTree;
 
+import dev.mayankg.dataStructures.util.Pair;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -89,7 +91,8 @@ class BTBasicQuestions {
      * Question 9: Print the diameter of the binary tree
      */
     static void printDiameterOfBT(BinaryTree binaryTree) {
-        System.out.println("Diameter of the BT: " + binaryTree.diameterOfBT(binaryTree.getRoot()));
+        // System.out.println("Diameter of the BT: " + binaryTree.diameterOfBT(binaryTree.getRoot()));
+        System.out.println("Diameter of the BT: " + binaryTree.diameterOfBT_optimized(binaryTree.getRoot()));
     }
 
     /**
@@ -195,17 +198,45 @@ class BTBasicQuestions {
             return root.data + sumOfNodes(root.left) + sumOfNodes(root.right);
         }
 
+        // depth or height of the BT
         int depthOfBT(Node root) {
             if (root == null) return 0;
 
             return 1 + Math.max(depthOfBT(root.left), depthOfBT(root.right));
         }
 
+        // O(n*n) approach
         int diameterOfBT(Node root) {
             if (root == null) return 0;
 
+            // find the max of 3 cases: leftDia, rightDia, and currentDia //currentDia=(1 + leftHt + rightHt)
             int maxDiaOfSubTree = Math.max(diameterOfBT(root.left), diameterOfBT(root.right));
             return Math.max(maxDiaOfSubTree, 1 + depthOfBT(root.left) + depthOfBT(root.right));
+        }
+
+        // O(n) approach
+        // Note: Height of root will be the max height of all the nodes, but the Diameter of root node may or may not be the maximum
+        int diameterOfBT_optimized(Node root) {
+            return heightAndDiameter(root).get_2(); //diameter
+        }
+
+        /**
+         * Calculating height and diameter at the same time
+         */
+        private Pair<Integer, Integer> heightAndDiameter(Node root) {
+            if (root == null) return new Pair<>(0, 0);
+
+            Pair<Integer, Integer> left_HnD = heightAndDiameter(root.left);
+            Pair<Integer, Integer> right_HnD = heightAndDiameter(root.right);
+
+            int curr_H = 1 + Math.max(left_HnD.get_1(), right_HnD.get_1());
+            int curr_D = 1 + left_HnD.get_1() + right_HnD.get_1();
+
+            //Height of BT: curr_H (of root), Diameter of BT: Max of leftDia, rightDia or currDia
+            return new Pair<>(
+                    curr_H,
+                    Math.max(curr_D, Math.max(left_HnD.get_2(), right_HnD.get_2()))
+            );
         }
     }
 }
