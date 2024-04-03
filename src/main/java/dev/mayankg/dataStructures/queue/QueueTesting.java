@@ -2,9 +2,16 @@ package dev.mayankg.dataStructures.queue;
 
 class QueueTesting {
     public static void main(String[] args) {
-        MyQueue queue = new QueueImplArr(5);
+        MyQueue queueAr = new QueueImplArr(5);
+        testQueueImplementationUsingArray(queueAr);
+        System.out.println("------------------------------------------");
+
         MyQueue circularQueue = new CircularQueueImpl(5);
         testQueueImplementationUsingArray(circularQueue);
+        System.out.println("------------------------------------------");
+
+        MyQueue queueLL = new QueueImplLnkL();
+        testQueueImplementationUsingArray(queueLL);
     }
 
     static void testQueueImplementationUsingArray(MyQueue queue) {
@@ -17,6 +24,7 @@ class QueueTesting {
 
         // Display the queue
         queue.display(); // Queue: 10 20 30 40 50
+        System.out.println("Size of the Queue: " + queue.size());
 
         // Dequeue two elements
         System.out.println("Dequeued: " + queue.dequeue()); // Dequeued: 10
@@ -24,6 +32,7 @@ class QueueTesting {
 
         // Display the updated queue
         queue.display(); // Queue: 30 40 50
+        System.out.println("Size of the Queue: " + queue.size());
 
         // Peek at the front element
         System.out.println("Front element: " + queue.peek()); // Front element: 30
@@ -34,6 +43,7 @@ class QueueTesting {
 
         // Display the updated queue
         queue.display(); // Queue: 30 40 50 60 70
+        System.out.println("Size of the Queue: " + queue.size());
 
         // Try to enqueue when the queue is full
         queue.enqueue(80); // Queue is full. Cannot enqueue 80

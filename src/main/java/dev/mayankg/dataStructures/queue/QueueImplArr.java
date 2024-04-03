@@ -25,6 +25,7 @@ class QueueImplArr implements MyQueue {
         rear++;
         this.arr[rear] = item;
         size++;
+        System.out.println(item + ": added to the queue.");
     }
 
     @Override

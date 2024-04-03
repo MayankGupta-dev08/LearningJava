@@ -27,6 +27,7 @@ class CircularQueueImpl implements MyQueue {
         rear = (rear + 1) % capacity;
         arr[rear] = item;
         size++;
+        System.out.println(item + ": added to the queue.");
     }
 
     @Override
