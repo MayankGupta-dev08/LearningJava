@@ -46,7 +46,7 @@ class QueueTesting {
         System.out.println("Size of the Queue: " + queue.size());
 
         // Try to enqueue when the queue is full
-        queue.enqueue(80); // Queue is full. Cannot enqueue 80
+        queue.enqueue(80); // The Queue is full. Cannot enqueue 80
 
         // Dequeue all elements
         while (!queue.isEmpty()) {

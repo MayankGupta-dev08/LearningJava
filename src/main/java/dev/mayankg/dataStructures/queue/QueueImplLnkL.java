@@ -1,6 +1,6 @@
 package dev.mayankg.dataStructures.queue;
 
-public class QueueImplLnkL implements MyQueue {
+class QueueImplLnkL implements MyQueue {
     private Node head;
     private Node tail;
     private int size;
