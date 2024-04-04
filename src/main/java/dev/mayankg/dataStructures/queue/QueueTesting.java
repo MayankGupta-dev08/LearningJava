@@ -12,6 +12,11 @@ class QueueTesting {
 
         MyQueue queueLL = new QueueImplLnkL();
         testQueueImplementationUsingArray(queueLL);
+        System.out.println("------------------------------------------");
+
+        MyQueue queue2Stks = new QueueImpl2Stacks();
+        testQueueImplementationUsingArray(queue2Stks);
+        System.out.println("------------------------------------------");
     }
 
     static void testQueueImplementationUsingArray(MyQueue queue) {
