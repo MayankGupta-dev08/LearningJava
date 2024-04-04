@@ -59,10 +59,15 @@ class QueueImpl2Stacks implements MyQueue {
     }
 
     @Override
-    public void display() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty!");
-            return;
+    public String toString() {
+        if (isEmpty())
+            return "Queue is empty!";
+
+        StringBuilder sb = new StringBuilder("Queue: [");
+        for (int i = s1.size() - 1; i >= 0; i--) {
+            sb.append(s1.get(i));
+            if (i != 0) sb.append(", ");
         }
+        return sb.append("]").toString();
     }
 }

@@ -17,6 +17,4 @@ interface MyQueue {
     int peek();
 
     int size();
-
-    void display();
 }

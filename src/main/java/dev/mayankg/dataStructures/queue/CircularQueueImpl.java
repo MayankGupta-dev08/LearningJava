@@ -72,14 +72,22 @@ class CircularQueueImpl implements MyQueue {
     }
 
     @Override
-    public void display() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty!");
-            return;
+    public String toString() {
+        if (isEmpty())
+            return "Queue is empty.";
+
+        StringBuilder sb = new StringBuilder("Queue: [");
+        int i = front;
+        int count = 0;
+        while (count < size) {
+            sb.append(arr[i]);
+            if (count < size - 1) {
+                sb.append(", ");
+            }
+            i = (i + 1) % capacity;
+            count++;
         }
-        System.out.print("Queue: ");
-        for (int i = front; i != rear; i = (i + 1) % capacity)
-            System.out.print(arr[i] + " ");
-        System.out.println();
+        sb.append("]");
+        return sb.toString();
     }
 }

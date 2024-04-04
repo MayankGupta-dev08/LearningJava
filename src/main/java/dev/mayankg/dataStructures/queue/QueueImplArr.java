@@ -22,8 +22,7 @@ class QueueImplArr implements MyQueue {
             System.out.println("Queue is full!! Can't add item: " + item);
             return;
         }
-        rear++;
-        this.arr[rear] = item;
+        this.arr[++rear] = item;
         size++;
         System.out.println(item + ": added to the queue.");
     }
@@ -68,15 +67,15 @@ class QueueImplArr implements MyQueue {
     }
 
     @Override
-    public void display() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty.");
-            return;
-        }
-        System.out.print("Queue: ");
+    public String toString() {
+        if (isEmpty())
+            return "Queue is empty.";
+
+        StringBuilder sb = new StringBuilder("Queue: [");
         for (int i = 0; i <= rear; i++) {
-            System.out.print(arr[i] + " ");
+            sb.append(arr[i]);
+            if (i < rear) sb.append(", ");
         }
-        System.out.println();
+        return sb.append("]").toString();
     }
 }

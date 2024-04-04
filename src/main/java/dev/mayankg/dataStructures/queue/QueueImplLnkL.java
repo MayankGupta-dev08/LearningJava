@@ -58,18 +58,18 @@ class QueueImplLnkL implements MyQueue {
     }
 
     @Override
-    public void display() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty.");
-            return;
-        }
-        System.out.print("Queue: ");
+    public String toString() {
+        if (isEmpty())
+            return "Queue is empty.";
+
+        StringBuilder sb = new StringBuilder("Queue: [");
         Node temp = head;
         while (temp != null) {
-            System.out.print(temp.val + " ");
+            sb.append(temp.val);
+            if (temp.next != null) sb.append(", ");
             temp = temp.next;
         }
-        System.out.println();
+        return sb.append("]").toString();
     }
 
     static class Node {
