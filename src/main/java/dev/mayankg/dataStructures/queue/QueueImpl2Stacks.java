@@ -3,7 +3,7 @@ package dev.mayankg.dataStructures.queue;
 import java.util.Stack;
 
 // Using O(n) approach for push and O(1) for peek and dequeue
-public class QueueImpl2Stacks implements MyQueue {
+class QueueImpl2Stacks implements MyQueue {
     Stack<Integer> s1;
     Stack<Integer> s2;
 
