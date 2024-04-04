@@ -4,8 +4,8 @@ import java.util.Stack;
 
 // Using O(n) approach for push and O(1) for peek and dequeue
 class QueueImpl2Stacks implements MyQueue {
-    Stack<Integer> s1;
-    Stack<Integer> s2;
+    private Stack<Integer> s1;
+    private Stack<Integer> s2;
 
     public QueueImpl2Stacks() {
         this.s1 = new Stack<>();
