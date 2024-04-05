@@ -19,6 +19,12 @@ public class StackArrayTest {
         testStack(stack);
     }
 
+    @Test
+    public void testStackImplementationUsingLinkedList() {
+        StackImplLL stack = new StackImplLL();
+        testStack(stack);
+    }
+
     private static void testStack(MyStack stack) {
         // Test pushing and popping elements
         testPushAndPop(stack);
