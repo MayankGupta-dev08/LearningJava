@@ -7,9 +7,37 @@ import static org.junit.Assert.*;
 public class StackArrayTest {
 
     @Test
-    public void testPushAndPop() {
-        StackImplArray stack = new StackImplArray(5);
+    public void testStackImplementationUsingArray() {
+        int capacity = 5;
+        StackImplArray stack = new StackImplArray(capacity);
+        testStack(stack);
+    }
 
+    @Test
+    public void testStackImplementationUsingArrayList() {
+        StackImplAL stack = new StackImplAL();
+        testStack(stack);
+    }
+
+    private static void testStack(MyStack stack) {
+        // Test pushing and popping elements
+        testPushAndPop(stack);
+
+        // Test isEmpty method
+        testIsEmpty(stack);
+
+        // Test isFull method
+        if (stack instanceof StackImplArray)
+            testIsFull(stack);
+
+        // Test top method
+        testTop(stack);
+
+        // Test size method
+        testSize(stack);
+    }
+
+    private static void testPushAndPop(MyStack stack) {
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -23,10 +51,7 @@ public class StackArrayTest {
         assertEquals(1, stack.pop());
     }
 
-    @Test
-    public void testIsEmpty() {
-        StackImplArray stack = new StackImplArray(5);
-
+    private static void testIsEmpty(MyStack stack) {
         assertTrue(stack.isEmpty());
 
         stack.push(1);
@@ -38,24 +63,20 @@ public class StackArrayTest {
         assertTrue(stack.isEmpty());
     }
 
-    @Test
-    public void testIsFull() {
-        StackImplArray stack = new StackImplArray(3);
-
+    private static void testIsFull(MyStack stack) {
         assertFalse(stack.isFull());
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+        int capacity = 5;
+        for (int i = 0; i < capacity; i++) {
+            stack.push(i);
+        }
 
         assertTrue(stack.isFull());
     }
 
-    @Test
-    public void testTop() {
-        StackImplArray stack = new StackImplArray(3);
-
-        assertThrows(NoSuchElementException.class, stack::pop);
+    private static void testTop(MyStack stack) {
+        stack.clear();
+        assertThrows(NoSuchElementException.class, stack::top);
 
         stack.push(1);
         stack.push(2);
@@ -68,10 +89,8 @@ public class StackArrayTest {
         assertEquals(2, stack.top());
     }
 
-    @Test
-    public void testSize() {
-        StackImplArray stack = new StackImplArray(3);
-
+    private static void testSize(MyStack stack) {
+        stack.clear();
         assertEquals(0, stack.size());
 
         stack.push(1);

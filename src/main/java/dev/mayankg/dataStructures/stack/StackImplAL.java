@@ -1,55 +1,48 @@
 package dev.mayankg.dataStructures.stack;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-class StackImplArray implements MyStack {
-    private int[] arr;
+/**
+ * Stack implementation using ArrayList
+ */
+class StackImplAL implements MyStack {
+    private ArrayList<Integer> al;
     private int top;
-    private int capacity;
 
-    public StackImplArray(int capacity) {
-        this.capacity = capacity;
-        this.arr = new int[capacity];
-        this.top = -1;
+    public StackImplAL() {
+        al = new ArrayList<>();
+        top = -1;
     }
 
     @Override
     public void push(int item) {
-        if (isFull())
-            throw new IllegalStateException("Stack Overflow!!");
-
-        arr[++top] = item;
+        top++;
+        al.add(item);
     }
 
     @Override
     public int pop() {
         if (isEmpty())
-            throw new NoSuchElementException("Stack is empty");
-
-        return arr[top--];
+            throw new NoSuchElementException("Stack is empty!!");
+        return al.remove(top--);
     }
 
     @Override
     public boolean isEmpty() {
-        return top == -1;
-    }
-
-    @Override
-    public boolean isFull() {
-        return top == capacity - 1;
+        return al.isEmpty();
     }
 
     @Override
     public int top() {
         if (isEmpty())
             throw new NoSuchElementException("Stack is empty!!");
-
-        return arr[top];
+        return al.get(top);
     }
 
     @Override
     public int size() {
-        return top + 1;
+        return al.size();
     }
 
     @Override
@@ -59,7 +52,7 @@ class StackImplArray implements MyStack {
 
         StringBuilder sb = new StringBuilder("Stack: [");
         for (int i = 0; i <= top; i++) {
-            sb.append(arr[i]);
+            sb.append(al.get(i));
             if (i != top) sb.append(", ");
         }
         return sb.append("]").toString();
@@ -68,7 +61,6 @@ class StackImplArray implements MyStack {
     @Override
     public void clear() {
         if (isEmpty()) return;
-        while (!isEmpty())
-            top--;
+        while (!isEmpty()) pop();
     }
 }

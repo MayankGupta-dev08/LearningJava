@@ -14,4 +14,10 @@ interface MyStack {
     int top();
 
     int size();
+
+    void clear();
+
+    default boolean isFull() {
+        return false;
+    }
 }
