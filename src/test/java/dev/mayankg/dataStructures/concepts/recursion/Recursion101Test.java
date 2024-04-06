@@ -43,4 +43,19 @@ public class Recursion101Test {
         Assert.assertEquals(0, (int) ansPair.get_1());
         Assert.assertEquals(str.length() - 2, (int) ansPair.get_2());
     }
+
+    @Test
+    public void testIsStrictlyIncreasinglySortedArray() {
+        int[] testArr = new int[]{1, 2, 3, 4, 5};
+        Assert.assertTrue(Recursion101.isStrictlyIncreasingArr(testArr, testArr.length - 1));
+
+        testArr = new int[]{1, 2, 3, 4, 4};
+        Assert.assertFalse(Recursion101.isStrictlyIncreasingArr(testArr, testArr.length - 1));
+
+        testArr = new int[]{1, 2, 8, 5, 3};
+        Assert.assertFalse(Recursion101.isStrictlyIncreasingArr(testArr, testArr.length - 1));
+
+        testArr = new int[]{1, 3, 5, 7, 9};
+        Assert.assertTrue(Recursion101.isStrictlyIncreasingArr(testArr, testArr.length - 1));
+    }
 }

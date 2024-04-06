@@ -55,7 +55,9 @@ class Recursion101 {
         return reverseString(s.substring(1)) + s.charAt(0);
     }
 
-    static Pair<Integer, Integer> findFirstAndLastOccurrence(String str, char ch, int idx, int fIdx, int lIdx) {
+    // O(n)
+    static Pair<Integer, Integer> findFirstAndLastOccurrence
+    (String str, char ch, int idx, int fIdx, int lIdx) {
         if (str.length() == idx) {
             return new Pair<>(fIdx, lIdx);
         }
@@ -65,5 +67,13 @@ class Recursion101 {
             else lIdx = idx;
         }
         return findFirstAndLastOccurrence(str, ch, idx + 1, fIdx, lIdx);
+    }
+
+    // O()
+    static boolean isStrictlyIncreasingArr(int[] arr, int idx) {
+        if (idx == 0) return true;
+
+        if (arr[idx - 1] >= arr[idx]) return false;
+        return isStrictlyIncreasingArr(arr, idx - 1);
     }
 }
