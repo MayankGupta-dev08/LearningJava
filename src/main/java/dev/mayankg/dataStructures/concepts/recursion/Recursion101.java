@@ -1,7 +1,8 @@
 package dev.mayankg.dataStructures.concepts.recursion;
 
-class Recursion101 {
+import dev.mayankg.dataStructures.util.Pair;
 
+class Recursion101 {
     // O(n)
     static String fibonacciSequenceForNTerms(int n) {
         StringBuilder sb = new StringBuilder("0 1");    //we know 1st two terms are 0 and 1
@@ -52,5 +53,17 @@ class Recursion101 {
         if (s.length() == 1) return s;
 
         return reverseString(s.substring(1)) + s.charAt(0);
+    }
+
+    static Pair<Integer, Integer> findFirstAndLastOccurrence(String str, char ch, int idx, int fIdx, int lIdx) {
+        if (str.length() == idx) {
+            return new Pair<>(fIdx, lIdx);
+        }
+
+        if (str.charAt(idx) == ch) {
+            if (fIdx == -1) fIdx = lIdx = idx;
+            else lIdx = idx;
+        }
+        return findFirstAndLastOccurrence(str, ch, idx + 1, fIdx, lIdx);
     }
 }

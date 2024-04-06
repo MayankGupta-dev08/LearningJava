@@ -1,5 +1,6 @@
 package dev.mayankg.dataStructures.concepts.recursion;
 
+import dev.mayankg.dataStructures.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,8 +22,8 @@ public class Recursion101Test {
     @Test
     public void testTowerOfHanoiProblem() {
         int n = 3; //try with 1, 2 and 3 to understand better
-        String src = "A", hlpr = "B", dest = "C";
-        int count = Recursion101.theTowerOfHanoiProblem(n, src, hlpr, dest);
+        String source = "A", helper = "B", destination = "C";
+        int count = Recursion101.theTowerOfHanoiProblem(n, source, helper, destination);
         Assert.assertEquals(((int) Math.pow(2, n)) - 1, count);
     }
 
@@ -30,5 +31,16 @@ public class Recursion101Test {
     public void testReverseString() {
         String str = "abcd", ans = "dcba";
         Assert.assertEquals(ans, Recursion101.reverseString(str));
+    }
+
+    @Test
+    public void testfindFirstAndLastOccurrences() {
+        String str = "abaacdaefaah";
+        Pair<Integer, Integer> ansPair =
+                Recursion101.findFirstAndLastOccurrence(str, 'a', 0, -1, -1);
+
+        Assert.assertNotNull(ansPair);
+        Assert.assertEquals(0, (int) ansPair.get_1());
+        Assert.assertEquals(str.length() - 2, (int) ansPair.get_2());
     }
 }
