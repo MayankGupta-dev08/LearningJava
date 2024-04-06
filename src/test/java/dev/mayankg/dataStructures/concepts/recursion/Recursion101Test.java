@@ -4,17 +4,32 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class Recursion101Test {
-    private Recursion101 instance = new Recursion101();
 
     @Test
     public void testPrintingFibonacciSequenceForNTerms() {
         int n = 10;
-        instance.fibonacciSequenceForNTerms(n);
+        String fibSeriesForN = Recursion101.fibonacciSequenceForNTerms(n);
+        Assert.assertEquals("0 1 1 2 3 5 8 13 21 34", fibSeriesForN.trim());
     }
 
     @Test
     public void testXPowerN() {
         int x = 2, n = 7;
-        Assert.assertEquals(128, instance.calcXPowerN(x, n));
+        Assert.assertEquals(128, Recursion101.calcXPowerN(x, n));
+    }
+
+    @Test
+    public void testTowerOfHanoiProblem() {
+        int n = 2; //try with 1, 2 and 3 to understand better
+        String src = "A", hlpr = "B", dest = "C";
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Recursion101.theTowerOfHanoiProblem(n, src, hlpr, dest);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    }
+
+    @Test
+    public void testReverseString() {
+        String str = "abcd", ans = "dcba";
+        Assert.assertEquals(ans, Recursion101.reverseString(str));
     }
 }
