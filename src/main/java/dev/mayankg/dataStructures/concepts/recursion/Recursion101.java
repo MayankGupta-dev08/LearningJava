@@ -69,11 +69,26 @@ class Recursion101 {
         return findFirstAndLastOccurrence(str, ch, idx + 1, fIdx, lIdx);
     }
 
-    // O()
+    // O(n)
     static boolean isStrictlyIncreasingArr(int[] arr, int idx) {
         if (idx == 0) return true;
 
         if (arr[idx - 1] >= arr[idx]) return false;
         return isStrictlyIncreasingArr(arr, idx - 1);
+    }
+
+    // O(n)
+    static String moveAllOccurrenceOfACharAtEnd(String str, char c, int idx, int count, String ans) {
+        if (idx == str.length()) {
+            while (count != 0) {
+                ans += c;
+                count--;
+            }
+            return ans;
+        }
+
+        if (str.charAt(idx) == c) count++;
+        else ans += str.charAt(idx);
+        return moveAllOccurrenceOfACharAtEnd(str, c, idx + 1, count, ans);
     }
 }

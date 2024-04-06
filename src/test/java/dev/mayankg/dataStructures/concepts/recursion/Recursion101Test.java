@@ -34,7 +34,7 @@ public class Recursion101Test {
     }
 
     @Test
-    public void testfindFirstAndLastOccurrences() {
+    public void testFindFirstAndLastOccurrences() {
         String str = "abaacdaefaah";
         Pair<Integer, Integer> ansPair =
                 Recursion101.findFirstAndLastOccurrence(str, 'a', 0, -1, -1);
@@ -57,5 +57,13 @@ public class Recursion101Test {
 
         testArr = new int[]{1, 3, 5, 7, 9};
         Assert.assertTrue(Recursion101.isStrictlyIncreasingArr(testArr, testArr.length - 1));
+    }
+
+    @Test
+    public void testMoveAllOccurrenceOfACharAtEnd() {
+        String str = "axbcxxd", ans = "abcdxxx";
+        char ch = 'x';
+        String actual = Recursion101.moveAllOccurrenceOfACharAtEnd(str, ch, 0, 0, "");
+        Assert.assertEquals(ans, actual);
     }
 }
