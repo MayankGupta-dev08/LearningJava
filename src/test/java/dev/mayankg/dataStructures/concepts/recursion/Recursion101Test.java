@@ -20,11 +20,10 @@ public class Recursion101Test {
 
     @Test
     public void testTowerOfHanoiProblem() {
-        int n = 2; //try with 1, 2 and 3 to understand better
+        int n = 3; //try with 1, 2 and 3 to understand better
         String src = "A", hlpr = "B", dest = "C";
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        Recursion101.theTowerOfHanoiProblem(n, src, hlpr, dest);
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        int count = Recursion101.theTowerOfHanoiProblem(n, src, hlpr, dest);
+        Assert.assertEquals(((int) Math.pow(2, n)) - 1, count);
     }
 
     @Test
