@@ -1,10 +1,15 @@
 package dev.mayankg.dataStructures.concepts.recursion;
 
 import dev.mayankg.dataStructures.util.Pair;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class Recursion101Test {
+    @After
+    public void printLineBreak() {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    }
 
     @Test
     public void testPrintingFibonacciSequenceForNTerms() {
@@ -72,5 +77,12 @@ public class Recursion101Test {
         String str = "abbccdda", ans = "abcd";
         String actual = Recursion101.removeDuplicatesFromString(str, 0, new boolean[26], "");
         Assert.assertEquals(ans, actual);
+    }
+
+    @Test
+    public void testAllSubsequenceOfString() {
+        String str = "abcd";
+        int count = Recursion101.printAllSubsequenceOfString(str, 0, "");
+        Assert.assertEquals((int) Math.pow(2, str.length()), count);
     }
 }

@@ -94,7 +94,7 @@ class Recursion101 {
     }
 
     // O(n)
-    public static String removeDuplicatesFromString(String str, int idx, boolean[] alphas, String ans) {
+    static String removeDuplicatesFromString(String str, int idx, boolean[] alphas, String ans) {
         if (idx == str.length()) return ans;
 
         char ch = str.charAt(idx);
@@ -103,5 +103,19 @@ class Recursion101 {
             alphas[ch - 'a'] = true;
         }
         return removeDuplicatesFromString(str, idx + 1, alphas, ans);
+    }
+
+    static int printAllSubsequenceOfString(String str, int idx, String ss) {
+        int counter = 0;
+
+        if (idx == str.length()) {
+            System.out.println(ss);
+            return 1;
+        }
+
+        char c = str.charAt(idx);
+        counter += printAllSubsequenceOfString(str, idx + 1, ss);
+        counter += printAllSubsequenceOfString(str, idx + 1, ss + c);
+        return counter;
     }
 }
