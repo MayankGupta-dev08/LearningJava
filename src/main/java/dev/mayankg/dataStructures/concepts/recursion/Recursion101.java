@@ -2,6 +2,8 @@ package dev.mayankg.dataStructures.concepts.recursion;
 
 import dev.mayankg.dataStructures.util.Pair;
 
+import java.util.HashSet;
+
 class Recursion101 {
     // O(n)
     static String fibonacciSequenceForNTerms(int n) {
@@ -105,6 +107,7 @@ class Recursion101 {
         return removeDuplicatesFromString(str, idx + 1, alphas, ans);
     }
 
+    // O(2^n), n is the length of str
     static int printAllSubsequenceOfString(String str, int idx, String ss) {
         int counter = 0;
 
@@ -116,6 +119,25 @@ class Recursion101 {
         char c = str.charAt(idx);
         counter += printAllSubsequenceOfString(str, idx + 1, ss);
         counter += printAllSubsequenceOfString(str, idx + 1, ss + c);
+        return counter;
+    }
+
+    // O(2^n), n is the length of str
+    static int printAllUniqueSubsequenceOfString(String str, int idx, String ss, HashSet<String> set) {
+        int counter = 0;
+
+        if (idx == str.length()) {
+            if (!set.contains(ss)) {
+                System.out.println(ss);
+                set.add(ss);
+                return 1;
+            }
+            return 0;
+        }
+
+        char c = str.charAt(idx);
+        counter += printAllUniqueSubsequenceOfString(str, idx + 1, ss, set);
+        counter += printAllUniqueSubsequenceOfString(str, idx + 1, ss + c, set);
         return counter;
     }
 }

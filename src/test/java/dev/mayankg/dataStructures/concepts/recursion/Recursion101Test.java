@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashSet;
+
 public class Recursion101Test {
     @After
     public void printLineBreak() {
@@ -84,5 +86,12 @@ public class Recursion101Test {
         String str = "abcd";
         int count = Recursion101.printAllSubsequenceOfString(str, 0, "");
         Assert.assertEquals((int) Math.pow(2, str.length()), count);
+    }
+
+    @Test
+    public void testAllUniqueSubsequenceOfString() {
+        String str = "aaa";
+        int count = Recursion101.printAllUniqueSubsequenceOfString(str, 0, "", new HashSet<>());
+        Assert.assertEquals(4, count);
     }
 }
