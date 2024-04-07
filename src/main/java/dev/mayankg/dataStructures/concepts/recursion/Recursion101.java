@@ -141,17 +141,16 @@ class Recursion101 {
         return counter;
     }
 
-    // O(n*m)
+    // O(n*m), n: length of the string and m: no. of alphabets for a digit
     static int printAllKeypadCombinations(String nums, int idx, String ans, String[] keypadArr) {
         int counter = 0;
-
         if (nums.length() == idx) {
             System.out.println(ans);
             return 1;
         }
 
-        int num = nums.charAt(idx) - 48;
-        String s = keypadArr[num];
+        char numChar = nums.charAt(idx);
+        String s = keypadArr[numChar - '0'];
         for (int i = 0; i < s.length(); i++)
             counter += printAllKeypadCombinations(nums, idx + 1, ans + s.charAt(i), keypadArr);
 
