@@ -141,7 +141,7 @@ class Recursion101 {
         return counter;
     }
 
-    // O(n*m), n: length of the string and m: no. of alphabets for a digit
+    // O(m^n) = O(4^n), n: length of the string and m: no. of different possible alphabets for a digit (max is 4, and avg is 3)
     static int printAllKeypadCombinations(String nums, int idx, String ans, String[] keypadArr) {
         int counter = 0;
         if (nums.length() == idx) {
