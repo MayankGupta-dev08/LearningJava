@@ -140,4 +140,21 @@ class Recursion101 {
         counter += printAllUniqueSubsequenceOfString(str, idx + 1, ss + c, set);
         return counter;
     }
+
+    // O(n*m)
+    static int printAllKeypadCombinations(String nums, int idx, String ans, String[] keypadArr) {
+        int counter = 0;
+
+        if (nums.length() == idx) {
+            System.out.println(ans);
+            return 1;
+        }
+
+        int num = nums.charAt(idx) - 48;
+        String s = keypadArr[num];
+        for (int i = 0; i < s.length(); i++)
+            counter += printAllKeypadCombinations(nums, idx + 1, ans + s.charAt(i), keypadArr);
+
+        return counter;
+    }
 }

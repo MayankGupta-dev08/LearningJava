@@ -94,4 +94,12 @@ public class Recursion101Test {
         int count = Recursion101.printAllUniqueSubsequenceOfString(str, 0, "", new HashSet<>());
         Assert.assertEquals(4, count);
     }
+
+    @Test
+    public void testPrintAllKeypadCombinations() {
+        String str = "23";
+        String[] kpc = new String[]{".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+        int count = Recursion101.printAllKeypadCombinations(str, 0, "", kpc);
+        Assert.assertEquals(9, count);
+    }
 }
