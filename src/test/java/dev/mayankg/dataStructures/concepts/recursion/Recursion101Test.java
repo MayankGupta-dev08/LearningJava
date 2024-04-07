@@ -66,4 +66,11 @@ public class Recursion101Test {
         String actual = Recursion101.moveAllOccurrenceOfACharAtEnd(str, ch, 0, 0, "");
         Assert.assertEquals(ans, actual);
     }
+
+    @Test
+    public void testRemoveDuplicatesFromString() {
+        String str = "abbccdda", ans = "abcd";
+        String actual = Recursion101.removeDuplicatesFromString(str, 0, new boolean[26], "");
+        Assert.assertEquals(ans, actual);
+    }
 }

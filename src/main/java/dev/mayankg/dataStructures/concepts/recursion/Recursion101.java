@@ -78,7 +78,8 @@ class Recursion101 {
     }
 
     // O(n)
-    static String moveAllOccurrenceOfACharAtEnd(String str, char c, int idx, int count, String ans) {
+    static String moveAllOccurrenceOfACharAtEnd
+    (String str, char c, int idx, int count, String ans) {
         if (idx == str.length()) {
             while (count != 0) {
                 ans += c;
@@ -90,5 +91,17 @@ class Recursion101 {
         if (str.charAt(idx) == c) count++;
         else ans += str.charAt(idx);
         return moveAllOccurrenceOfACharAtEnd(str, c, idx + 1, count, ans);
+    }
+
+    // O(n)
+    public static String removeDuplicatesFromString(String str, int idx, boolean[] alphas, String ans) {
+        if (idx == str.length()) return ans;
+
+        char ch = str.charAt(idx);
+        if (!alphas[ch - 'a']) {
+            ans += ch;
+            alphas[ch - 'a'] = true;
+        }
+        return removeDuplicatesFromString(str, idx + 1, alphas, ans);
     }
 }
