@@ -22,4 +22,8 @@ interface MyLinkedList<T> {
     default void remove() {
         removeLast();
     }
+
+    void remove(int idx);
+
+    void insert(int idx, T item);
 }

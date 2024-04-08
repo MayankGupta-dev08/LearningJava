@@ -6,12 +6,17 @@ import java.util.NoSuchElementException;
  * My implementation of LinkedList
  */
 class LinkedListImpl<T> implements MyLinkedList<T> {
-    private Node head;
+    private Node<T> head;
     private int size;
+
+    public LinkedListImpl() {
+        head = null;
+        size = 0;
+    }
 
     @Override
     public void addFirst(T item) {
-        Node node = addInEmptyLinkedList(item);
+        Node<T> node = addInEmptyLinkedList(item);
         if (node == null) return;
 
         node.next = head;
@@ -20,7 +25,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
 
     @Override
     public void addLast(T item) {
-        Node node = addInEmptyLinkedList(item);
+        Node<T> node = addInEmptyLinkedList(item);
         if (node == null) return;
 
         Node temp = head;   //to reach lastNode
@@ -69,31 +74,50 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
     public T get(int idx) {
         if (idx >= size || idx < 0) throw new IndexOutOfBoundsException("Index out of bounds!!");
 
-        Node iThNode = getIthNode(idx);
+        Node<T> iThNode = getIthNode(idx);
         if (iThNode == null) throw new NoSuchElementException("LinkedList is empty!!");
 
         return (T) iThNode.val;
     }
 
+    /**
+     * to insert newNode anywhere in the linkedList using index
+     */
+    @Override
     public void insert(int idx, T item) {
-        if (idx >= size || idx < 0) throw new IndexOutOfBoundsException("Index out of bounds!!");
-        
-        if(idx==0) {
+        if (idx > size || idx < 0) throw new IndexOutOfBoundsException("Index out of bounds!!");
+
+        if (idx == 0) {
             addFirst(item);
             return;
         }
 
+        Node<T> nodeIM1 = getIthNode(idx - 1);
+        Node<T> nodeITh = nodeIM1.next;
+
+        Node<T> newNode = new Node<>(item);
+        newNode.next = nodeITh;
+        nodeIM1.next = newNode;
+        size++;
     }
 
+    /**
+     * to remove anywhere in the linkedList using index
+     */
+    @Override
     public void remove(int idx) {
         if (idx >= size || idx < 0) throw new IndexOutOfBoundsException("Index out of bounds!!");
 
+        size--;
         if (idx == 0) {
-            head = null;
+            if (head.next == null)
+                head = null;
+            else
+                head = head.next;
             return;
         }
 
-        Node iM1Node = getIthNode(idx - 1);
+        Node<T> iM1Node = getIthNode(idx - 1);
         iM1Node.next = iM1Node.next.next;
     }
 
@@ -114,8 +138,8 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
         return get(size - 1);
     }
 
-    private Node addInEmptyLinkedList(T item) {
-        Node node = new Node(item);
+    private Node<T> addInEmptyLinkedList(T item) {
+        Node<T> node = new Node<>(item);
         size++;
         if (isEmpty()) {
             head = node;
@@ -124,7 +148,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
         return node;
     }
 
-    private Node getIthNode(int idx) {
+    private Node<T> getIthNode(int idx) {
         int i = 0;
         Node node = head;   //idx=5 --> i=6
         while (i < idx) {

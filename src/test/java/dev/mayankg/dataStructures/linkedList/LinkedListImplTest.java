@@ -15,25 +15,25 @@ public class LinkedListImplTest {
     }
 
     @Test
-    public void addFirst() {
+    public void testAddFirst() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals("This", ll.get(0));
     }
 
     @Test
-    public void getSize() {
+    public void testGetSize() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals(5, ll.getSize());
     }
 
     @Test
-    public void addLast() {
+    public void testAddLast() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals("list", ll.get(ll.getSize() - 1));
     }
 
     @Test
-    public void removeFirst() {
+    public void testRemoveFirst() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals("This", ll.get(0));
         ll.removeFirst();
@@ -41,7 +41,7 @@ public class LinkedListImplTest {
     }
 
     @Test
-    public void removeLast() {
+    public void testRemoveLast() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals("list", ll.get(ll.getSize() - 1));
         ll.removeLast();
@@ -49,7 +49,7 @@ public class LinkedListImplTest {
     }
 
     @Test
-    public void isEmpty() {
+    public void testisEmpty() {
         LinkedListImpl<Integer> ll = new LinkedListImpl<>();
         Assert.assertTrue(ll.isEmpty());
         ll.add(1);
@@ -63,18 +63,16 @@ public class LinkedListImplTest {
     }
 
     @Test
-    public void get() {
+    public void testGet() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         Assert.assertEquals("is", ll.get(1));
         Assert.assertEquals("linked", ll.get(3));
         Assert.assertEquals("list", ll.get(4));
-        Assert.assertThrows(IndexOutOfBoundsException.class, () -> {
-            ll.get(5);
-        });
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> ll.get(5));
     }
 
     @Test
-    public void peek() {
+    public void testPeek() {
         LinkedListImpl<Integer> ll = new LinkedListImpl<>();
         Assert.assertNull(ll.peek());
         ll.add(1);
@@ -86,8 +84,48 @@ public class LinkedListImplTest {
     }
 
     @Test
-    public void remove() {
+    public void testRemove() {
         LinkedListImpl<String> ll = createALinkedListForTest();
-        ll.remove(-2);
+
+        // Remove an element in the middle of the list
+        ll.remove(2);
+        Assert.assertEquals("linked", ll.get(2));
+        Assert.assertEquals(4, ll.getSize());
+
+        // Remove the last element of the list
+        ll.remove(ll.getSize() - 1);
+        Assert.assertEquals("linked", ll.get(ll.getSize() - 1));
+        Assert.assertEquals(3, ll.getSize());
+
+        // Remove the first element of the list
+        ll.remove(0);
+        Assert.assertEquals("is", ll.get(0));
+        Assert.assertEquals(2, ll.getSize());
+
+        // Try to remove an element at an invalid index
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> ll.remove(5));
+    }
+
+    @Test
+    public void testInsert() {
+        LinkedListImpl<Integer> ll = new LinkedListImpl<>();
+
+        // Insert at the beginning
+        ll.insert(0, 1);
+        Assert.assertEquals(1, ll.get(0).intValue());
+        Assert.assertEquals(1, ll.getSize());
+
+        // Insert in the middle
+        ll.insert(1, 2);
+        Assert.assertEquals(2, ll.get(1).intValue());
+        Assert.assertEquals(2, ll.getSize());
+
+        // Insert at the end
+        ll.insert(2, 3);
+        Assert.assertEquals(3, ll.get(2).intValue());
+        Assert.assertEquals(3, ll.getSize());
+
+        // Insert at an invalid index
+        Assert.assertThrows(IndexOutOfBoundsException.class, () -> ll.insert(5, 4));
     }
 }
