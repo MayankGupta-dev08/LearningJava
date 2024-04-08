@@ -1,0 +1,25 @@
+package dev.mayankg.dataStructures.linkedList;
+
+interface MyLinkedList<T> {
+    void addFirst(T item);
+
+    void addLast(T item);
+
+    void removeFirst();
+
+    void removeLast();
+
+    int getSize();
+
+    boolean isEmpty();
+
+    T peek();
+
+    default void add(T item) {
+        addLast(item);
+    }
+
+    default void remove() {
+        removeLast();
+    }
+}
