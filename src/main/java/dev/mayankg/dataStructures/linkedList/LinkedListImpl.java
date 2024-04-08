@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * My implementation of LinkedList
  */
 class LinkedListImpl<T> implements MyLinkedList<T> {
-    private Node<T> head;
+    Node<T> head;
     private int size;
 
     public LinkedListImpl() {
@@ -28,7 +28,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
         Node<T> node = addInEmptyLinkedList(item);
         if (node == null) return;
 
-        Node temp = head;   //to reach lastNode
+        Node<T> temp = head;   //to reach lastNode
         while (temp.next != null) {
             temp = temp.next;
         }
@@ -47,7 +47,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
     public void removeLast() {
         if (isEmpty()) throw new NoSuchElementException("LinkedList is empty!!");
 
-        Node currNode = head;
+        Node<T> currNode = head;
         size--;
         if (currNode.next == null) { //only 1 node in LL
             head = null;
@@ -62,7 +62,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
 
     @Override
     public String toString() {
-        Node currNode = head;
+        Node<T> currNode = head;
         StringBuilder sb = new StringBuilder("LL: [");
         while (currNode != null) {
             sb.append(currNode.val + " -> ");
@@ -150,7 +150,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
 
     private Node<T> getIthNode(int idx) {
         int i = 0;
-        Node node = head;   //idx=5 --> i=6
+        Node<T> node = head;//idx=5 --> i=6
         while (i < idx) {
             node = node.next;
             i++;
@@ -158,15 +158,15 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
         return node;
     }
 
-    private static class Node<T> {
+    static class Node<T> {
         T val;
-        Node next;
+        Node<T> next;
 
         public Node(T val) {
             this.val = val;
         }
 
-        public Node(T val, Node next) {
+        public Node(T val, Node<T> next) {
             this.val = val;
             this.next = next;
         }
