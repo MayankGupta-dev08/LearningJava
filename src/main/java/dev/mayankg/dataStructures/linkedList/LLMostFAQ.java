@@ -31,4 +31,32 @@ class LLMostFAQ {
         head.next = null;   //breaking the previous connection
         return newHead;
     }
+
+    /**
+     * Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
+     */
+    // similar to three pointer approach but additionally 1 dummy pointer will be needed to update the head for the 1st iteration.
+    static LinkedListImpl.Node<Integer> swapNodesInPair(LinkedListImpl.Node<Integer> head) {
+        if (head == null || head.next == null) return head;
+
+        LinkedListImpl.Node<Integer> dummyNode = new LinkedListImpl.Node<>(0, head);  //for maintaining the correct head
+
+        LinkedListImpl.Node<Integer> prevNode = dummyNode;
+        LinkedListImpl.Node<Integer> firstNode = head;  // firstNode and scndNode will be the pairs to be swapped
+        while (firstNode != null && firstNode.next != null) {
+            //saving the pointers
+            LinkedListImpl.Node<Integer> scndNode = firstNode.next;
+            LinkedListImpl.Node<Integer> nextNode = firstNode.next.next;
+
+            //swapping them
+            scndNode.next = firstNode;
+            firstNode.next = nextNode;
+            prevNode.next = scndNode;
+
+            //updating the pointers
+            prevNode = firstNode;
+            firstNode = nextNode;   //because nextNode would be the correct new firstNode in next iteration
+        }
+        return dummyNode.next;
+    }
 }
