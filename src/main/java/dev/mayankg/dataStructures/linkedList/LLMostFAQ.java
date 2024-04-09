@@ -59,4 +59,21 @@ class LLMostFAQ {
         }
         return dummyNode.next;
     }
+
+    // Consider [1, 2, 3, 4, 5]. Now work for 1 and 2 and store 3's ref and apply recursion for 3,4 ...
+    // https://leetcode.com/problems/swap-nodes-in-pairs/
+    static LinkedListImpl.Node<Integer> swapNodesInPair_recursive(LinkedListImpl.Node<Integer> head) {
+        if (head == null || head.next == null) return head;
+
+        LinkedListImpl.Node<Integer> nextNode = head.next.next; //storing the nextNode for process (3)
+
+        LinkedListImpl.Node<Integer> newHead = head.next;   //(2)
+        newHead.next = head;    //reversing, (2)-->(1)
+        head.next = nextNode;   //for now, connecting (1)-->(3)
+
+        //Once the 2nd pair is fixed, this head will point to newHead of that pair, (1)-->(4)
+        head.next = swapNodesInPair_recursive(nextNode);
+
+        return newHead;
+    }
 }
