@@ -16,4 +16,11 @@ public class RecursionAdvTest {
         int expected = 6;
         Assert.assertEquals(expected, RecursionAdv.countPathsInMaze(n, m, 0, 0));
     }
+
+    @Test
+    public void tilingProblem() {
+        int n = 4, m = 2;
+        int expected = 5;
+        Assert.assertEquals(expected, RecursionAdv.tilingProblem(n, m));
+    }
 }
