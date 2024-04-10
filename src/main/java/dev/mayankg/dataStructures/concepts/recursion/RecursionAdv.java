@@ -1,5 +1,7 @@
 package dev.mayankg.dataStructures.concepts.recursion;
 
+import java.util.ArrayList;
+
 class RecursionAdv {
     /**
      * O(n!), n is the length of the str --> n*(n-1)*(n-2)*...*1
@@ -54,5 +56,22 @@ class RecursionAdv {
         int waysPair = (n - 1) * callingGuestInPartyProblem(n - 2);
 
         return waysSingle + waysPair;
+    }
+
+    /**
+     * Print all the subsets of a set of first n natural numbers.
+     * O(2^n)
+     */
+    static void printSubsets(int n, ArrayList<Integer> subset) {
+        if (n == 0) {
+            System.out.println(subset);
+            return;
+        }
+
+        printSubsets(n - 1, subset);    // w/o (n)
+
+        subset.add(n);
+        printSubsets(n - 1, subset);    // with (n)
+        subset.remove(subset.size() - 1);
     }
 }

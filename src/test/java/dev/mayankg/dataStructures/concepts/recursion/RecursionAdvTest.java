@@ -3,6 +3,8 @@ package dev.mayankg.dataStructures.concepts.recursion;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class RecursionAdvTest {
 
     @Test
@@ -29,5 +31,12 @@ public class RecursionAdvTest {
         int n = 4;
         int expected = 10;
         Assert.assertEquals(expected, RecursionAdv.callingGuestInPartyProblem(n));
+    }
+
+    @Test
+    public void printSubsets() {
+        int n = 3;
+        ArrayList<Integer> subsets = new ArrayList<>();
+        RecursionAdv.printSubsets(n, subsets);
     }
 }
