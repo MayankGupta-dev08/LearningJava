@@ -1,0 +1,19 @@
+package dev.mayankg.dataStructures.concepts.recursion;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class RecursionAdvTest {
+
+    @Test
+    public void printAllPermutationOfString() {
+        RecursionAdv.printAllPermutationOfString("abc", "");
+    }
+
+    @Test
+    public void countPathsInMaze() {
+        int n = 3, m = 3;
+        int expected = 6;
+        Assert.assertEquals(expected, RecursionAdv.countPathsInMaze(n, m, 0, 0));
+    }
+}

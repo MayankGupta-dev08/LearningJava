@@ -1,11 +1,6 @@
 package dev.mayankg.dataStructures.concepts.recursion;
 
-public class RecursionAdv {
-    public static void main(String[] args) {
-//        printAllPermutationOfString("abc", "");
-        System.out.println(countPathsInMaze(3, 4, 0, 0));
-    }
-
+class RecursionAdv {
     // O(n!), n is the length of the str --> n*(n-1)*(n-2)*...*1
     static void printAllPermutationOfString(String str, String ans) {
         if (str.isEmpty()) {
