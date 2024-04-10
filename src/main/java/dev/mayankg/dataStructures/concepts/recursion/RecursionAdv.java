@@ -41,4 +41,18 @@ class RecursionAdv {
         int vertically = tilingProblem(n - m, m);
         return horizontally + vertically;
     }
+
+    /**
+     * Find the no. Of ways in which u can invite (n) no. Of people in the party, either as single or as a pair
+     */
+    static int callingGuestInPartyProblem(int n) {
+        if (n <= 1) return 1;
+
+        int waysSingle = callingGuestInPartyProblem(n - 1);
+        //for a pair, suppose we have to choose for 1 person, no. of possible choices left (n-1) and then,
+        // for remaining (n-2) another call, so total no. of possibilities will be the multiplication of them
+        int waysPair = (n - 1) * callingGuestInPartyProblem(n - 2);
+
+        return waysSingle + waysPair;
+    }
 }

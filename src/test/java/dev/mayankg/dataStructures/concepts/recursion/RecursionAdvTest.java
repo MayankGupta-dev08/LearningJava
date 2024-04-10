@@ -23,4 +23,11 @@ public class RecursionAdvTest {
         int expected = 5;
         Assert.assertEquals(expected, RecursionAdv.tilingProblem(n, m));
     }
+
+    @Test
+    public void callingGuestInPartyProblem() {
+        int n = 4;
+        int expected = 10;
+        Assert.assertEquals(expected, RecursionAdv.callingGuestInPartyProblem(n));
+    }
 }
