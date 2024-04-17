@@ -1,4 +1,4 @@
-package dev.mayankg.unitTesting.junit5;
+package dev.mayankg.unitTesting.junit5.basicTests;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledOnOs;
@@ -14,6 +14,12 @@ class ComputeUtilTest {
     private TestInfo testInfo;
     private TestReporter testReporter;
 
+    public ComputeUtilTest(TestInfo testInfo, TestReporter testReporter) {
+        this.computer = new ComputeUtil();
+        this.testInfo = testInfo;
+        this.testReporter = testReporter;
+    }
+
     @BeforeAll
     static void init() {
         System.out.println("This will run once before all test methods...");
@@ -21,9 +27,6 @@ class ComputeUtilTest {
 
     @BeforeEach
     void setUp(TestInfo testInfo, TestReporter testReporter) {
-        this.testInfo = testInfo;
-        this.testReporter = testReporter;
-        this.computer = new ComputeUtil();
         System.out.println("This runs before each test...");
         testReporter.publishEntry("Running [" + testInfo.getDisplayName() + "] with tag as " + testInfo.getTags());
     }

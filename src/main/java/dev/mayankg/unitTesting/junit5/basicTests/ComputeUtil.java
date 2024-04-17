@@ -1,6 +1,6 @@
-package dev.mayankg.unitTesting.junit5;
+package dev.mayankg.unitTesting.junit5.basicTests;
 
-public class ComputeUtil {
+class ComputeUtil {
     public static <T extends Comparable<T>> T max(T first, T second) {
         return (first.compareTo(second) < 0) ? second : first;
     }
