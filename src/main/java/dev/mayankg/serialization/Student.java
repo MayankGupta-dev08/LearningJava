@@ -1,4 +1,4 @@
-package dev.mayankg.serialization_deserialization;
+package dev.mayankg.serialization;
 
 public class Student {
     private int rollNo;

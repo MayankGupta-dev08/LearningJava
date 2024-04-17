@@ -1,4 +1,4 @@
-package dev.mayankg.serialization_deserialization;
+package dev.mayankg.serialization;
 
 import java.io.*;
 
