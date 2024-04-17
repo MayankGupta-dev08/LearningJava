@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class QueueTest {
+class QueueImplTest {
 
     @AfterEach
     void printLineBreaker() {

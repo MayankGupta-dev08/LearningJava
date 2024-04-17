@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StackImplementationTest {
+class StackImplTest {
 
     @AfterEach
     void printLineBreaker() {
