@@ -1,4 +1,4 @@
-package dev.mayankg.junit5;
+package dev.mayankg.unitTesting.junit5;
 
 public class ComputeUtil {
     public static <T extends Comparable<T>> T max(T first, T second) {

@@ -1,6 +1,5 @@
-package dev.mayankg.junit5;
+package dev.mayankg.unitTesting.junit5;
 
-import dev.mayankg.junit5.ComputeUtil;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
