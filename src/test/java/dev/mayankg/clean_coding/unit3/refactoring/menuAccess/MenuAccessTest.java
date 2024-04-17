@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MenuAccessTest {
+class MenuAccessTest {
 
     @Test
-    public void testSetAuthorizationsInEachMenus() {
+    void testSetAuthorizationsInEachMenus() {
 
         Role[] userRoles = {new Role("MenuARead"), new Role("MenuBWrite"),
                 new Role("MenuCRead"), new Role("MenuCWrite")};

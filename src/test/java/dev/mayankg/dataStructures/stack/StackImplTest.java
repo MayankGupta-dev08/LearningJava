@@ -1,26 +1,34 @@
 package dev.mayankg.dataStructures.stack;
 
-import org.junit.Test;
-import java.util.NoSuchElementException;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
-public class StackArrayTest {
+import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StackImplementationTest {
+
+    @AfterEach
+    void printLineBreaker() {
+        System.out.println("-------------------------------");
+    }
 
     @Test
-    public void testStackImplementationUsingArray() {
+    void testStackImplementationUsingArray() {
         int capacity = 5;
         StackImplArray stack = new StackImplArray(capacity);
         testStack(stack);
     }
 
     @Test
-    public void testStackImplementationUsingArrayList() {
+    void testStackImplementationUsingArrayList() {
         StackImplAL stack = new StackImplAL();
         testStack(stack);
     }
 
     @Test
-    public void testStackImplementationUsingLinkedList() {
+    void testStackImplementationUsingLinkedList() {
         StackImplLL stack = new StackImplLL();
         testStack(stack);
     }

@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TextHelperTest {
+class TextHelperTest {
     TextHelper helper = new TextHelper();
 
     @Test
-    public void testSwapLastTwoCharacters() {
+    void testSwapLastTwoCharacters() {
         assertEquals("", helper.swapLastTwoCharacters(""));
         assertEquals("A", helper.swapLastTwoCharacters("A"));
         assertEquals("BA", helper.swapLastTwoCharacters("AB"));
@@ -17,7 +17,7 @@ public class TextHelperTest {
     }
 
     @Test
-    public void testTruncateAInFirst2Positions() {
+    void testTruncateAInFirst2Positions() {
         assertEquals("", helper.truncateAInFirst2Positions(""));
         assertEquals("BCD", helper.truncateAInFirst2Positions("ABCD"));
         assertEquals("CD", helper.truncateAInFirst2Positions("AACD"));

@@ -1,12 +1,12 @@
 package dev.mayankg.clean_coding.unit1.originalTests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import dev.mayankg.clean_coding.unit1Gildedrose.GildedRose;
 import dev.mayankg.clean_coding.unit1Gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
-public class GildedRoseADefaultItemTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class GildedRoseADefaultItemTest {
 	/**
 	 * Method to test the variation in quality of the item for the non expired
 	 * Item.
@@ -16,7 +16,7 @@ public class GildedRoseADefaultItemTest {
 	 * 
 	 */
 	@Test
-	public void testUpdateQualityDefault1() {
+	void testUpdateQualityDefault1() {
 		Item item = new Item("DEFAULT_ITEM", 15, 3);
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);
@@ -34,7 +34,7 @@ public class GildedRoseADefaultItemTest {
 	 * 
 	 */
 	@Test
-	public void testUpdateQualityForExpiredItem() {
+	void testUpdateQualityForExpiredItem() {
 		Item item = new Item("DEFAULT_ITEM", -1, 3);
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);

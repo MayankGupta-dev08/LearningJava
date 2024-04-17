@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static dev.mayankg.clean_coding.unit1.refactoredTests.TestUtil.assertItem;
 import static dev.mayankg.clean_coding.unit1.refactoredTests.TestUtil.createGildedRoseWith1Item;
 
-public class GildedRoseCBackstagePassesRefactoredTest {
+class GildedRoseCBackstagePassesRefactoredTest {
     private static final String BACKSTAGE_PASSES_ITEM = "Backstage passes to a TAFKAL80ETC concert";
     private static final int SELL_IN_MORE_THAN_10 = 15;  // 11 or more
     private static final int SELL_IN_BW_10_AND_5 = 7;   // (5,10]
@@ -20,7 +20,7 @@ public class GildedRoseCBackstagePassesRefactoredTest {
 
     @Test
     @DisplayName("Method to test the variation in quality of Backstage passes where sellIn > 10")
-    public void testQualityIncrementBy1ForBackstagePassesWithSellInMoreThan10() {
+    void testQualityIncrementBy1ForBackstagePassesWithSellInMoreThan10() {
         GildedRose app = createGildedRoseWith1Item(BACKSTAGE_PASSES_ITEM, SELL_IN_MORE_THAN_10, DEF_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];
@@ -30,7 +30,7 @@ public class GildedRoseCBackstagePassesRefactoredTest {
 
     @Test
     @DisplayName("Method to test the variation in quality of Backstage passes where 5 < sellIn <= 10")
-    public void testQualityIncrementBy2ForBackstagePassesWithSellInBw10And5() {
+    void testQualityIncrementBy2ForBackstagePassesWithSellInBw10And5() {
         GildedRose app = createGildedRoseWith1Item(BACKSTAGE_PASSES_ITEM, SELL_IN_BW_10_AND_5, DEF_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];
@@ -40,7 +40,7 @@ public class GildedRoseCBackstagePassesRefactoredTest {
 
     @Test
     @DisplayName("Method to test the variation in quality of Backstage passes where sellIn <= 5")
-    public void testQualityIncrementBy1ForBackstagePassesWithSellInIsLessOrEqualTo5() {
+    void testQualityIncrementBy1ForBackstagePassesWithSellInIsLessOrEqualTo5() {
         GildedRose app = createGildedRoseWith1Item(BACKSTAGE_PASSES_ITEM, SELL_IN_LESS_THAN_EQUAL_5, DEF_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];
@@ -50,7 +50,7 @@ public class GildedRoseCBackstagePassesRefactoredTest {
 
     @Test
     @DisplayName("Method to test the variation in quality of expired Backstage passes")
-    public void testQualityVariationForExpiredBackstagePasses() {
+    void testQualityVariationForExpiredBackstagePasses() {
         GildedRose app = createGildedRoseWith1Item(BACKSTAGE_PASSES_ITEM, EXPIRED_SELL_IN, MIN_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];
@@ -60,7 +60,7 @@ public class GildedRoseCBackstagePassesRefactoredTest {
 
     @Test
     @DisplayName("Method to test the variation in quality of maxed quality Backstage passes where sellIn <= 5")
-    public void testQualityVariationForUnexpiredMaxedQAgedBrie() {
+    void testQualityVariationForUnexpiredMaxedQAgedBrie() {
         GildedRose app = createGildedRoseWith1Item(BACKSTAGE_PASSES_ITEM, SELL_IN_LESS_THAN_EQUAL_5, MAX_QUALITY);
         app.updateQuality();
         Item actual = app.items[0];

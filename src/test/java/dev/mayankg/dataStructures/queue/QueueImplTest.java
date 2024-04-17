@@ -1,30 +1,36 @@
 package dev.mayankg.dataStructures.queue;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class QueueTest {
+class QueueTest {
+
+    @AfterEach
+    void printLineBreaker() {
+        System.out.println("-------------------------------");
+    }
 
     @Test
-    public void testQueueImplementationUsingArray() {
+    void testQueueImplementationUsingArray() {
         MyQueue queueAr = new QueueImplArr(5);
         testQueue(queueAr);
     }
 
     @Test
-    public void testCircularQueueImplementation() {
+    void testCircularQueueImplementation() {
         MyQueue circularQueue = new CircularQueueImpl(5);
         testQueue(circularQueue);
     }
 
     @Test
-    public void testLinkedQueueImplementation() {
+    void testLinkedQueueImplementation() {
         MyQueue queueLL = new QueueImplLnkL();
         testQueue(queueLL);
     }
 
     @Test
-    public void testQueueWithTwoStacksImplementation() {
+    void testQueueWithTwoStacksImplementation() {
         MyQueue queue2Stks = new QueueImpl2Stacks();
         testQueue(queue2Stks);
     }
@@ -38,27 +44,27 @@ public class QueueTest {
         queue.enqueue(50);
 
         // Display the queue
-        Assert.assertEquals("Queue: [10, 20, 30, 40, 50]", queue.toString());
-        Assert.assertEquals(5, queue.size());
+        Assertions.assertEquals("Queue: [10, 20, 30, 40, 50]", queue.toString());
+        Assertions.assertEquals(5, queue.size());
 
         // Dequeue two elements
-        Assert.assertEquals(10, queue.dequeue());
-        Assert.assertEquals(20, queue.dequeue());
+        Assertions.assertEquals(10, queue.dequeue());
+        Assertions.assertEquals(20, queue.dequeue());
 
         // Display the updated queue
-        Assert.assertEquals("Queue: [30, 40, 50]", queue.toString());
-        Assert.assertEquals(3, queue.size());
+        Assertions.assertEquals("Queue: [30, 40, 50]", queue.toString());
+        Assertions.assertEquals(3, queue.size());
 
         // Peek at the front element
-        Assert.assertEquals(30, queue.peek());
+        Assertions.assertEquals(30, queue.peek());
 
         // Enqueue more elements
         queue.enqueue(60);
         queue.enqueue(70);
 
         // Display the updated queue
-        Assert.assertEquals("Queue: [30, 40, 50, 60, 70]", queue.toString());
-        Assert.assertEquals(5, queue.size());
+        Assertions.assertEquals("Queue: [30, 40, 50, 60, 70]", queue.toString());
+        Assertions.assertEquals(5, queue.size());
 
         // Try to enqueue when the queue is full
         queue.enqueue(80); // The Queue is full. Cannot enqueue 80
@@ -70,11 +76,11 @@ public class QueueTest {
         }
 
         if (queue instanceof QueueImplArr || queue instanceof CircularQueueImpl)
-            Assert.assertEquals("30 40 50 60 70 ", dequeued.toString());
+            Assertions.assertEquals("30 40 50 60 70 ", dequeued.toString());
         else
-            Assert.assertEquals("30 40 50 60 70 80 ", dequeued.toString());
+            Assertions.assertEquals("30 40 50 60 70 80 ", dequeued.toString());
 
         // Try to dequeue when the queue is empty
-        Assert.assertEquals(-1, queue.dequeue()); // The Queue is empty. Cannot dequeue.
+        Assertions.assertEquals(-1, queue.dequeue()); // The Queue is empty. Cannot dequeue.
     }
 }

@@ -1,15 +1,15 @@
 package dev.mayankg.clean_coding.unit1.originalTests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import dev.mayankg.clean_coding.unit1Gildedrose.GildedRose;
 import dev.mayankg.clean_coding.unit1Gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
-public class GildedRoseCBackstagePassesTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class GildedRoseCBackstagePassesTest {
 	
 	@Test
-	public void testUpdateQualityBackstagePasses1() {
+	void testUpdateQualityBackstagePasses1() {
 		Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 3);
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);
@@ -21,7 +21,7 @@ public class GildedRoseCBackstagePassesTest {
 	}
 
 	@Test
-	public void testUpdateQualityBackstagePasses2() {
+	void testUpdateQualityBackstagePasses2() {
 		Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 7, 3);
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);
@@ -33,7 +33,7 @@ public class GildedRoseCBackstagePassesTest {
 	}
 
 	@Test
-	public void testUpdateQualityBackstagePasses3() {
+	void testUpdateQualityBackstagePasses3() {
 		Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 4, 3);
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);

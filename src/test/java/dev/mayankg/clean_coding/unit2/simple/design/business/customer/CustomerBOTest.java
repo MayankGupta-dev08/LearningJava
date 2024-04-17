@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
-public class CustomerBOTest {
+class CustomerBOTest {
 
-    private CustomerBO customerBO = new CustomerBOImpl();
+    private final CustomerBO customerBO = new CustomerBOImpl();
 
     @Test
-    public void testCustomerProductSum_TwoProductsSameCurrencies()
+    void testCustomerProductSum_TwoProductsSameCurrencies()
             throws DifferentCurrenciesException {
 
         List<Product> products = new ArrayList<Product>();
@@ -39,7 +39,7 @@ public class CustomerBOTest {
     }
 
     @Test
-    public void testCustomerProductSum1() {
+    void testCustomerProductSum1() {
 
         List<Product> products = new ArrayList<Product>();
 
@@ -62,7 +62,7 @@ public class CustomerBOTest {
     }
 
     @Test
-    public void testCustomerProductSum2() {
+    void testCustomerProductSum2() {
 
         List<Product> products = new ArrayList<Product>();
 
