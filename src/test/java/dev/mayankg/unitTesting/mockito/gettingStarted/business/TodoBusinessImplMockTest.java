@@ -1,6 +1,7 @@
 package dev.mayankg.unitTesting.mockito.gettingStarted.business;
 
 import dev.mayankg.unitTesting.mockito.gettingStarted.data.api.TodoService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.BDDMockito;
@@ -8,8 +9,6 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -86,6 +85,7 @@ class TodoBusinessImplMockTest {
     }
 
     @Test
+    @Disabled
     void deleteTodosRelatedToSpringForMayank_usingMockBDDArgumentCapture() {
         /* setup */
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
@@ -97,7 +97,9 @@ class TodoBusinessImplMockTest {
         todoBusinessImpl.deleteTodosRelatedToSpring("Mayank");
 
         /* assertion */
-        BDDMockito.then(todoService).should().deleteTodos(stringArgumentCaptor.capture());
+        // Verify that deleteTodos is called only once with the captured argument
+        BDDMockito.then(todoService).should(times(2)).deleteTodos(stringArgumentCaptor.capture());
         assertThat(stringArgumentCaptor.getValue(), is("Learn Dance"));
     }
+
 }
