@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 class TodoBusinessImplMockTest {
@@ -73,6 +74,10 @@ class TodoBusinessImplMockTest {
 
         /* assertion */
         verify(todoService).deleteTodos("Learn Dance"); //checking whether this call was actually made or not
+        /* the above thing could also be done in this way, this actually means when the actual method invocation happens
+        then, for the mockService, it should not run deleteTodos for the passed argument */
+        then(todoService).should().deleteTodos("Learn Dance");
+
         verify(todoService, Mockito.never()).deleteTodos("Learn Spring MVC");
         verify(todoService, Mockito.never()).deleteTodos("Learn Spring");
         verify(todoService, Mockito.times(1)).deleteTodos("Learn Finance"); // atLeastOnce, atLeast
