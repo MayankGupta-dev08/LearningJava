@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class TodoBusinessImpl {
     private final TodoService todoService;
 
-    TodoBusinessImpl(TodoService todoService) {
+    public TodoBusinessImpl(TodoService todoService) {
         this.todoService = todoService;
     }
 

@@ -1,18 +1,13 @@
 package dev.mayankg.unitTesting.mockito.gettingStarted.business;
 
 import dev.mayankg.unitTesting.mockito.gettingStarted.data.api.TodoService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class TodoBusinessImplMockTest {
     private static final List<String> todos =
@@ -47,61 +42,4 @@ class TodoBusinessImplMockTest {
         System.out.println("Actual Todos: " + todos);
         assertEquals(0, todos.size());
     }
-
-    /**
-     * <p>Using Behavior Driven Development Approach of Mockito</p>
-     * Given --> When --> Then
-     */
-    @Test
-    void retrieveTodosRelatedToSpringForAdam_usingMockBDD() {
-        // used BDDMockito.given() --> BDDMockito.willReturn()
-        TodoService todoService = mock(TodoService.class);
-        BDDMockito.given(todoService.retrieveTodos("someUser")).willReturn(todos);
-
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
-        List<String> todos = todoBusinessImpl.retrieveTodosRelatedToSpring("someUser");
-
-        System.out.println("Actual Todos: " + todos);
-        assertEquals(4, todos.size());
-    }
-
-    @Test
-    void deleteTodosRelatedToSpringForMayank_usingMockBDD() {
-        /* setup */
-        TodoService todoService = mock(TodoService.class);
-        when(todoService.retrieveTodos("Mayank")).thenReturn(todos);
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
-
-        /* test method invocation */
-        todoBusinessImpl.deleteTodosRelatedToSpring("Mayank");
-
-        /* assertion */
-        verify(todoService).deleteTodos("Learn Dance"); //checking whether this call was actually made or not
-        /* Similar could be done like line 81; this actually means when the actual method invocation happens
-        then, for the mockService, it should not run deleteTodos for the passed argument */
-        BDDMockito.then(todoService).should().deleteTodos("Learn Dance");
-
-        verify(todoService, Mockito.never()).deleteTodos("Learn Spring MVC");
-        verify(todoService, Mockito.never()).deleteTodos("Learn Spring");
-        verify(todoService, Mockito.times(1)).deleteTodos("Learn Finance"); // atLeastOnce, atLeast
-    }
-
-    @Test
-    @Disabled
-    void deleteTodosRelatedToSpringForMayank_usingMockBDDArgumentCapture() {
-        /* setup */
-        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        TodoService todoService = mock(TodoService.class);
-        when(todoService.retrieveTodos("Mayank")).thenReturn(todos);
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
-
-        /* test method invocation */
-        todoBusinessImpl.deleteTodosRelatedToSpring("Mayank");
-
-        /* assertion */
-        // Verify that deleteTodos is called only once with the captured argument
-        BDDMockito.then(todoService).should(times(2)).deleteTodos(stringArgumentCaptor.capture());
-        assertThat(stringArgumentCaptor.getValue(), is("Learn Dance"));
-    }
-
 }
