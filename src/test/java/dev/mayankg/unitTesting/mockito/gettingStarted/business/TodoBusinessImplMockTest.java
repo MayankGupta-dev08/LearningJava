@@ -2,13 +2,12 @@ package dev.mayankg.unitTesting.mockito.gettingStarted.business;
 
 import dev.mayankg.unitTesting.mockito.gettingStarted.data.api.TodoService;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 class TodoBusinessImplMockTest {
@@ -53,7 +52,7 @@ class TodoBusinessImplMockTest {
     void retrieveTodosRelatedToSpringForAdam_usingMockBDD() {
         // used BDDMockito.given() --> BDDMockito.willReturn()
         TodoService todoService = mock(TodoService.class);
-        given(todoService.retrieveTodos("someUser")).willReturn(todos);
+        BDDMockito.given(todoService.retrieveTodos("someUser")).willReturn(todos);
 
         TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
         List<String> todos = todoBusinessImpl.retrieveTodosRelatedToSpring("someUser");
@@ -76,7 +75,7 @@ class TodoBusinessImplMockTest {
         verify(todoService).deleteTodos("Learn Dance"); //checking whether this call was actually made or not
         /* the above thing could also be done in this way, this actually means when the actual method invocation happens
         then, for the mockService, it should not run deleteTodos for the passed argument */
-        then(todoService).should().deleteTodos("Learn Dance");
+        BDDMockito.then(todoService).should().deleteTodos("Learn Dance");
 
         verify(todoService, Mockito.never()).deleteTodos("Learn Spring MVC");
         verify(todoService, Mockito.never()).deleteTodos("Learn Spring");
