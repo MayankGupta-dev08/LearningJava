@@ -50,6 +50,12 @@
             <version>${mockito.core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Hamcrest for writing expressive assertions in tests -->
         <dependency>
             <groupId>org.hamcrest</groupId>

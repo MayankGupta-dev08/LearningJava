@@ -3,9 +3,9 @@ package dev.mayankg.unitTesting.mockito.advanced;
 import dev.mayankg.unitTesting.mockito.gettingStarted.business.TodoBusinessImpl;
 import dev.mayankg.unitTesting.mockito.gettingStarted.data.api.TodoService;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
@@ -14,25 +14,53 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Using Annotations to autowire the dependencies
+ *
+ * @ExtendWith(MockitoExtension.class), @Mock, @InjectMocks, @Captor
+ */
+@ExtendWith(MockitoExtension.class)
 class TodoBusinessImplInjectMockTest {
     private static final List<String> todos =
             List.of("Learn Spring Core", "Learn Spring Boot",
                     "Learn Spring MVC", "Learn Spring Security",
                     "Learn Dance", "Learn Finance");
 
-    /**
-     * <p>Mocking: It is creating objects that simulate the behavior of the real objects.</p>
-     * Unlike Stubs, mocks can be directly created from code at runtime.
-     * <p>It offers a lot of features and one can verify method call and a lot of other things.</p>
-     * Using Behavior Driven Development Approach of Mockito, Given --> When --> Then
-     */
+    @Mock   // removes need for: mock(TodoService.class)
+    TodoService todoService;
+
+    @InjectMocks    // removes the need for: new TodoBusinessImpl(todoService)
+    TodoBusinessImpl todoBusinessImpl;
+
+    @Captor // removes the need for: ArgumentCaptor.forClass(String.class)
+    ArgumentCaptor<String> stringArgumentCaptor;
+
+
+    @Test
+    void retrieveTodosRelatedToSpringForMayank_usingMock() {
+        when(todoService.retrieveTodos("Mayank")).thenReturn(todos);
+
+        List<String> todos = todoBusinessImpl.retrieveTodosRelatedToSpring("Mayank");
+
+        System.out.println("Actual Todos: " + todos);
+        assertEquals(4, todos.size());
+    }
+
+    @Test
+    void retrieveTodosRelatedToSpringForAdam_usingMock() {
+        when(todoService.retrieveTodos("Adam")).thenReturn(List.of());
+
+        List<String> todos = todoBusinessImpl.retrieveTodosRelatedToSpring("Adam");
+
+        System.out.println("Actual Todos: " + todos);
+        assertEquals(0, todos.size());
+    }
+
     @Test
     void retrieveTodosRelatedToSpringForAdam_usingMockBDD() {
         // used BDDMockito.given() --> BDDMockito.willReturn()
-        TodoService todoService = mock(TodoService.class);
         BDDMockito.given(todoService.retrieveTodos("someUser")).willReturn(todos);
 
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
         List<String> todos = todoBusinessImpl.retrieveTodosRelatedToSpring("someUser");
 
         System.out.println("Actual Todos: " + todos);
@@ -42,17 +70,13 @@ class TodoBusinessImplInjectMockTest {
     @Test
     void deleteTodosRelatedToSpringForMayank_usingMockBDD() {
         /* setup */
-        TodoService todoService = mock(TodoService.class);
         when(todoService.retrieveTodos("Mayank")).thenReturn(todos);
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
 
         /* test method invocation */
         todoBusinessImpl.deleteTodosRelatedToSpring("Mayank");
 
         /* assertion */
         verify(todoService).deleteTodos("Learn Dance"); //checking whether this call was actually made or not
-        /* Similar could be done like line 81; this actually means when the actual method invocation happens
-        then, for the mockService, it should not run deleteTodos for the passed argument */
         BDDMockito.then(todoService).should().deleteTodos("Learn Dance");
 
         verify(todoService, Mockito.never()).deleteTodos("Learn Spring MVC");
@@ -63,10 +87,7 @@ class TodoBusinessImplInjectMockTest {
     @Test
     void deleteTodosRelatedToSpringForMayank_usingMockBDDArgumentCapture() {
         /* setup */
-        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        TodoService todoService = mock(TodoService.class);
         when(todoService.retrieveTodos("Mayank")).thenReturn(todos);
-        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
 
         /* test method invocation */
         todoBusinessImpl.deleteTodosRelatedToSpring("Mayank");
