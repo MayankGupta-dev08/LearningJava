@@ -20,4 +20,9 @@ class TodoServiceStub implements TodoService {
                     "Learn Finance");
         return List.of("Learn whatever...");
     }
+
+    @Override
+    public void deleteTodos(String todo) {
+        return;
+    }
 }
