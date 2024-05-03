@@ -26,7 +26,7 @@ docker images
 docker volumes
 ```
 
-### To run the container for a particular docker image
+### To run a container using a particular docker image
 
 - External/Host port that we have used `9090` and Internal/Container port is `9191`
 - Here we have used image `userapp` and its tag is `2.0.1`
@@ -63,18 +63,51 @@ docker stop <container_name>
 docker start <container_name>
 ```
 
-### To run the bash inside a particular container
-
-- instead of <container_name>, we could also use <container_id>.
-
-```shell
-docker exec -it <container_name> bash
-```
-
 ### Check the logs for the container
 
+```shell
+docker logs <container_id> bash
+```
+
+### To run a bash shell inside a particular container
+
 - instead of <container_name>, we could also use <container_id>.
 
 ```shell
-docker log <container_name> bash
+docker exec -it <container_name> /bin/bash
+```
+
+### To create a new image from an exiting running container which was modified
+
+- This is done, in case if we have added some files in the running container and once the container is stopped the
+  changes will also vanish.
+
+```shell
+docker commit <container_id> <new_container_name>:<new_container_tag>
+```
+
+### Pushing the local images to the docker-hub registry
+
+- docker login
+
+```shell
+docker login
+```
+
+- tag you image with your dockerHubId --> `mayankg/my-app_image:v2.0`
+
+```shell
+docker tag <image_name>:<image_tag> <docker_userId>/<ōimage_name>:<image_tag>
+```
+
+- push your images. for example, image -->`mayankg/my-app_image:v2.0`
+
+```shell
+docker push <image_name>:<image_tag> <docker_userId>/<image_name>:<image_tag>
+```
+
+### Pull a docker image from the docker hub
+
+```shell
+docker pull <exact_image_name>
 ```
