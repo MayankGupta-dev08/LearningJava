@@ -4,73 +4,76 @@
 SELECT first_name AS Worker_Name FROM Worker;
 
 -- Q-02. Write a SQL query to fetch 'FIRST_NAME' from the 'Worker' table in upper case.
-
+SELECT upper(first_name) AS WORKER_FIRST_NAME FROM Worker;
 
 -- Q-03. Write a SQL query to fetch unique values of DEPARTMENT from the Worker table.
-
+SELECT DISTINCT DEPARTMENT FROM Worker; 
+SELECT Department FROM Worker GROUP BY Department;
 
 -- Q-04. Write a SQL query to print the first three characters of the FIRST_NAME from the Worker table.
+SELECT substring(first_name, 1, 3) as FN FROM Worker;
+SELECT substr(first_name, 1, 3) as FN FROM Worker;
 
+-- Q-05. Write a SQL query to find the position of the alphabet ('b') in the FIRST_NAME where first name is 'Amitabh' from the Worker table.
+SELECT instr(first_name, 'b') AS 'POSITION OF B' FROM Worker WHERE FIRST_NAME = 'Amitabh';
 
--- Q-05. Write a SQL query to find the position of the alphabet ('b') in the FIRST_NAME column from the Worker table.
-
-
--- Q-06. Write a SQL query to print the FIRSt_NAME from the Worker table after removing unique white spaces from the right side.
-
+-- Q-06. Write a SQL query to print the FIRST_NAME from the Worker table after removing unique white spaces from the right side.
+SELECT rtrim(first_name) as 'F.Name' FROM Worker;
 
 -- Q-07. Write a SQL query to print the FIRSt_NAME from the Worker table after removing unique white spaces from the left side.
-
+SELECT ltrim(first_name) as 'F.Name' FROM Worker;
 
 -- Q-08. Write a SQL query to fetch the unique values of the DEPARTMENT from the Worker table and print its length.
-
+SELECT Department, length(department) AS Length FROM Worker GROUP BY Department;
 
 -- Q-09. Write a SQL query to print the FIRST_NAME from the Worker table after replacing 'a' with 'A'.
-
+SELECT replace(first_name, 'a', 'A') AS 'first nAme' FROM Worker;
 
 -- Q-10. Write a SQL query to print the FIRST_NAME and LAST_NAME from the Worker table into a single column as FULL_NAME. 
-
+SELECT concat(FIRST_NAME, ' ', LAST_NAME) AS 'Full Name' FROM Worker;
 
 -- Q-11. Write a SQL query to print all Worker details from the Worker table and order them by FIRST_NAME in ascending.
-
+SELECT * FROM Worker ORDER BY first_name ASC;
 
 -- Q-12. Write a SQL query to print all the details for the Worker table and order them by FIRST_NAME in ascending and DEPARTMENT descending.
-
+SELECT * FROM Worker ORDER BY first_name ASC, department DESC;
 
 -- Q-13. Write a SQL query to print details for the Workers with the FIRST_NAME as 'Vipul' and 'Satish' from the Worker table.
-
+SELECT * FROM Worker WHERE first_name IN ('Vipul', 'Satish');
 
 -- Q-14. Write a SQL query to print details for the Workers with the FIRST_NAME not as 'Vipul' or 'Satish' from the Worker table.
-
+SELECT * FROM Worker WHERE first_name NOT IN ('Vipul', 'Satish');
 
 -- Q-15. Write a SQL query to print details of the Workers with DEPARTMENT as 'ADMIN' from the Worker table.
-
+SELECT * FROM Worker WHERE department = 'admin';
 
 -- Q-16. Write a SQL query to print the details of the workers whoese FIRST_NAME contains 'a'.
-
+SELECT * FROM Worker WHERE first_name LIKE '%a%';
 
 -- Q-17. Write a SQL query to print the details of the workers whoese FIRST_NAME ends with 'a'.
-
+SELECT * FROM Worker WHERE first_name LIKE '%a';
 
 -- Q-18. Write a SQL query to print the details of the workers whoese FIRST_NAME ends with 'h' and contains six alphabets.
-
+SELECT * FROM Worker WHERE first_name LIKE '_____h';
 
 -- Q-19. Write a SQL query to print details of the workers whose SALARY lies between 100000 and 500000.
-
+SELECT * FROM Worker WHERE salary >= 100000 AND salary <= 500000;
+SELECT * FROM Worker WHERE salary BETWEEN 100000 AND 500000;
 
 -- Q-20. Write a SQL query to print the details of the workers who joined in Feb'2014.
-
+SELECT * FROM Worker WHERE year(joining_date)=2014 AND month(joining_date)=02;
 
 -- Q-21. Write a SQL query to fetch the count of workers whose DEPARTMENT is 'Admin'.
-
+SELECT count(worker_id) AS Count FROM Worker WHERE department = 'admin';
 
 -- Q-22. Write a SQL query to fetch the worker's full name with salaries >= 50000 and salaries <= 100000.
-
+SELECT concat(first_name, ' ', last_name) AS 'Full Name' FROM Worker WHERE salary BETWEEN 50000 AND 100000;
 
 -- Q-23. Write a SQL query to fetch the number of workers in each department in descending order of the count.
-
+SELECT department, count(worker_id) AS WorkerCount FROM Worker GROUP BY department ORDER BY WorkerCount DESC;
 
 -- Q-24. Write a SQL query to print the details of workers who are also 'Managers'.
-
+SELECT w.*, t.WORKER_TITLE FROM worker AS w INNER JOIN title AS t ON w.WORKER_ID = t.WORKER_REF_ID WHERE t.WORKER_TITLE='manager';
 
 -- Q-25. Write a SQL query to print the different titles in the ORG whose worker count > 1.
 
