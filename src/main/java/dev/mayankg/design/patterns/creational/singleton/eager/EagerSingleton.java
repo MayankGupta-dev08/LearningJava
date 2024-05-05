@@ -1,4 +1,4 @@
-package dev.mayankg.design.patterns.creational.singleton.example1;
+package dev.mayankg.design.patterns.creational.singleton.eager;
 
 /**
  * Eager Initialisation of Singleton Pattern

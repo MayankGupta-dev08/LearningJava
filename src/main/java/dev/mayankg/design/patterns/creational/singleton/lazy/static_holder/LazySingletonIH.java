@@ -1,4 +1,4 @@
-package dev.mayankg.design.patterns.creational.singleton.example3;
+package dev.mayankg.design.patterns.creational.singleton.lazy.static_holder;
 
 /**
  * Singleton using Lazy Initialization Holder Class. To implement lazy initialization, w/o worrying about synchronization.
@@ -15,8 +15,11 @@ class LazySingletonIH {
         return RegistryHolder.INSTANCE;
     }
 
+    /**
+     * private static class just for holding and creating a single instance of LazySingletonIH and since its inner static class,
+     * Also, it's not loaded by the class loader before its actually externally accessed by any other class using the getInstance() of LazySingletonIH class.
+     */
     private static class RegistryHolder {
-        static LazySingletonIH INSTANCE = new LazySingletonIH();
-
+        private static final LazySingletonIH INSTANCE = new LazySingletonIH();
     }
 }
