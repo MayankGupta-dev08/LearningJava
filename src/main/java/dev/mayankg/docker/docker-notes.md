@@ -1,8 +1,13 @@
-# Docker Commands
+# Docker Notes
 
 - Note: replace the content with `<>` with appropriate value to run the cmd properly.
 
+1. Docker Commands
+2. Docker Compose Commands
+
 ---
+
+## Docker Commands
 
 ### To build the image using the jar for the app
 
@@ -97,7 +102,7 @@ docker login
 - tag you image with your dockerHubId --> `mayankg/my-app_image:v2.0`
 
 ```shell
-docker tag <image_name>:<image_tag> <docker_userId>/<ōimage_name>:<image_tag>
+docker tag <image_name>:<image_tag> <docker_userId>/<image_name>:<image_tag>
 ```
 
 - push your images. for example, image -->`mayankg/my-app_image:v2.0`
@@ -110,4 +115,108 @@ docker push <image_name>:<image_tag> <docker_userId>/<image_name>:<image_tag>
 
 ```shell
 docker pull <exact_image_name>
+```
+
+### To clean up any unused data in the docker.
+
+- Removing all stopped containers
+- Removing all networks not used by at least one container
+- Removing all dangling images (i.e., images not referenced by any container)
+- Removing all dangling build cache
+
+```shell
+docker system prune -f
+```
+
+### To remove unused volumes
+```shell
+docker volume prune
+```
+
+---
+
+## Docker Compose Commands
+
+### To start containers defined in the docker-compose.yml file
+
+```shell
+docker-compose up
+```
+
+### To start containers in detached mode (in the background)
+
+```shell
+docker-compose up -d
+```
+
+### To stop containers defined in the docker-compose.yml file
+
+```shell
+docker-compose down
+```
+
+### To stop and remove containers, networks, and volumes
+
+```shell
+docker-compose down -v
+```
+
+### To rebuild containers
+
+```shell
+docker-compose up --build
+```
+
+### To list containers managed by docker-compose
+
+```shell
+docker-compose ps
+```
+
+### To view the logs of services
+
+```shell
+docker-compose logs <service_name>
+```
+
+### To run a command in a service container
+
+```shell
+docker-compose exec <service_name> <command>
+```
+
+### To run a command in a service container interactively
+
+```shell
+docker-compose exec <service_name> <command> -it
+```
+
+### To scale services (increase the number of containers)
+
+```shell
+docker-compose scale <service_name>=<number_of_containers>
+```
+
+### To run a single service in a composition
+
+```shell
+docker-compose run <service_name>
+```
+
+### To build images before starting services
+
+```shell
+docker-compose up --build
+```
+
+### To remove all containers
+
+```shell
+docker-compose rm -f
+```
+
+### To check the configuration of docker-compose.yml
+
+```shell
+docker-compose config
 ```
