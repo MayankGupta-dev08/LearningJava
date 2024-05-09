@@ -56,6 +56,7 @@
             <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
+
         <!-- Hamcrest for writing expressive assertions in tests -->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -63,8 +64,7 @@
             <version>2.2</version>
             <scope>test</scope>
         </dependency>
-
-
+        
         <!-- Jackson Databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
