@@ -36,5 +36,6 @@
 9. [Multithreading](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/multithreading)
 10. [Regular Expressions](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/regex)
 11. [Serialization](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/serialization_deserialization)
-12. [Stream in Java](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/streams)
-13. [Unit Testing](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/unitTesting)
+12. [SQL](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/sql)
+13. [Stream in Java](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/streams)
+14. [Unit Testing](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/unitTesting)
