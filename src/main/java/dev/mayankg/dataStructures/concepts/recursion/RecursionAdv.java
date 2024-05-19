@@ -3,8 +3,9 @@ package dev.mayankg.dataStructures.concepts.recursion;
 import java.util.ArrayList;
 
 class RecursionAdv {
+
     /**
-     * O(n!), n is the length of the str --> n*(n-1)*(n-2)*...*1
+     * O(n*n!), n is the length of the str and n! is the total possible solutions --> n x [n*(n-1)*(n-2)*...*1]
      */
     static void printAllPermutationOfString(String str, String ans) {
         if (str.isEmpty()) {
