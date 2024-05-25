@@ -1,11 +1,18 @@
 package dev.mayankg.design.patterns.behavioural.chainOfResponsibility.example;
 
-//A concrete handler
+/**
+ * A [Concrete Handler] extending from our [Abstract Handler]
+ */
 class Director extends Employee {
+    private static final String ROLE = "Director";
+
     public Director(LeaveApprover nextApprover) {
-        super("Director", nextApprover);
+        super(ROLE, nextApprover);
     }
 
+    /**
+     * Approves Leaves of Type: PTO leave
+     */
     @Override
     protected boolean processRequest(LeaveApplication application) {
         if (application.getType() == LeaveApplication.Type.PTO) {

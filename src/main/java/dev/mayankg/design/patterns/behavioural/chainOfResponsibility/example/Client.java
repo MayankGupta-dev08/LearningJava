@@ -9,11 +9,12 @@ class Client {
                 .from(LocalDate.of(2024, 2, 25))
                 .to(LocalDate.of(2024, 3, 18))
                 .build();
+
         LeaveApprover approver = createChain();
+
         System.out.println(application);
         System.out.println("Sending the leave request................");
         System.out.println("********************************************************************");
-
         approver.processLeaveApplication(application);
         System.out.println(application);
     }

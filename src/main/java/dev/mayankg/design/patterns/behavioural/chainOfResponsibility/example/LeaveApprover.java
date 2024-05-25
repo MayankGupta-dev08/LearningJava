@@ -1,7 +1,7 @@
 package dev.mayankg.design.patterns.behavioural.chainOfResponsibility.example;
 
 /**
- * This represents a handler in chain of responsibility
+ * This represents the [Main Handler] in the chain of responsibility pattern.
  */
 interface LeaveApprover {
 

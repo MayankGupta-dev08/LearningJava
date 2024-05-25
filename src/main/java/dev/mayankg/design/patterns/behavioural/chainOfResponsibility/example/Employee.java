@@ -1,6 +1,8 @@
 package dev.mayankg.design.patterns.behavioural.chainOfResponsibility.example;
 
-/*+ Abstract handler */
+/**
+ * [Abstract Handler] which implements our [Main Handler] for different roles/employee types
+ */
 abstract class Employee implements LeaveApprover {
     private String role;
     private LeaveApprover successor;
@@ -10,6 +12,9 @@ abstract class Employee implements LeaveApprover {
         this.successor = successor;
     }
 
+    /**
+     * Since different Employee types will handle the request differently, which will be dealt by the concert implementations of this abstract class
+     */
     protected abstract boolean processRequest(LeaveApplication application);
 
     @Override
