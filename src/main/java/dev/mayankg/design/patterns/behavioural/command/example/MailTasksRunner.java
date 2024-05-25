@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Throw Away POC code DON'T USE in PROD
- * This is invoker actually executing commands.
- * starts a worker thread in charge of executing commands
+ * ~~~ [POC code DON'T USE in PROD] ~~~ <br>
+ * This is the invoker actually used in executing commands. <br>
+ * It starts a worker thread which is in charge of executing commands.
  */
 class MailTasksRunner implements Runnable {
     private static final MailTasksRunner RUNNER = new MailTasksRunner();
@@ -24,7 +24,9 @@ class MailTasksRunner implements Runnable {
         return RUNNER;
     }
 
-    //Run method takes pending commands and executes them.
+    /**
+     * Run method takes pending commands and executes them.
+     */
     @Override
     public void run() {
         while (true) {
@@ -47,8 +49,10 @@ class MailTasksRunner implements Runnable {
         }
     }
 
-    //Giving it a command will schedule it for later execution
-    public void addCommand(Command cmd) {
+    /**
+     * Calling addCommandToQueue method with a command will schedule that command for later execution.
+     */
+    public void addCommandToQueue(Command cmd) {
         synchronized (pendingCommands) {
             pendingCommands.add(cmd);
             pendingCommands.notifyAll();
