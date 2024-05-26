@@ -21,4 +21,9 @@ class Report {
     public String getPermission() {
         return permission;
     }
+
+    @Override
+    public String toString() {
+        return "Report: " + name + ".";
+    }
 }

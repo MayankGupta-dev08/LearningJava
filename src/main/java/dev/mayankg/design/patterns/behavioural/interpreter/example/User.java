@@ -22,4 +22,9 @@ class User {
     public String getUsername() {
         return username;
     }
+
+    @Override
+    public String toString() {
+        return getUsername().toUpperCase() + ": " + getPermissions();
+    }
 }
