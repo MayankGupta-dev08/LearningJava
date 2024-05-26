@@ -14,6 +14,9 @@ class UIMediator {
         colleagues.add(control);
     }
 
+    /**
+     * value or state changed for the UIControl objects on which UIMediator is keeping track
+     */
     public void valueChanged(UIControl control) {
         colleagues.stream().filter(c -> c != control).forEach(c -> c.controlChanged(control));
     }
