@@ -8,7 +8,7 @@ public class Permission implements PermissionExpression {
     private String permission;
 
     public Permission(String permission) {
-        this.permission = permission;
+        this.permission = permission.toLowerCase();
     }
 
     @Override

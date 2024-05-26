@@ -8,8 +8,12 @@ import java.util.StringTokenizer;
  */
 class ExpressionBuilder {
 
-    private Stack<PermissionExpression> permissions = new Stack<>();
+    private static final String AND = "and";
+    private static final String NOT = "not";
+    private static final String OR = "or";
+
     private Stack<String> operators = new Stack<>();
+    private Stack<PermissionExpression> permissions = new Stack<>();
 
     public PermissionExpression build(Report report) {
         parse(report.getPermission());
@@ -25,14 +29,14 @@ class ExpressionBuilder {
         while (tokenizer.hasMoreTokens()) {
             String token;
             switch ((token = tokenizer.nextToken())) {
-                case "and":
-                    operators.push("and");
+                case AND:
+                    operators.push(AND);
                     break;
-                case "not":
-                    operators.push("not");
+                case NOT:
+                    operators.push(NOT);
                     break;
-                case "or":
-                    operators.push("or");
+                case OR:
+                    operators.push(OR);
                     break;
                 default:
                     permissions.push(new Permission(token));
@@ -48,16 +52,16 @@ class ExpressionBuilder {
             PermissionExpression perm2;
             PermissionExpression exp;
             switch (operator) {
-                case "not":
+                case NOT:
                     perm1 = permissions.pop();
                     exp = new NotExpression(perm1);
                     break;
-                case "and":
+                case AND:
                     perm1 = permissions.pop();
                     perm2 = permissions.pop();
                     exp = new AndExpression(perm1, perm2);
                     break;
-                case "or":
+                case OR:
                     perm1 = permissions.pop();
                     perm2 = permissions.pop();
                     exp = new OrExpression(perm1, perm2);
