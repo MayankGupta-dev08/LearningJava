@@ -3,6 +3,8 @@
 - Note: replace the content with `<>` with appropriate value to run the cmd properly.
 
 1. Docker Commands
+   1. commands related to docker images 
+   2. commands related to docker containers 
 2. Docker Compose Commands
 
 ---
@@ -19,16 +21,34 @@
 docker build -t <image_name>:<image_tag> .
 ```
 
-### List all the docker images
+### List all the docker images present in your docker server
 
 ```shell
 docker images
 ```
 
-### List all the docker volumes
+### To display detailed image information for a given image id
 
 ```shell
-docker volumes
+docker image inspect <image_id>
+```
+
+### To remove a docker image with a particular image_id
+
+```shell
+docker images rm <image_id>
+```
+
+### To push a docker image with an image_tag for a user to their docker registry
+
+```shell
+docker image push docker.io/<user_name>/<image_name>:<image_tag>
+```
+
+### To pull a particular docker image with an image_tag from docker registry
+
+```shell
+docker image pull docker.io/<user_name>/<image_name>:<image_tag>
 ```
 
 ### To run a container using a particular docker image
@@ -46,40 +66,14 @@ docker run -d --name <container_name> -p <host_port>:<cont_port> <image_id>
 
 ### List of all the docker container/process running/stopped
 
-- If only want to see the running containers the remove the `-a` from the cmd.
-
 ```shell
 docker ps -a
 ```
 
-### To stop a running container
-
-- instead of <container_name>, we could also use <container_id>.
+### To show only running container/process
 
 ```shell
-docker stop <container_name>
-```
-
-### To start a container which was stopped
-
-- instead of <container_name>, we could also use <container_id>.
-
-```shell
-docker start <container_name>
-```
-
-### Check the logs for the container
-
-```shell
-docker logs <container_id> bash
-```
-
-### To run a bash shell inside a particular container
-
-- instead of <container_name>, we could also use <container_id>.
-
-```shell
-docker exec -it <container_name> /bin/bash
+docker ps
 ```
 
 ### To create a new image from an exiting running container which was modified
@@ -111,10 +105,94 @@ docker tag <image_name>:<image_tag> <docker_userId>/<image_name>:<image_tag>
 docker push <image_name>:<image_tag> <docker_userId>/<image_name>:<image_tag>
 ```
 
-### Pull a docker image from the docker hub
+### To stop a running container
 
 ```shell
-docker pull <exact_image_name>
+docker container stop <container_name>
+```
+```shell
+docker container stop <container_id>
+```
+
+### To start a docker container which was stopped
+
+```shell
+docker container start <container_name>
+```
+```shell
+docker container start <container_id>
+```
+
+### To pause all the processes within one or more running containers
+
+```shell
+docker container pause <container_id>
+```
+
+### To resume/unpause all the processes within one or more paused containers
+
+```shell
+docker container unpause <container_id>
+```
+
+### To kill one or more running containers instantly
+
+```shell
+docker container kill <container_id>
+```
+
+### To restart one or more containers
+
+```shell
+docker container restart <container_id>
+```
+
+### To inspect all the details for a given container id
+
+```shell
+docker container inspect <container_id>
+```
+
+### To fetch the logs of a given container id
+
+```shell
+docker container logs <container_id>
+```
+
+### To follow log output of a given container id
+
+```shell
+docker container logs -f <container_id>
+```
+
+### To run a bash shell inside a particular container
+
+```shell
+docker exec -it <container_id> /bin/bash
+```
+
+### To remove one or more containers based on container ids
+
+```shell
+docker container rm <container_id>
+```
+
+### To remove all stopped containers
+
+```shell
+docker container prune
+```
+
+### List all the docker volumes
+
+```shell
+docker volumes
+```
+
+### To remove unused volumes
+
+```shell
+docker volume prune
 ```
 
 ### To clean up any unused data in the docker.
@@ -126,11 +204,6 @@ docker pull <exact_image_name>
 
 ```shell
 docker system prune -f
-```
-
-### To remove unused volumes
-```shell
-docker volume prune
 ```
 
 ---
