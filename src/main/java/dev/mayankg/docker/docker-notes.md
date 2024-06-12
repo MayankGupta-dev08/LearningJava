@@ -1,6 +1,11 @@
 # Docker Notes
 
 - Note: replace the content with `<>` with appropriate value to run the cmd properly.
+- `Dockerfile` files are w/o any extensions and `docker-compose` files uses `yml` or `ymal` extensions.
+- Docker images can be generated using three (3) different ways:
+  - with a Dockerfile which has a set of sequential instructions (basic/ traditional approach)
+  - with the help of [Buildpacks](https://buildpacks.io), we don’t need to write a low-level Dockerfile
+  - with the help of GoogleJib (open source java tool maintained by Google for building docker images of java applications)
 
 1. Docker Commands
    1. commands related to docker images 
@@ -18,7 +23,7 @@
 - Execute the following cmd:
 
 ```shell
-docker build -t <image_name>:<image_tag> .
+docker build . -t <image_name>:<image_tag>
 ```
 
 ### List all the docker images present in your docker server
