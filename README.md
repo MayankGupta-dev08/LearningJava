@@ -2,6 +2,8 @@
 
 - [Java Developer](https://roadmap.sh/java)
 - [Backend Developer](https://roadmap.sh/backend)
+- [System Design](https://roadmap.sh/system-design)
+- [Backend Performance Best Practices](https://roadmap.sh/best-practices/backend-performance)
 
 ---
 
