@@ -1,5 +1,8 @@
 # Learning Java
 
+- [Java Developer](https://roadmap.sh/java)
+- [Backend Developer](https://roadmap.sh/backend)
+
 ---
 
 1. [Bit Manipulation](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/bit_manipulation)
