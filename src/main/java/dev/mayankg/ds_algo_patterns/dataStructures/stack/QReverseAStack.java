@@ -1,4 +1,6 @@
-package dev.mayankg.dataStructures.stack;
+package dev.mayankg.ds_algo_patterns.dataStructures.stack;
+
+import dev.mayankg.dataStructures.stack.QPushAtBottomOfStack;
 
 import java.util.Stack;
 

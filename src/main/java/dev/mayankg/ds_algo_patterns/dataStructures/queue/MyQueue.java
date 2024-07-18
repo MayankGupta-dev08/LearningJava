@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.queue;
+package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
 interface MyQueue {
     // Method to add an element to the queue

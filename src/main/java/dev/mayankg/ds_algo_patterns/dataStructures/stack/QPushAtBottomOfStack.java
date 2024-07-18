@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.stack;
+package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
 import java.util.Stack;
 

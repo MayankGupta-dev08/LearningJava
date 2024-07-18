@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.util;
+package dev.mayankg.ds_algo_patterns.dataStructures.util;
 
 public class Node<T> {
     T val;

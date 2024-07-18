@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.linkedList;
+package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 
 interface MyLinkedList<T> {
     void addFirst(T item);

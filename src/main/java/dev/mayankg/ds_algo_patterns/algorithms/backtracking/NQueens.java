@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.concepts.backtracking;
+package dev.mayankg.ds_algo_patterns.algorithms.backtracking;
 
 
 import java.util.List;

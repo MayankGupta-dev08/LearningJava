@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.binaryTree;
+package dev.mayankg.ds_algo_patterns.dataStructures.binaryTree;
 
 import dev.mayankg.dataStructures.util.Pair;
 

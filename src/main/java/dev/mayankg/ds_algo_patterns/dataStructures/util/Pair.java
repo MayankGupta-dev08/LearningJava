@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.util;
+package dev.mayankg.ds_algo_patterns.dataStructures.util;
 
 public class Pair<U, V> {
     private U _1;

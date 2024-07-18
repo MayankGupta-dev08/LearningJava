@@ -1,8 +1,10 @@
-package dev.mayankg.dataStructures.stack;
+package dev.mayankg.ds_algo_patterns.dataStructures.stack;
+
+import dev.mayankg.dataStructures.stack.MyStack;
 
 import java.util.NoSuchElementException;
 
-class StackImplArray implements MyStack {
+class StackImplArray implements dev.mayankg.dataStructures.stack.MyStack {
     private int[] arr;
     private int top;
     private int capacity;
