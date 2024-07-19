@@ -44,7 +44,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
     public void removeFirst() {
         if (isEmpty())
             throw new NoSuchElementException("LinkedList is empty!!");
-        if (size() == 1)
+        if (size == 1)
             head = tail = null;
         else
             head = head.next;
@@ -56,7 +56,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
         if (isEmpty())
             throw new NoSuchElementException("LinkedList is empty!!");
 
-        if (size() == 1) {
+        if (size == 1) {
             head = tail = null;
         } else {
             Node<T> temp = head;
@@ -74,7 +74,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
 
     @Override
     public boolean isEmpty() {
-        return size() == 0;
+        return size == 0;
     }
 
     @Override
@@ -91,7 +91,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
 
     @Override
     public T get(int idx) {
-        if (idx < 0 || idx >= size())
+        if (idx < 0 || idx >= size)
             throw new IndexOutOfBoundsException();
 
         Node<T> temp = head;
@@ -105,22 +105,65 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
 
     @Override
     public void remove(int idx) {
+        if (idx < 0 || idx >= size)
+            throw new IndexOutOfBoundsException();
 
+        if (idx == 0) {
+            removeFirst();
+        } else if (idx == size - 1) {
+            removeLast();
+        } else {
+            Node<T> temp = head;
+            for (int i = 0; i < idx - 1; i++)
+                temp = temp.next;
+            temp.next = temp.next.next;
+            size--;
+        }
     }
 
     @Override
     public void insert(int idx, T item) {
+        if (idx < 0 || idx >= size)
+            throw new IndexOutOfBoundsException();
 
+        if (idx == 0) {
+            addFirst(item);
+        } else if (idx == size) {
+            addLast(item);
+        } else {
+            Node<T> temp = head;
+            Node<T> node = new Node<>(item);
+            for (int i = 0; i < idx - 1; i++)
+                temp = temp.next;
+            node.next = temp.next;
+            temp.next = node;
+            size++;
+        }
     }
 
     @Override
     public void clear() {
-
+        Node<T> curr = head;
+        while (curr != null) {
+            Node<T> nxt = curr.next;
+            curr.val = null;
+            curr.next = null;
+            curr = nxt;
+        }
+        head = tail = null;
+        size = 0;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        StringBuilder sb = new StringBuilder("[");
+        Node<T> current = head;
+        while (current != null) {
+            sb.append(current.val);
+            if (current.next != null) sb.append(", ");
+            current = current.next;
+        }
+        return sb.append("]").toString();
     }
 
     @Override
