@@ -36,7 +36,7 @@
    8. [Bellman Ford](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/algorithms/bellmanFord)
 6. [Problem Solving Techniques](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques)
    1. [Two Pointers](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/twoPointers)
-   2. [sliding Window](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/slidingWindow)
+   2. [Sliding Window](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/slidingWindow)
    3. [Prefix Sum](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/prefixSum)
    4. [Fast & SlowPointer](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/fastAndSlowPointer)
    5. [Divide & Conquer](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/ds_algo_patterns/techniques/divideAndConquer)

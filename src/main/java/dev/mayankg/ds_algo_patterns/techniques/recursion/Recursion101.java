@@ -1,4 +1,4 @@
-package dev.mayankg.ds_algo_patterns.algorithms.recursion;
+package dev.mayankg.ds_algo_patterns.techniques.recursion;
 
 import dev.mayankg.ds_algo_patterns.dataStructures.util.Pair;
 

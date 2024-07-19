@@ -1,4 +1,4 @@
-package dev.mayankg.ds_algo_patterns.algorithms.recursion;
+package dev.mayankg.ds_algo_patterns.techniques.recursion;
 
 import java.util.ArrayList;
 
