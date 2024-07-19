@@ -1,8 +1,6 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
-import dev.mayankg.dataStructures.queue.MyQueue;
-
-class QueueImplLnkL implements dev.mayankg.dataStructures.queue.MyQueue {
+class QueueImplLnkL implements MyQueue {
     private Node head;
     private Node tail;
     private int size;

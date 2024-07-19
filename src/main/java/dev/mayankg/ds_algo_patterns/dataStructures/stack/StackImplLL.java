@@ -1,14 +1,12 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
-import dev.mayankg.dataStructures.stack.MyStack;
-
 import java.util.NoSuchElementException;
 
 
 /**
  * Stack implementation using LinkedList
  */
-class StackImplLL implements dev.mayankg.dataStructures.stack.MyStack {
+class StackImplLL implements MyStack {
     private Node head;
     private int size = 0;
 

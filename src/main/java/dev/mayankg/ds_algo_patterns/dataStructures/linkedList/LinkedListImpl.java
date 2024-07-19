@@ -1,13 +1,11 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 
-import dev.mayankg.dataStructures.linkedList.MyLinkedList;
-
 import java.util.NoSuchElementException;
 
 /**
  * My implementation of LinkedList
  */
-class LinkedListImpl<T> implements dev.mayankg.dataStructures.linkedList.MyLinkedList<T> {
+class LinkedListImpl<T> implements MyLinkedList<T> {
     Node<T> head;
     private int size;
 

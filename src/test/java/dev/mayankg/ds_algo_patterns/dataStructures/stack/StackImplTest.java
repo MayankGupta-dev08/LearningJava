@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.stack;
+package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

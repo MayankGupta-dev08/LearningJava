@@ -1,7 +1,5 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 
-import dev.mayankg.dataStructures.linkedList.LinkedListImpl;
-
 class LLMostFAQ {
 
     // O(n)

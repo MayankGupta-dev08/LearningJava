@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.concepts.recursion;
+package dev.mayankg.ds_algo_patterns.algorithms.recursion;
 
 
 import org.junit.jupiter.api.AfterEach;

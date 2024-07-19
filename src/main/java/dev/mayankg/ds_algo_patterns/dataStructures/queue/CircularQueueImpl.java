@@ -1,8 +1,6 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
-import dev.mayankg.dataStructures.queue.MyQueue;
-
-class CircularQueueImpl implements dev.mayankg.dataStructures.queue.MyQueue {
+class CircularQueueImpl implements MyQueue {
     private int[] arr;
     private int front;
     private int rear;

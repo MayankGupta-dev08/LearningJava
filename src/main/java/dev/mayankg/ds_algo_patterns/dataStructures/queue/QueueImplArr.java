@@ -1,11 +1,9 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
-import dev.mayankg.dataStructures.queue.MyQueue;
-
 /**
  * MyQueue implementation using array
  */
-class QueueImplArr implements dev.mayankg.dataStructures.queue.MyQueue {
+class QueueImplArr implements MyQueue {
     private int[] arr;
     private int size;
     private int rear;

@@ -1,6 +1,6 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.binaryTree;
 
-import dev.mayankg.dataStructures.util.Pair;
+import dev.mayankg.ds_algo_patterns.dataStructures.util.Pair;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

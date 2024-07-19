@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.queue;
+package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

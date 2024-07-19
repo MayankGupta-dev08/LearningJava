@@ -1,14 +1,12 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
-import dev.mayankg.dataStructures.stack.MyStack;
-
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
  * Stack implementation using ArrayList
  */
-class StackImplAL implements dev.mayankg.dataStructures.stack.MyStack {
+class StackImplAL implements MyStack {
     private ArrayList<Integer> al;
     private int top;
 

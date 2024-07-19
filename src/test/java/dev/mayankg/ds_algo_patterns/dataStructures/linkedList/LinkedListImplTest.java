@@ -1,4 +1,4 @@
-package dev.mayankg.dataStructures.linkedList;
+package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 
 
 import org.junit.jupiter.api.Test;
