@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @SuppressWarnings({"unused", "unchecked"})
-public class DynamicArray<T> implements Iterable<T> {
+class DynamicArray<T> implements Iterable<T> {
     private static final int DEFAULT_CAPACITY = 1 << 3; //8
 
     private T[] arr;
