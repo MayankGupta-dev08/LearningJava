@@ -3,7 +3,7 @@ package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 import java.util.NoSuchElementException;
 
 /**
- * My implementation of LinkedList
+ * My implementation of LinkedList where we have only head and no tail.
  */
 class LinkedListImpl<T> implements MyLinkedList<T> {
     Node<T> head;
@@ -122,7 +122,7 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
     }
 
     @Override
-    public int getSize() {
+    public int size() {
         return size;
     }
 
@@ -132,10 +132,20 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
     }
 
     @Override
-    public T peek() {
+    public T first() {
         if (isEmpty()) return null;
+        return head.val;
+    }
 
+    @Override
+    public T last() {
+        if (isEmpty()) return null;
         return get(size - 1);
+    }
+
+    @Override
+    public void clear() {
+        //TODO: add missing implementation
     }
 
     private Node<T> addInEmptyLinkedList(T item) {

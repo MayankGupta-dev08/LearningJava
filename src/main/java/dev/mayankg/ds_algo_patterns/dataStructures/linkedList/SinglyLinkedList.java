@@ -1,0 +1,147 @@
+package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
+
+import dev.mayankg.ds_algo_patterns.dataStructures.util.Node;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+/**
+ * Node has val, next and prev. <br>
+ * Singly Linked List with head and tail nodes. <br>
+ * For SinglyLinkedList we won't be using prev, and it will be null at all times.
+ */
+@SuppressWarnings({"unused"})
+class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
+    private Node<T> head = null;
+    private Node<T> tail = null;
+    private int size = 0;
+
+    @Override
+    public void addFirst(T item) {
+        Node<T> node = new Node<>(item);
+        if (isEmpty()) {
+            head = tail = node;
+        } else {
+            node.next = head;
+            head = node;
+        }
+        size++;
+    }
+
+    @Override
+    public void addLast(T item) {
+        Node<T> node = new Node<>(item);
+        if (isEmpty()) {
+            head = tail = node;
+        } else {
+            tail.next = node;
+            tail = node;
+        }
+        size++;
+    }
+
+    @Override
+    public void removeFirst() {
+        if (isEmpty())
+            throw new NoSuchElementException("LinkedList is empty!!");
+        if (size() == 1)
+            head = tail = null;
+        else
+            head = head.next;
+        size--;
+    }
+
+    @Override
+    public void removeLast() {
+        if (isEmpty())
+            throw new NoSuchElementException("LinkedList is empty!!");
+
+        if (size() == 1) {
+            head = tail = null;
+        } else {
+            Node<T> temp = head;
+            while (temp.next != tail) temp = temp.next;
+            temp.next = null;
+            tail = temp;
+        }
+        size--;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    @Override
+    public T first() {
+        if (isEmpty()) return null;
+        return head.val;
+    }
+
+    @Override
+    public T last() {
+        if (isEmpty()) return null;
+        return tail.val;
+    }
+
+    @Override
+    public T get(int idx) {
+        if (idx < 0 || idx >= size())
+            throw new IndexOutOfBoundsException();
+
+        Node<T> temp = head;
+        int counter = 0;
+        while (temp != null && counter != idx) {
+            temp = temp.next;
+            counter++;
+        }
+        return temp != null ? temp.val : null;
+    }
+
+    @Override
+    public void remove(int idx) {
+
+    }
+
+    @Override
+    public void insert(int idx, T item) {
+
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node<T> currentNode = head;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext())
+                    throw new NoSuchElementException();
+
+                T value = currentNode.val;
+                currentNode = currentNode.next;
+                return value;
+            }
+        };
+    }
+}
