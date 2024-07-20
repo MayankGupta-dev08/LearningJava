@@ -1,47 +1,50 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.queue;
 
-class CircularQueueImpl implements MyQueue {
-    private int[] arr;
+/**
+ * Circular Queue implementation using Array
+ */
+@SuppressWarnings({"unused", "unchecked"})
+class CircularQueue<T> implements MyQueue<T> {
+    private T[] arr;
     private int front;
     private int rear;
     private int size;
     private int capacity;
 
-    public CircularQueueImpl(int capacity) {
+    public CircularQueue(int capacity) {
+        if (capacity <= 0)
+            throw new IllegalArgumentException("Capacity must be greater than zero");
+
         this.capacity = capacity;
         this.front = -1;
         this.rear = -1;
-        this.arr = new int[capacity];
+        this.arr = (T[]) new Object[capacity];
         this.size = 0;
     }
 
     @Override
-    public void enqueue(int item) {
-        if (isFull()) {
-            System.out.println("Queue is full! Can't add item: " + item);
-            return;
-        }
+    public void enqueue(T item) {
+        if (isFull())
+            throw new IllegalStateException("Queue is full!");
 
         if (isEmpty()) front = 0;
 
         rear = (rear + 1) % capacity;
         arr[rear] = item;
         size++;
-        System.out.println(item + ": added to the queue.");
     }
 
     @Override
-    public int dequeue() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty! Can't delete.");
-            return -1;
-        }
+    public T dequeue() {
+        if (isEmpty())
+            throw new IllegalStateException("Empty Queue");
 
-        int removedItem = arr[front];
-        if (front == rear)
+        T removedItem = arr[front];
+        if (front == rear) {
             front = rear = -1;
-        else
+        } else {
             front = (front + 1) % capacity;
+        }
 
         size--;
         return removedItem;
@@ -49,20 +52,19 @@ class CircularQueueImpl implements MyQueue {
 
     @Override
     public boolean isEmpty() {
-        return front == -1 && rear == -1;
+        return size == 0;
     }
 
     @Override
     public boolean isFull() {
-        return (rear + 1) % capacity == front;
+        return size == capacity;
     }
 
     @Override
-    public int peek() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty! Cannot peek.");
-            return -1;
-        }
+    public T peek() {
+        if (isEmpty())
+            throw new IllegalStateException("Empty Queue");
+
         return arr[front];
     }
 
@@ -72,11 +74,18 @@ class CircularQueueImpl implements MyQueue {
     }
 
     @Override
+    public void clear() {
+        while (!isEmpty()) {
+            dequeue();
+        }
+    }
+
+    @Override
     public String toString() {
         if (isEmpty())
             return "Queue is empty.";
 
-        StringBuilder sb = new StringBuilder("Queue: [");
+        StringBuilder sb = new StringBuilder("[");
         int i = front;
         int count = 0;
         while (count < size) {
