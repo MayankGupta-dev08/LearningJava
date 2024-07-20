@@ -38,7 +38,7 @@ class LinkedListImplTest {
     void testRemoveFirst() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         assertEquals("This", ll.get(0));
-        ll.removeFirst();
+        assertEquals("This", ll.removeFirst());
         assertEquals("is", ll.get(0));
     }
 
@@ -46,7 +46,7 @@ class LinkedListImplTest {
     void testRemoveLast() {
         LinkedListImpl<String> ll = createALinkedListForTest();
         assertEquals("list", ll.get(ll.size() - 1));
-        ll.removeLast();
+        assertEquals("list", ll.removeLast());
         assertEquals("linked", ll.get(ll.size() - 1));
     }
 

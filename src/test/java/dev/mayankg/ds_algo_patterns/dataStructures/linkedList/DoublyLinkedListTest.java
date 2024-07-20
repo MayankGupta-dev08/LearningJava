@@ -1,5 +1,6 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.linkedList;
 
+import dev.mayankg.ds_algo_patterns.dataStructures.util.Node;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,13 +8,13 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SinglyLinkedListTest {
+class DoublyLinkedListTest {
 
-    private SinglyLinkedList<Integer> list;
+    private DoublyLinkedList<Integer> list;
 
     @BeforeEach
     void setUp() {
-        list = new SinglyLinkedList<>();
+        list = new DoublyLinkedList<>();
     }
 
     @Test
@@ -46,13 +47,12 @@ class SinglyLinkedListTest {
     void testRemoveFirst() {
         list.addLast(1);
         list.addLast(2);
-        assertEquals(1, list.removeFirst());
-
+        list.removeFirst();
         assertEquals(2, list.first());
         assertEquals(2, list.last());
         assertEquals(1, list.size());
 
-        assertEquals(2, list.removeFirst());
+        list.removeFirst();
         assertTrue(list.isEmpty());
     }
 
@@ -65,13 +65,12 @@ class SinglyLinkedListTest {
     void testRemoveLast() {
         list.addLast(1);
         list.addLast(2);
-        assertEquals(2, list.removeLast());
-
+        list.removeLast();
         assertEquals(1, list.first());
         assertEquals(1, list.last());
         assertEquals(1, list.size());
 
-        assertEquals(1, list.removeLast());
+        list.removeLast();
         assertTrue(list.isEmpty());
     }
 
@@ -180,5 +179,49 @@ class SinglyLinkedListTest {
             assertEquals(expected[i], value);
             i++;
         }
+    }
+
+    @Test
+    void testPrevPointer() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+
+        Node<Integer> node = list.getHead();
+        assertNull(node.prev);
+        node = node.next;
+        assertEquals(1, node.prev.val);
+        node = node.next;
+        assertEquals(2, node.prev.val);
+    }
+
+    @Test
+    void testRemoveMiddleElement() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+
+        list.remove(2);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(4, list.get(2));
+        assertEquals(4, list.getNode(1).next.val);
+        assertEquals(2, list.getNode(2).prev.val);
+    }
+
+    @Test
+    void testInsertAtMiddle() {
+        list.addLast(1);
+        list.addLast(3);
+
+        list.insert(1, 2);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
+        assertEquals(2, list.getNode(0).next.val);
+        assertEquals(2, list.getNode(2).prev.val);
     }
 }

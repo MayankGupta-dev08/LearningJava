@@ -41,21 +41,25 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
     }
 
     @Override
-    public void removeFirst() {
+    public T removeFirst() {
         if (isEmpty())
             throw new NoSuchElementException("LinkedList is empty!!");
+
+        T data = head.val;
         if (size == 1)
             head = tail = null;
         else
             head = head.next;
         size--;
+        return data;
     }
 
     @Override
-    public void removeLast() {
+    public T removeLast() {
         if (isEmpty())
             throw new NoSuchElementException("LinkedList is empty!!");
 
+        T data = tail.val;
         if (size == 1) {
             head = tail = null;
         } else {
@@ -65,6 +69,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
             tail = temp;
         }
         size--;
+        return data;
     }
 
     @Override
@@ -123,7 +128,7 @@ class SinglyLinkedList<T> implements MyLinkedList<T>, Iterable<T> {
 
     @Override
     public void insert(int idx, T item) {
-        if (idx < 0 || idx >= size)
+        if (idx < 0 || idx > size)
             throw new IndexOutOfBoundsException();
 
         if (idx == 0) {

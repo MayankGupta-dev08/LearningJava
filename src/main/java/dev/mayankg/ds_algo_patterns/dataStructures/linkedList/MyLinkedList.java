@@ -6,8 +6,8 @@ interface MyLinkedList<T> {
     boolean isEmpty();
     void addFirst(T item);
     void addLast(T item);
-    void removeFirst();
-    void removeLast();
+    T removeFirst();
+    T removeLast();
     void remove(int idx);
     void insert(int idx, T item);
     T first();

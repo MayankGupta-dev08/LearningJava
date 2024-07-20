@@ -36,28 +36,33 @@ class LinkedListImpl<T> implements MyLinkedList<T> {
     }
 
     @Override
-    public void removeFirst() {
+    public T removeFirst() {
         if (isEmpty()) throw new NoSuchElementException("LinkedList is empty!!");
 
+        T data = head.val;
         head = head.next;
         size--; //garbage collector will take care of the prev head
+        return data;
     }
 
     @Override
-    public void removeLast() {
+    public T removeLast() {
         if (isEmpty()) throw new NoSuchElementException("LinkedList is empty!!");
 
         Node<T> currNode = head;
         size--;
         if (currNode.next == null) { //only 1 node in LL
+            T data = head.val;
             head = null;
-            return;
+            return data;
         }
 
         while (currNode.next.next != null) {    //more than 1 node in LL
             currNode = currNode.next;
         }   //to reach to 2ndLastNode
+        T data = currNode.next.val;
         currNode.next = null;
+        return data;
     }
 
     @Override
