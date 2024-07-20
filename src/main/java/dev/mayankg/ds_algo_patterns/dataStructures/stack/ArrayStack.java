@@ -2,19 +2,23 @@ package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
 import java.util.NoSuchElementException;
 
-class StackImplArray implements MyStack {
-    private int[] arr;
-    private int top;
-    private int capacity;
+/**
+ * Stack implementation using Array
+ */
+@SuppressWarnings({"unused", "unchecked"})
+class ArrayStack<T> implements MyStack<T> {
+    private T[] arr;
+    private int top;    // pointer (index) on the ArrayList for getting the top of stack
+    private int capacity;   // actual capacity of the array
 
-    public StackImplArray(int capacity) {
+    public ArrayStack(int capacity) {
         this.capacity = capacity;
-        this.arr = new int[capacity];
+        this.arr = (T[]) new Object[capacity];
         this.top = -1;
     }
 
     @Override
-    public void push(int item) {
+    public void push(T item) {
         if (isFull())
             throw new IllegalStateException("Stack Overflow!!");
 
@@ -22,7 +26,7 @@ class StackImplArray implements MyStack {
     }
 
     @Override
-    public int pop() {
+    public T pop() {
         if (isEmpty())
             throw new NoSuchElementException("Stack is empty");
 
@@ -40,7 +44,7 @@ class StackImplArray implements MyStack {
     }
 
     @Override
-    public int top() {
+    public T top() {
         if (isEmpty())
             throw new NoSuchElementException("Stack is empty!!");
 
@@ -57,7 +61,7 @@ class StackImplArray implements MyStack {
         if (isEmpty())
             return "Stack is empty!!";
 
-        StringBuilder sb = new StringBuilder("Stack: [");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i <= top; i++) {
             sb.append(arr[i]);
             if (i != top) sb.append(", ");

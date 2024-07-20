@@ -6,23 +6,23 @@ import java.util.NoSuchElementException;
 /**
  * Stack implementation using ArrayList
  */
-class StackImplAL implements MyStack {
-    private ArrayList<Integer> al;
-    private int top;
+class ArrayListStack<T> implements MyStack<T> {
+    private ArrayList<T> al;
+    private int top;    // pointer (index) on the ArrayList for getting the top of stack
 
-    public StackImplAL() {
+    public ArrayListStack() {
         al = new ArrayList<>();
         top = -1;
     }
 
     @Override
-    public void push(int item) {
-        top++;
+    public void push(T item) {
         al.add(item);
+        top++;
     }
 
     @Override
-    public int pop() {
+    public T pop() {
         if (isEmpty())
             throw new NoSuchElementException("Stack is empty!!");
         return al.remove(top--);
@@ -34,7 +34,7 @@ class StackImplAL implements MyStack {
     }
 
     @Override
-    public int top() {
+    public T top() {
         if (isEmpty())
             throw new NoSuchElementException("Stack is empty!!");
         return al.get(top);
@@ -50,7 +50,7 @@ class StackImplAL implements MyStack {
         if (isEmpty())
             return "Stack is empty!!";
 
-        StringBuilder sb = new StringBuilder("Stack: [");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i <= top; i++) {
             sb.append(al.get(i));
             if (i != top) sb.append(", ");
@@ -61,6 +61,7 @@ class StackImplAL implements MyStack {
     @Override
     public void clear() {
         if (isEmpty()) return;
-        while (!isEmpty()) pop();
+        al.clear();
+        top = -1;
     }
 }

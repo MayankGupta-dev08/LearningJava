@@ -1,20 +1,12 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.stack;
 
-interface MyStack {
-    // Method to add an element to the queue
-    void push(int item);
+interface MyStack<T> {
 
-    // Method to remove an element from the queue
-    int pop();
-
-    // Method to check if the queue is empty
-    boolean isEmpty();
-
-    // Method to get the top element from queue
-    int top();
-
+    void push(T item);     // Method to add an element to the queue
+    T pop();  // Method to remove an element from the queue
+    T top();  // Method to get the top element from queue
     int size();
-
+    boolean isEmpty();  // Method to check if the queue is empty
     void clear();
 
     default boolean isFull() {
