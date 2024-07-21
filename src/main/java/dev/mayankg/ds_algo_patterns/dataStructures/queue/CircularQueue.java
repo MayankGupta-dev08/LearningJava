@@ -40,11 +40,8 @@ class CircularQueue<T> implements MyQueue<T> {
             throw new IllegalStateException("Empty Queue");
 
         T removedItem = arr[front];
-        if (front == rear) {
-            front = rear = -1;
-        } else {
-            front = (front + 1) % capacity;
-        }
+        if (front == rear) front = rear = -1;
+        else front = (front + 1) % capacity;
 
         size--;
         return removedItem;
@@ -75,9 +72,8 @@ class CircularQueue<T> implements MyQueue<T> {
 
     @Override
     public void clear() {
-        while (!isEmpty()) {
+        while (!isEmpty())
             dequeue();
-        }
     }
 
     @Override
@@ -90,9 +86,8 @@ class CircularQueue<T> implements MyQueue<T> {
         int count = 0;
         while (count < size) {
             sb.append(arr[i]);
-            if (count < size - 1) {
-                sb.append(", ");
-            }
+            if (count < size - 1) sb.append(", ");
+
             i = (i + 1) % capacity;
             count++;
         }
