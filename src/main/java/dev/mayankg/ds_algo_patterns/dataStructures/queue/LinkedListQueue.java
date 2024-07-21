@@ -33,7 +33,7 @@ class LinkedListQueue<T> implements MyQueue<T>, Iterable<T> {
         if (head == tail) {
             tail = null;  // single node remaining
         }
-        head = head.next;
+        head = head.next;   // move head to next node (null for last node)
         size--;
         return front;
     }
