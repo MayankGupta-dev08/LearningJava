@@ -93,7 +93,7 @@ class CircularQueueTest {
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
-        assertEquals("Queue: [1, 2, 3]", queue.toString());
+        assertEquals("[1, 2, 3]", queue.toString());
     }
 
     @Test
@@ -115,7 +115,7 @@ class CircularQueueTest {
         queue.enqueue(5);
         queue.dequeue();
         queue.enqueue(6);
-        assertEquals("Queue: [2, 3, 4, 5, 6]", queue.toString());
+        assertEquals("[2, 3, 4, 5, 6]", queue.toString());
     }
 
     @Test
