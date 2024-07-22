@@ -6,6 +6,8 @@
 - [Backend Performance Best Practices](https://roadmap.sh/best-practices/backend-performance)
 
 ---
+![wordcloud](https://github.com/user-attachments/assets/cb22294c-291b-4c8d-9cc6-9ed6ad175e6d)
+---
 
 1. [Bit Manipulation](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/bit_manipulation)
 2. [Clean Coding](https://github.com/MayankGupta-dev08/LearningJava/tree/master/src/main/java/dev/mayankg/clean_coding)
