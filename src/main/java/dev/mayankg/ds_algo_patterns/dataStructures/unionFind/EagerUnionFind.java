@@ -1,20 +1,26 @@
 package dev.mayankg.ds_algo_patterns.dataStructures.unionFind;
 
 /**
- * Eager approach to Union Find data structure aka QuickFindUF
+ * Eager approach to Union Find data structure aka QuickFindUF <br>
+ * Time complexity: O(n) for union and O(1) for find <br>
+ * Space complexity: O(n) <br>
+ * Drawback:
+ * - Union is too expensive (It takes N 2 array accesses to process a sequence of N union commands on N objects.)
+ * - Trees are flat, but too expensive to keep them flat.
  */
 @SuppressWarnings({"unused"})
 class EagerUnionFind implements UF<Integer> {
     private int[] ids;
-    private int capacity;
-    private int count;
+    private int N;
 
+    /**
+     * @param capacity : [0, 1, ..., N-1]
+     */
     public EagerUnionFind(int capacity) {
-        this.capacity = capacity;
-        this.count = 0;
-        this.ids = new int[capacity];
-        for (int i = 0; i < capacity; i++) {
-            ids[i] = i;
+        this.N = capacity;
+        this.ids = new int[N];
+        for (int i = 0; i < N; i++) {
+            ids[i] = i; //each element is its own parent (initially)
         }
     }
 
@@ -25,10 +31,9 @@ class EagerUnionFind implements UF<Integer> {
 
         if (pId == qId) return;
 
-        for (int i = 0; i < capacity; i++) {
+        for (int i = 0; i < N; i++) {
             if (ids[i] == pId) ids[i] = qId;
         }
-        count--;
     }
 
     @Override
@@ -39,10 +44,5 @@ class EagerUnionFind implements UF<Integer> {
     @Override
     public int find(Integer element) {
         return ids[element];
-    }
-
-    @Override
-    public int count() {
-        return count;
     }
 }
