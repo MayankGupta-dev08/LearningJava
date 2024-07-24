@@ -5,7 +5,7 @@ package dev.mayankg.ds_algo_patterns.dataStructures.unionFind;
  * Time complexity: O(n) for union and O(1) for find <br>
  * Space complexity: O(n) <br>
  * Drawback:
- * - Union is too expensive (It takes N 2 array accesses to process a sequence of N union commands on N objects.)
+ * - Union is too expensive (It takes N^2 array accesses to process a sequence of N union commands on N objects.)
  * - Trees are flat, but too expensive to keep them flat.
  */
 @SuppressWarnings({"unused"})
@@ -20,7 +20,7 @@ class EagerUnionFind implements UF<Integer> {
         this.N = capacity;
         this.ids = new int[N];
         for (int i = 0; i < N; i++) {
-            ids[i] = i; //each element is its own parent (initially)
+            ids[i] = i; // Each element is its own parent (initially)
         }
     }
 
@@ -31,6 +31,7 @@ class EagerUnionFind implements UF<Integer> {
 
         if (pId == qId) return;
 
+        // Merge components by changing all entries with id pId to qId
         for (int i = 0; i < N; i++) {
             if (ids[i] == pId) ids[i] = qId;
         }

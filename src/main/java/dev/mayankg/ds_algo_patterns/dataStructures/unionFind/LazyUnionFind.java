@@ -2,6 +2,7 @@ package dev.mayankg.ds_algo_patterns.dataStructures.unionFind;
 
 /**
  * Lazy approach to Union Find data structure aka QuickUnionUF <br>
+ * ids[i] is the parent of i, & using chain or parents we can reach the root (ultimate prent of i) <br>
  * Time complexity: O(1) for union and O(n) for find <br>
  * Space complexity: O(n) <br>
  * Drawback:
@@ -18,7 +19,7 @@ class LazyUnionFind implements UF<Integer> {
     public LazyUnionFind(int size) {
         this.ids = new int[size];
         for (int i = 0; i < size; i++) {
-            ids[i] = i; //each element is its own root/parent (initially)
+            ids[i] = i; // each element is its own root/parent (initially)
         }
     }
 
@@ -27,12 +28,12 @@ class LazyUnionFind implements UF<Integer> {
      */
     @Override
     public void union(Integer p, Integer q) {
-        int pId = find(p);
-        int qId = find(q);
+        int pRoot = find(p);
+        int qRoot = find(q);
 
-        if (pId == qId) return;
+        if (pRoot == qRoot) return;
 
-        ids[p] = qId;
+        ids[pRoot] = qRoot;
     }
 
     @Override
@@ -46,7 +47,6 @@ class LazyUnionFind implements UF<Integer> {
     @Override
     public int find(Integer e) {
         if (ids[e] == e) return e;
-
         return find(ids[e]);
     }
 }
