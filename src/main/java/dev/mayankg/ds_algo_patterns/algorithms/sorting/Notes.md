@@ -72,3 +72,18 @@
 
 - **Non-comparison-based Sorting Algorithms**: These algorithms sort data without directly comparing elements.
     - Examples: Counting Sort, Radix Sort, Bucket Sort.
+
+---
+
+## Interview Questions and Answers
+
+1. What is the difference between Merge Sort and Quick Sort?
+Answer:
+   1. Merge Sort divides the array into two halves, sorts the two halves independently, and then merges the two sorted halves. 
+   2. Quick Sort picks an element as pivot and partitions the given array around the picked pivot. The key process in Quick Sort is partition(). 
+   3. The worst-case time complexity of Quick Sort is O(n^2) {when the pivot is always the smallest or the largest element} whereas the worst-case time complexity of Merge Sort is O(n log n).
+   4. Merge Sort is stable and Quick Sort is not stable.
+   5. Merge Sort requires O(n) extra space whereas Quick Sort requires O(log n) extra space.
+   6. Merge Sort is more efficient and works faster than Quick Sort in case of larger input sizes.
+   7. Quick Sort is more efficient and works faster than Merge Sort in case of smaller input sizes.
+   8. Merge Sort is more suitable for linked lists, and Quick Sort is more suitable for arrays.
