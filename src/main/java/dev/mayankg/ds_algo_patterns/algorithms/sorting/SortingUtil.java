@@ -1,5 +1,7 @@
 package dev.mayankg.ds_algo_patterns.algorithms.sorting;
 
+import java.util.Comparator;
+
 @SuppressWarnings("unused")
 final class SortingUtil {
 
@@ -33,6 +35,13 @@ final class SortingUtil {
             throw new IllegalArgumentException("Arguments must not be null");
 
         return a.compareTo(b) < 0;
+    }
+
+    static <T> boolean less(T a, T b, Comparator<T> comparator) {
+        if (a == null || b == null)
+            throw new IllegalArgumentException("Arguments must not be null");
+
+        return comparator.compare(a, b) < 0;
     }
 
     /**
