@@ -6,7 +6,7 @@ package dev.mayankg.ds_algo_patterns.dataStructures.priorityqueue;
  * Space complexity: O(n) <br>
  * MinPQ: Each parent node is smaller than its children.
  */
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unchecked", "unused"})
 class MinPriorityQueue<T extends Comparable<T>> implements MinPQ<T> {
     private T[] pq;
     private int N = 0;  // No. of elements in the PQ, 1-based index
@@ -17,12 +17,16 @@ class MinPriorityQueue<T extends Comparable<T>> implements MinPQ<T> {
 
     @Override
     public void insert(T item) {
+        if (N == pq.length - 1) resize(2 * pq.length);
         pq[++N] = item;
         swim(N);    // heapify
     }
 
     @Override
     public T delMin() {
+        if (isEmpty())
+            throw new IllegalStateException("Priority queue underflow");
+
         T min = pq[1];
         swap(1, N--);
         sink(1);
@@ -42,6 +46,9 @@ class MinPriorityQueue<T extends Comparable<T>> implements MinPQ<T> {
 
     @Override
     public T min() {
+        if (isEmpty())
+            throw new IllegalStateException("Priority queue underflow");
+
         return pq[1];
     }
 
@@ -84,5 +91,11 @@ class MinPriorityQueue<T extends Comparable<T>> implements MinPQ<T> {
         T temp = pq[i];
         pq[i] = pq[j];
         pq[j] = temp;
+    }
+
+    private void resize(int capacity) {
+        T[] temp = (T[]) new Comparable[capacity];
+        for (int i = 1; i <= N; i++) temp[i] = pq[i];
+        pq = temp;
     }
 }

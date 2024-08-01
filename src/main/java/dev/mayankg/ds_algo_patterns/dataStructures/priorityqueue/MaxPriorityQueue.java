@@ -13,17 +13,21 @@ class MaxPriorityQueue<T extends Comparable<T>> implements MaxPQ<T> {
     private int N = 0;  // No. of elements in the PQ, 1-based index
 
     public MaxPriorityQueue(int capacity) {
-        pq = (T[]) new Object[capacity + 1];
+        pq = (T[]) new Comparable[capacity + 1];
     }
 
     @Override
     public void insert(T item) {
+        if (N == pq.length - 1) resize(2 * pq.length);
         pq[++N] = item;
         swim(N);    // heapify
     }
 
     @Override
     public T delMax() {
+        if (isEmpty())
+            throw new IllegalStateException("Priority queue underflow");
+
         T max = pq[1];
         swap(1, N--);
         sink(1);
@@ -43,6 +47,9 @@ class MaxPriorityQueue<T extends Comparable<T>> implements MaxPQ<T> {
 
     @Override
     public T max() {
+        if (isEmpty())
+            throw new IllegalStateException("Priority queue underflow");
+
         return pq[1];
     }
 
@@ -85,5 +92,11 @@ class MaxPriorityQueue<T extends Comparable<T>> implements MaxPQ<T> {
         T temp = pq[i];
         pq[i] = pq[j];
         pq[j] = temp;
+    }
+
+    private void resize(int capacity) {
+        T[] temp = (T[]) new Comparable[capacity];
+        for (int i = 1; i <= N; i++) temp[i] = pq[i];
+        pq = temp;
     }
 }
