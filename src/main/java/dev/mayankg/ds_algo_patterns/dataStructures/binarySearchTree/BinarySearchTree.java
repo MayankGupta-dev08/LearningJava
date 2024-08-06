@@ -98,7 +98,7 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
 
     private Node<K, V> max(Node<K, V> node) {
         if (node.getRight() == null) return node;
-        return min(node.getRight());
+        return max(node.getRight());
     }
 
     @Override
@@ -124,12 +124,14 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
             node.setLeft(temp.getLeft());
         }
 
+        node.setCount(1 + size(node.getLeft()) + size(node.getRight()));
         return node;
     }
 
     private Node<K, V> deleteMin(Node<K, V> node) {
         if (node.getLeft() == null) return node.getRight();
         node.setLeft(deleteMin(node.getLeft()));
+        node.setCount(1 + size(node.getLeft()) + size(node.getRight()));
         return node;
     }
 
@@ -139,18 +141,18 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
      */
     @Override
     public K floor(K key) {
-        return floor(root, key);
+        Node<K, V> node = floor(root, key);
+        return node == null ? null : node.getKey();
     }
 
-    private K floor(Node<K, V> node, K key) {
+    private Node<K, V> floor(Node<K, V> node, K key) {
         if (node == null) return null;
+
         int cmp = key.compareTo(node.getKey());
-        if (cmp == 0) return node.getKey();
-        else if (cmp < 0) return floor(node.getLeft(), key);
-        else {
-            K temp = floor(node.getRight(), key);
-            return temp != null ? temp : node.getKey();
-        }
+        if (cmp == 0) return node;
+        if (cmp < 0) return floor(node.getLeft(), key);
+        Node<K, V> temp = floor(node.getRight(), key);
+        return temp != null ? temp : node;
     }
 
     /**
@@ -159,18 +161,18 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
      */
     @Override
     public K ceil(K key) {
-        return ceil(root, key);
+        Node<K, V> node = ceil(root, key);
+        return node == null ? null : node.getKey();
     }
 
-    private K ceil(Node<K, V> node, K key) {
+    private Node<K, V> ceil(Node<K, V> node, K key) {
         if (node == null) return null;
+
         int cmp = key.compareTo(node.getKey());
-        if (cmp == 0) return node.getKey();
-        else if (cmp > 0) return ceil(node.getRight(), key);
-        else {
-            K temp = ceil(node.getLeft(), key);
-            return temp != null ? temp : node.getKey();
-        }
+        if (cmp == 0) return node;
+        if (cmp > 0) return ceil(node.getRight(), key);
+        Node<K, V> temp = ceil(node.getLeft(), key);
+        return temp != null ? temp : node;
     }
 
     /**
@@ -185,14 +187,14 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
     private int rank(Node<K, V> node, K key) {
         if (node == null) return 0;
         int cmp = key.compareTo(node.getKey());
-        if (cmp < 0) rank(node.getLeft(), key);
+        if (cmp < 0) return rank(node.getLeft(), key);
         if (cmp > 0) return 1 + size(node.getLeft()) + rank(node.getRight(), key);
         return size(node.getLeft());
     }
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        return keys().iterator();
     }
 
     public Iterable<K> keys() {

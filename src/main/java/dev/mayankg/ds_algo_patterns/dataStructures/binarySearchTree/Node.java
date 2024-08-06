@@ -10,14 +10,13 @@ class Node<K extends Comparable<K>, V> {
     private Node<K, V> right;
     private int count;  // Number of nodes in the subtree rooted at this node (including this node)
 
-    public Node(K key, V value) {
+    private Node(K key, V value) {
         this.key = key;
         this.value = value;
     }
 
     public Node(K key, V value, int count) {
-        this.key = key;
-        this.value = value;
+        this(key, value);
         this.count = count;
     }
 
