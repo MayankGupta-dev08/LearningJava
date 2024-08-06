@@ -70,15 +70,15 @@ class BinarySearchTreeTest {
     @Test
     void testFloor() {
         assertEquals(4, bst.floor(4));
-        assertEquals(4, bst.floor(5));
+        assertEquals(5, bst.floor(5));
         assertEquals(8, bst.floor(9));
         assertNull(bst.floor(1));
     }
 
     @Test
     void testCeil() {
-        assertEquals(4, bst.ceil(3));
-        assertEquals(6, bst.ceil(6));
+        assertEquals(3, bst.ceil(3));
+        assertEquals(2, bst.ceil(1));
         assertEquals(7, bst.ceil(7));
         assertNull(bst.ceil(9));
     }
@@ -88,7 +88,7 @@ class BinarySearchTreeTest {
         assertEquals(0, bst.rank(2));
         assertEquals(1, bst.rank(3));
         assertEquals(4, bst.rank(6));
-        assertEquals(7, bst.rank(8));
+        assertEquals(6, bst.rank(8));
     }
 
     @Test

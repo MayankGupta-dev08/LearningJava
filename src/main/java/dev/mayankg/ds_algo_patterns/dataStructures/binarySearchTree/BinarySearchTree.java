@@ -186,10 +186,12 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
 
     private int rank(Node<K, V> node, K key) {
         if (node == null) return 0;
+
         int cmp = key.compareTo(node.getKey());
         if (cmp < 0) return rank(node.getLeft(), key);
         if (cmp > 0) return 1 + size(node.getLeft()) + rank(node.getRight(), key);
-        return size(node.getLeft());
+
+        return size(node.getLeft());    //if(key==node.key) --> rank=size(node.left)
     }
 
     @Override
