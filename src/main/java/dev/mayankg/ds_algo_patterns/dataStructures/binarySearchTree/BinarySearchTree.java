@@ -106,6 +106,13 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
         root = delete(root, key);
     }
 
+    /**
+     * Delete a node with the given key from the binary search tree <br>
+     * Time Complexity: O(log n) <br>
+     * If less, go left; if greater, go right; if equal, delete the node; if not found, do nothing. <br>
+     * If the node no child or only one child, return the other child (could be null);
+     * If the node has both children, return the min of the right subtree and delete the min from the right subtree
+     */
     private Node<K, V> delete(Node<K, V> node, K key) {
         if (node == null) return null;
 
@@ -115,21 +122,27 @@ class BinarySearchTree<K extends Comparable<K>, V> implements BST<K, V>, Iterabl
         else if (comp > 0)
             node.setRight(delete(node.getRight(), key));
         else {
+            // If no or single child, return the other child
             if (node.getRight() == null) return node.getLeft();
             if (node.getLeft() == null) return node.getRight();
 
-            Node<K, V> temp = node;
-            node = min(temp.getRight());
-            node.setRight(deleteMin(temp.getRight()));
-            node.setLeft(temp.getLeft());
+            Node<K, V> temp = node; // If both children are present, replace the node with the min of the right subtree
+            node = min(temp.getRight());    // Node now has the min of the right subtree
+            node.setRight(deleteMin(temp.getRight()));  // Node's right subtree is the right subtree of the original node after deleting the min
+            node.setLeft(temp.getLeft());   // Node's left subtree is the left subtree of the original node
         }
 
         node.setCount(1 + size(node.getLeft()) + size(node.getRight()));
         return node;
     }
 
+    /**
+     * If the node has no left child (min node reached), return the node's right child <br>
+     * Else, go left and return the correct left node with updated count <br>
+     */
     private Node<K, V> deleteMin(Node<K, V> node) {
         if (node.getLeft() == null) return node.getRight();
+
         node.setLeft(deleteMin(node.getLeft()));
         node.setCount(1 + size(node.getLeft()) + size(node.getRight()));
         return node;
