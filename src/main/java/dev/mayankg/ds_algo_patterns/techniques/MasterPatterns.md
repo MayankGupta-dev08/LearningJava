@@ -8,8 +8,8 @@
   - Tip: You don't always need to have a new array to store the prefix sum. You can also use the same array to store the prefix sum. (array[i] = array[i] + array[i-1])
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
-  <img src="img_1.png" width="500px" />
+  <img src="images_md/img_0.png" width="500px" />
+  <img src="images_md/img_1.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given an array nums, answer multiple queries about the sum of elements within a specific range [i, j].
@@ -31,7 +31,7 @@
   - Tip: The pointers can move in the same direction or in opposite directions. Also, they can start from the same end or opposite ends, depending on the problem.
 
 <div style="text-align: center;">
-  <img src="img_2.png" width="500px" />
+  <img src="images_md/img_2.png" width="500px" />
 </div>
 
 - **Sample Problem:** Find two numbers in a sorted array that add up to a target value.
@@ -56,8 +56,8 @@
   - Tip: The window can slide in one direction or two directions, depending on the problem.
 
 <div style="text-align: center;">
-  <img src="img_3.png" width="500px" />
-  <img src="img_4.png" width="500px" />
+  <img src="images_md/img_3.png" width="500px" />
+  <img src="images_md/img_4.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given an array of integers, find the maximum sum of a subarray of size k.
@@ -80,7 +80,7 @@
   - Tip: The fast pointer moves two steps at a time, while the slow pointer moves one step at a time.
 
 <div style="text-align: center;">
-  <img src="img_5.png" width="500px" />
+  <img src="images_md/img_5.png" width="500px" />
 </div>
 
 - **Explanation:**
@@ -94,91 +94,103 @@
 
 ## 5. Linked List In-place Reversal
 
-- **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+- **Description of the pattern:** We could use an extra array or stack to reverse the linked list, but the in-place reversal is more efficient.
+  - Useful: When you need to reverse a full or a part of the linked list.
+  - Tip: The in-place reversal involves changing the next pointer of each node to point to the previous node.
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img_6.png" width="500px" />
+  <img src="images_md/img_7.png" width="500px" />
+  <img src="images_md/img_8.png" width="500px" />
+  <img src="images_md/img_9.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Given a linked list, reverse a sublist of a linked list from position m to n.
+  - **Input:** head = [1, 2, 3, 4, 5], m = 2, n = 4
+  - **Output:** [1, 4, 3, 2, 5]
 - **Explanation:**
-  - 
-  - 
+  - Identify the start and end of the sublist.
+  - Reverse the nodes in place by adjusting the pointers.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Reverse Linked List {LeetCode#}206](https://leetcode.com/problems/reverse-linked-list/description/)
+  - [Reverse Linked List II {LeetCode#92}](https://leetcode.com/problems/reverse-linked-list-ii/description/)
+  - [Swap Nodes in Pairs {LeetCode#24}](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 
 ## 6. Monotonic Stack
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When we require finding the next greater or smaller element for each element in an array (the array could be linear or circular).
+  - This pattern uses a stack to maintain a sequence of elements in a specific order (increasing or decreasing).
+  - Tip: The stack can be used to keep track of elements for which we haven't found the next greater or smaller element yet.
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img_10.png" width="500px" />
+  <img src="images_md/img_11.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Find the next greater element for each element in an array. Output -1 if the greater element doesn’t exist.
+  - **Input:** nums = [2, 1, 2, 4, 3]
+  - **Output:** [4, 2, 4, -1, -1]
 - **Explanation:**
-  - 
-  - 
+  - Use a stack to keep track of elements for which we haven't found the next greater element yet.
+  - Iterate through the array, and for each element, pop elements from the stack until you find a greater element.
+  - If the stack is not empty, set the result for index at the top of the stack to the current element.
+  - Push the current element onto the stack.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Next Greater Element I {LeetCode#496}](https://leetcode.com/problems/next-greater-element-i/description/)
+  - [Daily Temperatures {LeetCode#739}](https://leetcode.com/problems/daily-temperatures/description/)
+  - [Largest Rectangle in Histogram {LeetCode#84}](https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
 
 ## 7. Top 'K' Elements
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When we need to find the top k<sup>th</sup> largest or smallest elements in an array or stream of data using heaps or sorting.
+  - This pattern involves using a heap to maintain the top k elements of an array or stream of data.
+  - Tip: If you need the top **k<sup>th</sup> smallest element**, use a **max-heap**. If you need the **top k<sup>th</sup> largest element**, use a **min-heap**.
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img_12.png" width="500px" />
+  <img src="images_md/img_13.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Given an array, find the k-th largest element in an unsorted array.
+  - **Input:** nums = [3, 2, 1, 5, 6, 4], k = 2
+  - **Output:** 5
 - **Explanation:**
-  - 
-  - 
+  - Use a min-heap of size k to keep track of the k largest elements.
+  - Iterate through the array, adding elements to the heap.
+  - If the heap size exceeds k, remove the smallest element from the heap.
+  - The root of the heap will be the k-th largest element.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Kth Largest Element in an Array {LeetCode#215}](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
+  - [Top K Frequent Elements {LeetCode#347}](https://leetcode.com/problems/top-k-frequent-elements/description/)
+  - [Find K Pairs with Smallest Sums {LeetCode#373}](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/)
 
 ## 8. Overlapping Intervals
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When you need to merge overlapping intervals or find the maximum number of overlapping intervals.
+  - The Overlapping Intervals pattern is used to merge or handle overlapping intervals in an array.
+  - In an interval array sorted by start time, two intervals [a, b] and [c, d] overlap if b >= c (i.e., the end time of the first interval is greater than or equal to the start time of the second interval).
+  - Tip: Sort the intervals by start time and then iterate through the intervals to merge or handle overlapping intervals.
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img_.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Given a collection of intervals, merge all overlapping intervals.
+  - **Input:** intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
+  - **Output:** [[1, 6], [8, 10], [15, 18]]
 - **Explanation:**
-  - 
-  - 
+  - Sort the intervals by their start time.
+  - Create an empty list called merged to store the merged intervals.
+  - Iterate through the intervals and check if it overlaps with the last interval in the merged list.
+  - If it overlaps, merge the intervals by updating the end time of the last interval in merged.
+  - If it does not overlap, simply add the current interval to the merged list.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Merge Intervals {LeetCode#56}](https://leetcode.com/problems/merge-intervals/description/)
+  - [Insert Intervals {LeetCode#57}](https://leetcode.com/problems/insert-interval/description/)
+  - [Non-Overlapping Intervals {LeetCode#435}](https://leetcode.com/problems/non-overlapping-intervals/description/)
 
 ## 9. Modified Binary Search
 
@@ -188,7 +200,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
@@ -210,7 +222,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
@@ -232,7 +244,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
@@ -254,7 +266,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
@@ -276,7 +288,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
@@ -298,7 +310,7 @@
   - Tip: 
 
 <div style="text-align: center;">
-  <img src="img.png" width="500px" />
+  <img src="images_md/img.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given 
