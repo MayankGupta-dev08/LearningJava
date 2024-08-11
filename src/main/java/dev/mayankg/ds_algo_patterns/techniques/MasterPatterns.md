@@ -166,7 +166,7 @@
   - [Top K Frequent Elements {LeetCode#347}](https://leetcode.com/problems/top-k-frequent-elements/description/)
   - [Find K Pairs with Smallest Sums {LeetCode#373}](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/)
 
-## 8. Overlapping Intervals
+## 8. Overlapping Intervals (Merge Intervals)
 
 - **Description of the pattern:**
   - Useful: When you need to merge overlapping intervals or find the maximum number of overlapping intervals.
@@ -175,7 +175,7 @@
   - Tip: Sort the intervals by start time and then iterate through the intervals to merge or handle overlapping intervals.
 
 <div style="text-align: center;">
-  <img src="images_md/img_.png" width="500px" />
+  <img src="images_md/img_14.png" width="500px" />
 </div>
 
 - **Sample Problem:** Given a collection of intervals, merge all overlapping intervals.
@@ -195,151 +195,165 @@
 ## 9. Modified Binary Search
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When we need to find an element in a sorted array or a rotated sorted array.
+  - The Modified Binary Search pattern adapts binary search to solve a wider range of problems, such as finding elements in rotated sorted arrays.
+  - Tip: The key to solving problems using this pattern is to determine which half of the array is sorted and then decide whether to search that half or the other half.
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_15.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Given an array, find an element in a rotated sorted array.
+  - **Input:** nums = [4, 5, 6, 7, 0, 1, 2], target = 0
+  - **Output:** 4
 - **Explanation:**
-  - 
-  - 
+  - Perform binary search with an additional check to determine which half of the array is sorted.
+  - We then check if the target is within the range of the sorted half.
+  - If it is, we search that half; otherwise, we search the other half.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Search in Rotated Sorted Array {LeetCode#153}](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
+  - [Find Minimum in Rotated Sorted Array {LeetCode#33}](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+  - [Search a 2D Matrix II {LeetCode#240}](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)
 
 ## 10. Binary Tree Traversal
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When we need to visit all the nodes in a binary tree to get a particular result.
+  - Binary Tree Traversal involves visiting all the nodes in a binary tree in a specific order.
+  - Tip: There are three types of binary tree traversal: pre-order, in-order, and post-order.
+    - Pre-order: root, left, right
+    - In-order: left, root, right
+    - Post-order: left, right, root
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_16.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Perform in-order traversal of a binary tree.
+  - **Input:** root = [1, null, 2, 3]
+  - **Output:** [1, 3, 2]
 - **Explanation:**
-  - 
-  - 
+  - In-order traversal visits nodes in the order: left, root, right.
+  - Use recursion or a stack to traverse the tree in this order.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [PreOrder → Binary Tree Paths {LeetCode#257}](https://leetcode.com/problems/binary-tree-paths/description/)
+  - [InOrder → Kth Smallest Element in a BST {LeetCode#230}](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
+  - [PostOrder → Binary Tree Maximum Path Sum {LeetCode#124}](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
 
 ## 11. Depth First Search (DFS)
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When we need to explore all paths or branches in graphs or trees.
+  - Depth-First Search (DFS) is a traversal technique that explores as far down a branch as possible before backtracking.
+  - Tip: Use recursion or a stack to traverse each path from the root to the leaves.
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_17.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Find all paths from the root to leaves in a binary tree.
+  - **Input:** root = [1, 2, 3, null, 5]
+  - **Output:** ["1->2->5", "1->3"]
 - **Explanation:**
-  - 
-  - 
+  - Use recursion or a stack to traverse each path from the root to the leaves.
+  - Record each path as you traverse.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Clone Graph {LeetCode#133}](https://leetcode.com/problems/clone-graph/description/)
+  - [Path Sum II {LeetCode#113}](https://leetcode.com/problems/path-sum-ii/description/)
+  - [Course Schedule II {LeetCode#210}](https://leetcode.com/problems/course-schedule-ii/description/)
 
 ## 12. Breadth First Search (BFS)
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: For finding the shortest paths in unweighted graphs or level-order traversal in trees.
+  - Breadth-First Search (BFS) is a traversal technique that explores nodes level by level in a tree or graph.
+  - Tip: Use a queue to traverse each level of the tree or graph.
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_18.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Perform level-order traversal of a binary tree.
+  - **Input:** root = [3, 9, 20, null, null, 15, 7]
+  - **Output:** [[3], [9, 20], [15, 7]]
 - **Explanation:**
-  - 
-  - 
+  - Use a queue to keep track of nodes at each level.
+  - Traverse each level and add the children of the current nodes to the queue.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Binary Tree Level Order Traversal {LeetCode#102}](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+  - [Rotting Oranges {LeetCode#994}](https://leetcode.com/problems/rotting-oranges/description/)
+  - [Word Ladder {LeetCode#127}](https://leetcode.com/problems/word-ladder/description/)
 
 ## 13. Matrix Traversal
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When problems involve traversing 2D grids or matrices horizontally, vertically or diagonally.
+  - Matrix Traversal involves traversing elements in a matrix using different techniques (DFS, BFS, etc.).
+  - Tip: Use DFS or BFS to traverse the matrix starting from a given cell.
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_19.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Perform flood fill on a 2D grid. Change all the cells connected to the starting cell to new color.
+  - **Input:** image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, newColor = 2
+  - **Output:** [[2,2,2],[2,2,0],[2,0,1]]
 - **Explanation:**
-  - 
-  - 
+  - Use DFS or BFS to traverse the matrix starting from the given cell.
+  - Change the color of the connected cells to the new color.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Flood Fill {LeetCode#733}](https://leetcode.com/problems/flood-fill/description/)
+  - [Number of Islands {LeetCode#200}](https://leetcode.com/problems/number-of-islands/description/)
+  - [Surrounded Regions {LeetCode#130}](https://leetcode.com/problems/surrounded-regions/description/)
 
 ## 14. Backtracking
 
 - **Description of the pattern:**
-  - Useful: When 
-  - 
-  - Tip: 
+  - Useful: When you need to find all (or some) solutions to a problem that satisfies given constraints.
+  - Example: combinatorial problems, such as generating permutations, combinations, or subsets.
+  - Backtracking explores all possible solutions and backtracks when a solution path fails.
+  - Tip: Use recursion to generate all possible solutions and backtrack when a solution path fails.
 
 <div style="text-align: center;">
-  <img src="images_md/img.png" width="500px" />
+  <img src="images_md/img_20.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given 
-  - **Input:** 
-  - **Output:** 
+- **Sample Problem:** Generate all permutations for a given list of numbers.
+  - **Input:** nums = [1, 2, 3]
+  - **Output:** [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
 - **Explanation:**
-  - 
-  - 
+  - Use recursion to generate permutations.
+  - For each element, include it in the current permutation and recursively generate the remaining permutations.
+  - Backtrack when all permutations for a given path are generated.
 - **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Permutations {LeetCode #46}](https://leetcode.com/problems/permutations/description/)
+  - [Subsets {LeetCode #78}](https://leetcode.com/problems/subsets/description/)
+  - [N-Queens {LeetCode #51}](https://leetcode.com/problems/n-queens/description/)
 
 ## 15. Dynamic Programming Patterns
 
 - **Description of the pattern:**
-  - Useful: When
-  -
-  - Tip:
+  - Useful: For problems with overlapping subproblems and optimal substructure.
+  - Dynamic Programming (DP) involves breaking down problems into smaller subproblems and solving them using a bottom-up or top-down approach.
+  - DP itself has multiple sub-patterns. Some of the most important ones are:
+    - Fibonacci Numbers
+    - 0/1 Knapsack
+    - Longest Common Subsequence (LCS)
+    - Longest Increasing Subsequence (LIS)
+    - Subset Sum
+    - Matrix Chain Multiplication
+  - Tip: Identify the subproblems and the recurrence relation to solve the problem efficiently.
 
 <div style="text-align: center;">
-  <img src="img_.png" width="500px" />
+  <img src="images_md/img_21.png" width="500px" />
 </div>
 
-- **Sample Problem:** Given
-  - **Input:**
-  - **Output:**
+- **Sample Problem:** Calculate the n-th Fibonacci number.
+  - **Input:** n = 5
+  - **Output:** 5 (The first five Fibonacci numbers are 0, 1, 1, 2, 3, 5)
 - **Explanation:**
-  -
+  - Use a bottom-up approach to calculate the n-th Fibonacci number.
+  - Start with the first two numbers (0 and 1) and iterate to calculate the next numbers like (dp[i] = dp[i - 1] + dp[i - 2]).
 - **LeetCode Problems:**
   - [Climbing Stairs {LeetCode#70}](https://leetcode.com/problems/climbing-stairs/)
   - [House Robber {LeetCode#198}](https://leetcode.com/problems/house-robber/)
@@ -347,24 +361,4 @@
   - [Longest Common Subsequence {LeetCode#1143}](https://leetcode.com/problems/longest-common-subsequence/)
   - [Longest Increasing Subsequence {LeetCode#300}](https://leetcode.com/problems/longest-increasing-subsequence/)
   - [Partition Equal Subset Sum {LeetCode#416}](https://leetcode.com/problems/partition-equal-subset-sum/)
-
-## 16. Merge Intervals
-
-- **Description of the pattern:**
-  - Useful: When
-  -
-  - Tip:
-
-<div style="text-align: center;">
-  <img src="img_.png" width="500px" />
-</div>
-
-- **Sample Problem:** Given
-  - **Input:**
-  - **Output:**
-- **Explanation:**
-  -
-- **LeetCode Problems:**
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
-  - [ {LeetCode#}]()
+  - [Minimum Path Sum {LeetCode#64}](https://leetcode.com/problems/minimum-path-sum/)
