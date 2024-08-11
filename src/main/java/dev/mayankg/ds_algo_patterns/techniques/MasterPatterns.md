@@ -1,4 +1,4 @@
-# [LeetCode Patterns to Master Coding Interview Questions](https://blog.algomaster.io/p/15-leetcode-patterns)
+# [LeetCode Patterns to Master Coding Interview Questions](https://www.youtube.com/watch?v=DjYZk8nrXVY)
 
 ## 1. Prefix Sum
 
@@ -16,8 +16,8 @@
   - **Input:** nums = [1, 2, 3, 4, 5, 6], i = 1, j = 3
   - **Output:** 9
 - **Explanation:**
-  - Preprocess the array A to create a prefix sum array: P = [1, 3, 6, 10, 15, 21].
-  - To find the sum between indices i and j, use the formula: P[j] - P[i-1].
+  1. Preprocess the array A to create a prefix sum array: P = [1, 3, 6, 10, 15, 21].
+  2. To find the sum between indices i and j, use the formula: P[j] - P[i-1].
 - **LeetCode Problems:**
   - [Range Sum Query — Immutable {LeetCode#303}](https://leetcode.com/problems/range-sum-query-immutable/)
   - [Contiguous Array {LeetCode#525}](https://leetcode.com/problems/contiguous-array/)
@@ -39,10 +39,10 @@
   - **Output:** [1, 3]
 - **Explanation:**
   - Initialize two pointers, one at the start (left) and one at the end (right) of the array.
-  - Check the sum of the elements at the two pointers.
-  - If the sum equals the target, return the indices.
-  - If the sum is less than the target, move the left pointer to the right.
-  - If the sum is greater than the target, move the right pointer to the left.
+  1. Check the sum of the elements at the two pointers.
+  2. If the sum equals the target, return the indices.
+  3. If the sum is less than the target, move the left pointer to the right.
+  4. If the sum is greater than the target, move the right pointer to the left.
 - **LeetCode Problems:**
   - [Two Sum II {LeetCode#167}](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
   - [3Sum {LeetCode#15}](https://leetcode.com/problems/3sum/)
@@ -64,9 +64,9 @@
   - **Input:** [2, 1, 5, 1, 3, 2], k = 3
   - **Output:** 9
 - **Explanation:**
-  - Start with the sum of the first k elements.
-  - Slide the window one element at a time, subtracting the element that goes out of the window and adding the new element.
-  - Keep track of the maximum sum encountered.
+  1. Start with the sum of the first k elements.
+  2. Slide the window one element at a time, subtracting the element that goes out of the window and adding the new element.
+  3. Keep track of the maximum sum encountered.
 - **LeetCode Problems:**
   - [Maximum Average Subarray I {LeetCode#643}](https://leetcode.com/problems/maximum-average-subarray-i/)
   - [Longest Substring Without Repeating Characters {LeetCode#3}](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
@@ -84,9 +84,9 @@
 </div>
 
 - **Explanation:**
-  - Initialize two pointers, one moving one step at a time (slow) and the other moving two steps at a time (fast).
-  - If there is a cycle, the fast pointer will eventually meet the slow pointer.
-  - If the fast pointer reaches the end of the list, there is no cycle.
+  1. Initialize two pointers, one moving one step at a time (slow) and the other moving two steps at a time (fast).
+  2. If there is a cycle, the fast pointer will eventually meet the slow pointer.
+  3. If the fast pointer reaches the end of the list, there is no cycle.
 - **LeetCode Problems:**
   - [Linked List Cycle {LeetCode#141}](https://leetcode.com/problems/linked-list-cycle/)
   - [Happy Number {LeetCode#202}](https://leetcode.com/problems/happy-number/)
@@ -109,8 +109,8 @@
   - **Input:** head = [1, 2, 3, 4, 5], m = 2, n = 4
   - **Output:** [1, 4, 3, 2, 5]
 - **Explanation:**
-  - Identify the start and end of the sublist.
-  - Reverse the nodes in place by adjusting the pointers.
+  1. Identify the start and end of the sublist.
+  2. Reverse the nodes in place by adjusting the pointers.
 - **LeetCode Problems:**
   - [Reverse Linked List {LeetCode#}206](https://leetcode.com/problems/reverse-linked-list/description/)
   - [Reverse Linked List II {LeetCode#92}](https://leetcode.com/problems/reverse-linked-list-ii/description/)
@@ -132,10 +132,10 @@
   - **Input:** nums = [2, 1, 2, 4, 3]
   - **Output:** [4, 2, 4, -1, -1]
 - **Explanation:**
-  - Use a stack to keep track of elements for which we haven't found the next greater element yet.
-  - Iterate through the array, and for each element, pop elements from the stack until you find a greater element.
-  - If the stack is not empty, set the result for index at the top of the stack to the current element.
-  - Push the current element onto the stack.
+  1. Use a stack to keep track of elements for which we haven't found the next greater element yet.
+  2. Iterate through the array, and for each element, pop elements from the stack until you find a greater element.
+  3. If the stack is not empty, set the result for index at the top of the stack to the current element.
+  4. Push the current element onto the stack.
 - **LeetCode Problems:**
   - [Next Greater Element I {LeetCode#496}](https://leetcode.com/problems/next-greater-element-i/description/)
   - [Daily Temperatures {LeetCode#739}](https://leetcode.com/problems/daily-temperatures/description/)
@@ -157,10 +157,10 @@
   - **Input:** nums = [3, 2, 1, 5, 6, 4], k = 2
   - **Output:** 5
 - **Explanation:**
-  - Use a min-heap of size k to keep track of the k largest elements.
-  - Iterate through the array, adding elements to the heap.
-  - If the heap size exceeds k, remove the smallest element from the heap.
-  - The root of the heap will be the k-th largest element.
+  1. Use a min-heap of size k to keep track of the k largest elements.
+  2. Iterate through the array, adding elements to the heap.
+  3. If the heap size exceeds k, remove the smallest element from the heap.
+  4. The root of the heap will be the k-th largest element.
 - **LeetCode Problems:**
   - [Kth Largest Element in an Array {LeetCode#215}](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
   - [Top K Frequent Elements {LeetCode#347}](https://leetcode.com/problems/top-k-frequent-elements/description/)
@@ -182,11 +182,11 @@
   - **Input:** intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
   - **Output:** [[1, 6], [8, 10], [15, 18]]
 - **Explanation:**
-  - Sort the intervals by their start time.
-  - Create an empty list called merged to store the merged intervals.
-  - Iterate through the intervals and check if it overlaps with the last interval in the merged list.
-  - If it overlaps, merge the intervals by updating the end time of the last interval in merged.
-  - If it does not overlap, simply add the current interval to the merged list.
+  1. Sort the intervals by their start time.
+  2. Create an empty list called merged to store the merged intervals.
+  3. Iterate through the intervals and check if it overlaps with the last interval in the merged list.
+  4. If it overlaps, merge the intervals by updating the end time of the last interval in merged.
+  5. If it does not overlap, simply add the current interval to the merged list.
 - **LeetCode Problems:**
   - [Merge Intervals {LeetCode#56}](https://leetcode.com/problems/merge-intervals/description/)
   - [Insert Intervals {LeetCode#57}](https://leetcode.com/problems/insert-interval/description/)
@@ -207,9 +207,9 @@
   - **Input:** nums = [4, 5, 6, 7, 0, 1, 2], target = 0
   - **Output:** 4
 - **Explanation:**
-  - Perform binary search with an additional check to determine which half of the array is sorted.
-  - We then check if the target is within the range of the sorted half.
-  - If it is, we search that half; otherwise, we search the other half.
+  1. Perform binary search with an additional check to determine which half of the array is sorted.
+  2. We then check if the target is within the range of the sorted half.
+  3. If it is, we search that half; otherwise, we search the other half.
 - **LeetCode Problems:**
   - [Search in Rotated Sorted Array {LeetCode#153}](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
   - [Find Minimum in Rotated Sorted Array {LeetCode#33}](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
@@ -233,8 +233,8 @@
   - **Input:** root = [1, null, 2, 3]
   - **Output:** [1, 3, 2]
 - **Explanation:**
-  - In-order traversal visits nodes in the order: left, root, right.
-  - Use recursion or a stack to traverse the tree in this order.
+  1. In-order traversal visits nodes in the order: left, root, right.
+  2. Use recursion or a stack to traverse the tree in this order.
 - **LeetCode Problems:**
   - [PreOrder → Binary Tree Paths {LeetCode#257}](https://leetcode.com/problems/binary-tree-paths/description/)
   - [InOrder → Kth Smallest Element in a BST {LeetCode#230}](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
@@ -255,8 +255,8 @@
   - **Input:** root = [1, 2, 3, null, 5]
   - **Output:** ["1->2->5", "1->3"]
 - **Explanation:**
-  - Use recursion or a stack to traverse each path from the root to the leaves.
-  - Record each path as you traverse.
+  1. Use recursion or a stack to traverse each path from the root to the leaves.
+  2. Record each path as you traverse.
 - **LeetCode Problems:**
   - [Clone Graph {LeetCode#133}](https://leetcode.com/problems/clone-graph/description/)
   - [Path Sum II {LeetCode#113}](https://leetcode.com/problems/path-sum-ii/description/)
@@ -277,8 +277,8 @@
   - **Input:** root = [3, 9, 20, null, null, 15, 7]
   - **Output:** [[3], [9, 20], [15, 7]]
 - **Explanation:**
-  - Use a queue to keep track of nodes at each level.
-  - Traverse each level and add the children of the current nodes to the queue.
+  1. Use a queue to keep track of nodes at each level.
+  2. Traverse each level and add the children of the current nodes to the queue.
 - **LeetCode Problems:**
   - [Binary Tree Level Order Traversal {LeetCode#102}](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
   - [Rotting Oranges {LeetCode#994}](https://leetcode.com/problems/rotting-oranges/description/)
@@ -299,8 +299,8 @@
   - **Input:** image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, newColor = 2
   - **Output:** [[2,2,2],[2,2,0],[2,0,1]]
 - **Explanation:**
-  - Use DFS or BFS to traverse the matrix starting from the given cell.
-  - Change the color of the connected cells to the new color.
+  1. Use DFS or BFS to traverse the matrix starting from the given cell.
+  2. Change the color of the connected cells to the new color.
 - **LeetCode Problems:**
   - [Flood Fill {LeetCode#733}](https://leetcode.com/problems/flood-fill/description/)
   - [Number of Islands {LeetCode#200}](https://leetcode.com/problems/number-of-islands/description/)
@@ -322,9 +322,9 @@
   - **Input:** nums = [1, 2, 3]
   - **Output:** [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
 - **Explanation:**
-  - Use recursion to generate permutations.
-  - For each element, include it in the current permutation and recursively generate the remaining permutations.
-  - Backtrack when all permutations for a given path are generated.
+  1. Use recursion to generate permutations.
+  2. For each element, include it in the current permutation and recursively generate the remaining permutations.
+  3. Backtrack when all permutations for a given path are generated.
 - **LeetCode Problems:**
   - [Permutations {LeetCode #46}](https://leetcode.com/problems/permutations/description/)
   - [Subsets {LeetCode #78}](https://leetcode.com/problems/subsets/description/)
@@ -333,9 +333,9 @@
 ## 15. Dynamic Programming Patterns
 
 - **Description of the pattern:**
-  - Useful: For problems with overlapping subproblems and optimal substructure.
+  - Useful: For problems with overlapping subproblems and optimal substructure.l̥
   - Dynamic Programming (DP) involves breaking down problems into smaller subproblems and solving them using a bottom-up or top-down approach.
-  - DP itself has multiple sub-patterns. Some of the most important ones are:
+  - DP itself has multiple sub-patterns. [Some of the most important ones are](https://blog.algomaster.io/p/20-patterns-to-master-dynamic-programming):
     - Fibonacci Numbers
     - 0/1 Knapsack
     - Longest Common Subsequence (LCS)
@@ -352,8 +352,8 @@
   - **Input:** n = 5
   - **Output:** 5 (The first five Fibonacci numbers are 0, 1, 1, 2, 3, 5)
 - **Explanation:**
-  - Use a bottom-up approach to calculate the n-th Fibonacci number.
-  - Start with the first two numbers (0 and 1) and iterate to calculate the next numbers like (dp[i] = dp[i - 1] + dp[i - 2]).
+  1. Use a bottom-up approach to calculate the n-th Fibonacci number.
+  2. Start with the first two numbers (0 and 1) and iterate to calculate the next numbers like (dp[i] = dp[i - 1] + dp[i - 2]).
 - **LeetCode Problems:**
   - [Climbing Stairs {LeetCode#70}](https://leetcode.com/problems/climbing-stairs/)
   - [House Robber {LeetCode#198}](https://leetcode.com/problems/house-robber/)
