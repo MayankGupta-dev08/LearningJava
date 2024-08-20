@@ -3,8 +3,11 @@
 ## Multitasking
 - It Allows several activities to occur simultaneously on the computer.
 - It is of two types:
-    1. Process based multitasking (Multitasking) [Allows process/programs to run concurrently on the computer ]
+    1. Process-based multitasking (Multitasking) [Allows process (instances of programs) to run concurrently on the computer ]
+       1. Example: Running Browser, Music Player and IntelliJ IDEA at the same time.
     2. Thread based multitasking (Multithreading) [Allows parts of the same program to run concurrently on the computer]
+       1. Example: Downloading a file using IDM (multiple threads downloads and assemble) or Building the project using maven using multiple threads or while using MS Word it does spell check, words count and writing in the doc.
+- NOTE: This involves context switching and time slicing. For 1-core CPUs, context switching and time slicing is the only way to achieve multitasking, where as for multicore CPUs (quad-core or octa-core), we can leverage the different cores to perform real multitasking.
 
 ### Thread vs. Process
 1. Two threads share the same address space.
@@ -15,12 +18,12 @@
 
 ## Multithreading
 ### Why multithreading??
-- To utilize the idle CPU time by running some other thread when one thread is waiting (for some user input or performing some output operation ie. not using the CPU).
+- To use the idle CPU time by running some other thread when one thread is waiting (for some user input or performing some output operation ie. not using the CPU).
 
 ### What is a thread?
 - A thread is an independent sequential path of execution within a program.
-- Many threads can run concurrently within a program.
-- At runtime threads in a program exist in a common memory space and can therefore share both data and code (i.e., they are lightweight as compared to the program).
+- Many threads can run concurrently within a process (an instance of a program).
+- At runtime, threads in a program exist in a common memory space and can therefore share both data and code (i.e., they are lightweight as compared to processes).
 
 #### Concepts in multithreading?
 1. Creating threads and providing the code that gets executed by a thread.
@@ -34,7 +37,7 @@
 - The main() method can finish, but the program will keep running until all user threads have completed.
 - The runtime environment distinguishes between the user threads and the daemon threads.
 - Calling the setDaemon(boolean) method in the thread class marks the status of the thread as either daemon or user, but this must be done before the thread is started.
-- As ong as a user thread is alive, the JVM does not terminate.
+- As long as a user thread is alive, the JVM does not terminate.
 - A daemon thread is at the mercy of the runtime system: it is stopped if there are no more user threads running (including the main thread), thus terminating the program.
 - When we are using aThread.start(), then it doesn't mean that the thread will run at that instant, but it is at JVM's mercy, so as soon as it is free it will run that thread.
 
@@ -42,7 +45,13 @@
 - A Thread in java is represented by the object of the thread class.
     - Creating a thread in java can be achieved by two ways:
         1. Implementing the java.lang.Runnable interface (better option).
+           1. ![thread2-example-using-runnableObj.png](thread2-example-using-runnableObj.png)
         2. Extending the java.lang.Thread class.
+           1. ![thread1-example-using-class-extending-threadClass.png](thread1-example-using-class-extending-threadClass.png)
+
+### Different States of Threads
+- ![thread-states-in-java.png](thread-states-in-java.png)
+- ![thread-transitions.png](thread-transitions.png)
 
 ### Synchronization:
 - Threads share the same memory space, i.e., they can share the resources (objects).
@@ -164,3 +173,5 @@ Time-sliced scheduling assigns each thread a fixed time slice or quantum during 
   - By executing a synchronized static method of a class or a block inside a static method (in this case, the object is the Class object representing the class in the JVM)
   - Whenever a thread is sleeping, it doesn't relinquish its lock, it will only relinquish when it is waiting for a notification. 
   - Also, it only relinquishes the lock on the object on which wait method was invoked, it doesn't relinquish any other object lock that it might hold, and it will remain locked when the thread is waiting.
+
+[//]: # (Todo: Lock Interruptibility??)
