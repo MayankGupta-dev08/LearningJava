@@ -3,22 +3,25 @@
 ## Multitasking
 - It Allows several activities to occur simultaneously on the computer.
 - It is of two types:
-    1. Process-based multitasking (Multitasking) [Allows process (instances of programs) to run concurrently on the computer ]
+    1. Process-based multitasking (Multitasking) [Allows multiple process (instances of programs) to run concurrently on the computer ]
        1. Example: Running Browser, Music Player and IntelliJ IDEA at the same time.
-    2. Thread based multitasking (Multithreading) [Allows parts of the same program to run concurrently on the computer]
+    2. Thread based multitasking (Multithreading) [Allows multiple parts of the same program to run concurrently on the computer]
        1. Example: Downloading a file using IDM (multiple threads downloads and assemble) or Building the project using maven using multiple threads or while using MS Word it does spell check, words count and writing in the doc.
 - NOTE: This involves context switching and time slicing. For 1-core CPUs, context switching and time slicing is the only way to achieve multitasking, where as for multicore CPUs (quad-core or octa-core), we can leverage the different cores to perform real multitasking.
 
 ### Thread vs. Process
-1. Two threads share the same address space.
+1. Two threads share the same address space, whereas two processes have different address spaces.
 2. Context switching b/w the threads is usually less expensive than between processes.
-3. The cost of communication b/w threads is relatively low.
+3. The cost of communication b/w threads is relatively lower than between processes.
 
 ---
 
 ## Multithreading
+
 ### Why multithreading??
-- To use the idle CPU time by running some other thread when one thread is waiting (for some user input or performing some output operation ie. not using the CPU).
+- To use the idle CPU time by running some other thread when one thread is waiting (for some IO operation i.e., not using the CPU).
+- To improve the performance of the application by running multiple threads concurrently.
+- To make the application responsive by running some threads in the background.
 
 ### What is a thread?
 - A thread is an independent sequential path of execution within a program.
@@ -54,14 +57,32 @@
 - ![thread-transitions.png](thread-transitions.png)
 
 ### Synchronization:
-- Threads share the same memory space, i.e., they can share the resources (objects).
+- Threads share the same memory space, i.e., they can share the resources (data and code) of the program.
 - However, there are critical situations where it is desirable to that only one thread at a time has access to shared resources.
 
 #### Synchronization Methods:
-- While a thread is inside a synchronized method of an object, all other threads that wish to execute this synchronized method or any other synchronized method of the object will have to wait.
+- While a thread is inside a synchronized method of an object, all other threads that wish to execute **this synchronized method** or **any other synchronized method** of the object will have to wait.
 - This restriction does not apply to the thread that already has the lock and is executing a synchronized method of the object.
-- Such a method can invoke other synchronized methods of the object w/o being blocked.
+- Such a thread can invoke other synchronized methods of the object w/o being blocked.
 - Any other thread can always call the non-synchronized methods of the object at any time.
+- The synchronized methods of an object are synchronized on the object's lock (which is a lock that is associated with the object, every object has a lock).
+- The thread automatically acquires the lock when it enters a synchronized method and is relinquished when the thread exits the synchronized method.
+
+#### Locks:
+- A lock is associated with every object in Java and is used to control access to the object or its methods. Useful when multiple threads are trying to access the same object.
+- A thread can acquire the lock of an object by executing a synchronized method of the object. The lock is relinquished when the thread exits the synchronized method.
+- Typically, a thread must acquire the lock of an object before it can enter a synchronized method of the object.
+- The runtime system ensures that no other thread can enter a synchronized method of an object if another thread holds the object lock.
+- Types of Locks:
+    - **Object Lock:** A lock associated with an object. It can be acquired by executing a synchronized method of the object. This lock is associated with the object. Used to control access to the object or its methods.
+    - **Class Lock:** A lock associated with a class. Locks of this type are acquired by executing a synchronized static method of the class. This lock is associated with the class. Used to control access to static methods of the class.
+    - **Reentrant Lock:** A lock that can be acquired multiple times by the same thread w/o the thread blocking itself. This lock is associated with the thread. Used to control access to shared resources.
+    - **Read Lock:** A lock that allows multiple threads to read a shared resource concurrently. `readLock()` and `unlockRead()` methods are used to acquire and release the lock.
+    - **Write Lock:** A lock that allows only one thread to write to a shared resource. `writeLock()` and `unlockWrite()` methods are used to acquire and release the lock.
+    - **Fair Lock:** A lock that grants access to the longest waiting thread. This lock is associated with the thread.
+    - **Unfair Lock:** A lock that grants access to the thread that requests it first. This lock is associated with the thread.
+    - **Stamped Lock:** A lock that supports both read and write locks. It also supports optimistic reading (reading without acquiring a lock). This lock is associated with the thread.
+    - **Reentrant Read-Write Lock:** A lock that allows multiple threads to read a shared resource concurrently and only one thread to write to the shared resource. This lock is associated with the thread.
 
 #### Rules of Synchronization:
 - A thread must acquire the object lock associated with a shared resource before it can enter the shared resource.
