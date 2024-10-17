@@ -1,6 +1,7 @@
 package dev.mayankg.multithreading.basic.example05.relock;
 
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 
 /**
@@ -10,6 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * This can be checked using methods isHeldByCurrentThread, and getHoldCount.
  */
 class ReentrantLockExample {
+    private static final Logger logger = Logger.getLogger(ReentrantLockExample.class.getName());
     private final ReentrantLock lock = new ReentrantLock();
 
     public static void main(String[] args) {
@@ -17,13 +19,19 @@ class ReentrantLockExample {
         reentrantLockExample.outerMethod();
     }
 
+    /**
+     * lock.lockInterruptibly() is used to acquire the lock, but it can be interrupted by another thread.
+     */
     void outerMethod() {
-        lock.lock();    //the main thread acquires lock for the 1st time
         try {
+            lock.lockInterruptibly();    //the main thread acquires lock for the 1st time
             System.out.println("Inside the outer method");
             innerMethod();
+        } catch (InterruptedException e) {
+            logger.severe(e.getLocalizedMessage());
+            Thread.currentThread().interrupt();
         } finally {
-            lock.unlock();
+            lock.unlock();  //the main thread releases the lock which it had acquired for the 1st time
         }
     }
 
@@ -36,7 +44,7 @@ class ReentrantLockExample {
         try {
             System.out.println("Inside the inner method");
         } finally {
-            lock.unlock();
+            lock.unlock();  //the main thread releases the lock which it had acquired for the 2nd time
         }
     }
 }
