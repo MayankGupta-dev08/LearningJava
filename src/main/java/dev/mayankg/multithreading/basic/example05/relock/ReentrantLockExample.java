@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading.basic.example05.locks;
+package dev.mayankg.multithreading.basic.example05.relock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
