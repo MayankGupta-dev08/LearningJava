@@ -2,11 +2,14 @@ package dev.mayankg.multithreading.basic.example05.locks;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
+@SuppressWarnings("unused")
 class BankAccount {
+    private static final Logger TRACE_LOGGER = Logger.getLogger(BankAccount.class.getName());
     private final ReentrantLock lock = new ReentrantLock();
     private double balance;
-    
+
     public BankAccount() {
         this.balance = 100.00d;
     }
@@ -18,21 +21,26 @@ class BankAccount {
         String currThreadName = Thread.currentThread().getName();
         System.out.println(currThreadName + " attempting to withdraw " + amount);
 
-        if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
-            if (balance >= amount) {
+        try {
+            if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {    // Try to acquire lock for 1 second
                 try {
-                    System.out.println(currThreadName + " proceeding with the withdrawal.");
-                    balance -= amount;
-                    Thread.sleep(3000); // Simulate the time taken to process the withdrawal
-                    System.out.println(currThreadName + " completed withdrawal. Remaining balance=" + getBalance() + "/-");
+                    if (balance >= amount) {
+                        System.out.println(currThreadName + " proceeding with the withdrawal.");
+                        balance -= amount;
+                        Thread.sleep(3000); // Simulate the time taken to process the withdrawal
+                        System.out.println(currThreadName + " completed withdrawal. Remaining balance=" + getBalance() + "/-");
+                    } else {
+                        System.out.println(currThreadName + " couldn't withdraw amount=" + amount + " due to insufficient balance!");
+                    }
                 } finally {
-                    lock.unlock();
+                    lock.unlock();  // Release the lock
                 }
             } else {
-                System.out.println(currThreadName + " couldn't withdraw amount=" + amount + " due to insufficient balance!");
+                System.out.println(currThreadName + " couldn't acquire lock, try once again in 1 second.");
             }
-        } else {
-            System.out.println(currThreadName + " couldn't acquire lock, will once again in 1 second.");
+        } catch (InterruptedException e) {
+            TRACE_LOGGER.severe(e.getLocalizedMessage());
+            Thread.currentThread().interrupt();
         }
     }
 
