@@ -103,6 +103,67 @@
     - synchronized (object ref expression) {<code_block>}
 - The object ref expression must evaluate to a non-null reference value, otherwise a NullPointerException is thrown.
 
+### Disadvantages of Synchronization over Locks
+The `synchronized` keyword (implicit lock) in Java has several disadvantages compared to explicit locks like `ReentrantLock`:
+1. **Lack of Flexibility**:
+    - `synchronized` blocks or methods **cannot be interrupted**, timed out, or polled for lock status. Explicit locks provide methods like `lockInterruptibly()`, `tryLock()`, and `tryLock(long time, TimeUnit unit)` for more flexible locking mechanisms.
+2. **No Fairness Policy**:
+    - The `synchronized` keyword does not support fairness policies. Explicit locks can be configured to be fair, ensuring that the longest-waiting thread gets the lock next.
+3. **No Condition Variables**:
+    - `synchronized` blocks do not support multiple condition variables. Explicit locks provide `Condition` objects, allowing more complex thread coordination.
+4. **No Explicit Locking and Unlocking**:
+    - With `synchronized`, locking and unlocking are implicit and tied to the scope of the block or method. Explicit locks allow more control over when to lock and unlock, which can be useful in complex scenarios.
+5. **Performance Overhead**:
+    - `synchronized` blocks can have higher performance overhead due to JVM optimizations and the lack of fine-grained control over locking.
+6. **Deadlock Detection**:
+    - Explicit locks can be used with tools and libraries that detect deadlocks, whereas `synchronized` blocks do not provide such capabilities.
+
+#### Using `synchronized` (Implicit Lock)
+```java
+public class SynchronizedExample {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+```
+
+#### Using `ReentrantLock` (Explicit Lock)
+```java
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class ReentrantLockExample {
+    private int count = 0;
+    private final Lock lock = new ReentrantLock();
+
+    public void increment() {
+        lock.lock();
+        try {
+            count++;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int getCount() {
+        lock.lock();
+        try {
+            return count;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
+
+In the `ReentrantLockExample`, the explicit lock provides more control and flexibility over the locking mechanism. It allows for interruptible, timed, and polled locking, supports fairness policies, and provides condition variables for more complex thread coordination. Additionally, explicit locks can be used with tools and libraries that detect deadlocks, providing more robust synchronization mechanisms.
+
 ### Waiting and Notifying:
 
 #### Waiting: 
