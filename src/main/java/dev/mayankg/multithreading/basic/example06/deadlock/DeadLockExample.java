@@ -1,5 +1,13 @@
 package dev.mayankg.multithreading.basic.example06.deadlock;
 
+
+/**
+ * <ul>
+ *     <li> Deadlock is a situation where two or more threads are blocked forever, waiting for each other. </li>
+ *     <li> Deadlock occurs when multiple threads need the same locks but obtain them in different order. </li>
+ *     <li> Deadlock can be avoided by acquiring locks in a fixed order. </li>
+ * </ul>
+ */
 class DeadLockExample {
     public static void main(String[] args) {
         var pen = new Pen();    // shared object among different threads
@@ -24,7 +32,7 @@ class Task1 implements Runnable {
 
     @Override
     public void run() {
-        pen.writeWithPenAndPaper(paper);
+        pen.writeWithPenAndPaper(paper);    // acquires lock for pen and wants to acquire lock for paper
     }
 }
 
@@ -39,7 +47,9 @@ class Task2 implements Runnable {
 
     @Override
     public void run() {
-        paper.writeWithPaperAndPen(pen);
+        synchronized (pen) {    // acquires lock for pen then acquire lock for paper, fixes the deadlock
+            paper.writeWithPaperAndPen(pen);    // acquires lock for paper and wants to acquire lock for pen
+        }
     }
 }
 
