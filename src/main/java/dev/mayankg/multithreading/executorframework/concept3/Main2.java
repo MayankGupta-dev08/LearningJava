@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading.executorframework.example3;
+package dev.mayankg.multithreading.executorframework.concept3;
 
 import java.util.concurrent.*;
 
