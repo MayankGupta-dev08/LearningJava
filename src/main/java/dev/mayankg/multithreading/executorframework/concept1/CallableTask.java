@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading.executorframework.example1;
+package dev.mayankg.multithreading.executorframework.concept1;
 
 import java.util.concurrent.Callable;
 

@@ -1,17 +1,17 @@
-package dev.mayankg.multithreading.executorframework.example1;
+package dev.mayankg.multithreading.executorframework.concept1;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-class Main2 {
+class Main1 {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        CallableTask callableTask = new CallableTask();
-        Future<String> future = executor.submit(callableTask);
+        RunnableTask runnableTask = new RunnableTask();
+        Future<?> future = executor.submit(runnableTask);
 
         try {
             if (future.isDone()) System.out.println("Task is done");
