@@ -1,4 +1,4 @@
-package dev.mayankg.multithreading.executorframework.example0;
+package dev.mayankg.multithreading.executorframework.concept0;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
