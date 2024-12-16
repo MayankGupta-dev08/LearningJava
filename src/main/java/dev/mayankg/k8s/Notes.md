@@ -64,7 +64,7 @@ kubectl cluster-info
 kubectl run --help
 ```
 
-- to create a new pod with `nginx` image (pod will be named nginx)
+- to create a new pod (named `nginx`) with `nginx` image 
 
 ```shell
 kubectl run nginx --image=nginx
@@ -86,4 +86,40 @@ kubectl run nginx --image=nginx --port=80 --restart=Never --dry-run=client -o ya
 
 ```shell
 kubectl create -f pod-def.yml
+```
+
+- to describe a pod named `myapp-pod`
+
+```shell
+kubectl describe pod myapp-pod
+```
+
+- to delete a pod named `myapp-pod`
+
+```shell
+kubectl delete pod myapp-pod
+```
+
+- to edit the pod named `myapp-pod`
+
+```shell
+kubectl edit pod myapp-pod
+```
+
+- to change the image of a pod named `myapp-pod` from `nginx` to `nginx:1.9.1`
+
+```shell
+kubectl set image pod myapp-pod nginx=nginx:1.9.1
+```
+
+- to get the logs of a pod named `myapp-pod` with timestamps
+
+```shell
+kubectl logs myapp-pod --timestamps
+```
+
+- to apply a new configuration to a pod using a file named `pod-def.yml`
+
+```shell
+kubectl apply -f pod-def.yml
 ```
