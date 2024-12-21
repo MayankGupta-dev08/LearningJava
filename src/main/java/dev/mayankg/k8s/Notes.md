@@ -66,7 +66,7 @@ kubectl cluster-info
 kubectl run --help
 ```
 
-- to create a new pod (named `nginx`) with `nginx` image 
+- to create a new pod (named `nginx`) with `nginx` image
 
 ```shell
 kubectl run nginx --image=nginx
@@ -222,4 +222,42 @@ kubectl get deployments -o wide
 
 ```shell
 kubectl get all
+```
+
+- to update a deployment named `myapp-deploy` with a new image `nginx:1.9.1`
+
+```shell
+kubectl set image deployment myapp-deploy nginx=nginx:1.9.1
+```
+
+- to apply a new configuration to a deployment using a file named `deploy-def.yml`
+
+```shell
+kubectl apply -f deploy-def.yml
+```
+
+#### Deployment Updates and Rollbacks
+
+- to get the rollout status of a deployment named `myapp-deploy`
+
+```shell
+kubectl rollout status deployment myapp-deploy
+```
+
+- to get the rollout history of a deployment named `myapp-deploy`
+
+```shell
+kubectl rollout history deployment myapp-deploy
+```
+
+- to get the rollout history of a deployment named `myapp-deploy` with revision numbers
+
+```shell
+kubectl rollout history deployment myapp-deploy --revision=2
+```
+
+- to rollback a deployment named `myapp-deploy` to a previous revision
+
+```shell
+kubectl rollout undo deployment myapp-deploy --to-revision=2
 ```
