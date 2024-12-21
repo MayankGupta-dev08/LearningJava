@@ -28,6 +28,8 @@ K8s has the following components:
 
 ## K8s Commands
 
+### Pods
+
 - how many pods are running in the current (default) namespace
 
 ```shell
@@ -124,6 +126,8 @@ kubectl logs myapp-pod --timestamps
 kubectl apply -f pod-def.yml
 ```
 
+### ReplicaSets and ReplicationControllers
+
 - to create a replication controller using a file named `rc-def.yml`
 
 ```shell
@@ -180,4 +184,42 @@ kubectl scale --replicas=6 -f rs-def.yml
 
 ```shell
 kubectl delete rs myapp-rs
+```
+
+- to describe a replica set named `myapp-rs`
+
+```shell
+kubectl describe rs myapp-rs
+```
+
+- to edit the replica set named `myapp-rs`
+
+```shell
+kubectl edit replicaset myapp-rs
+```
+
+### Deployments
+
+- to create a deployment using a file named `deploy-def.yml`
+
+```shell
+kubectl create -f deploy-def.yml
+```
+
+- to get the list of deployments
+
+```shell
+kubectl get deployments
+```
+
+- to get the list of deployments with wide output
+
+```shell
+kubectl get deployments -o wide
+```
+
+- to get the list of all the objects in the current namespace
+
+```shell
+kubectl get all
 ```
