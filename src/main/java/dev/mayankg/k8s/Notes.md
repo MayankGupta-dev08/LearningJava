@@ -123,3 +123,61 @@ kubectl logs myapp-pod --timestamps
 ```shell
 kubectl apply -f pod-def.yml
 ```
+
+- to create a replication controller using a file named `rc-def.yml`
+
+```shell
+kubectl create -f rc-def.yml
+```
+
+- to get the list of replication controllers
+
+```shell
+kubectl get rc
+```
+
+- to get the list of replication controllers with wide output
+
+```shell
+kubectl get rc -o wide
+```
+
+- to create a replication set using a file named `rs-def.yml`
+
+```shell
+kubectl create -f rs-def.yml
+```
+
+- to get the list of replication sets
+
+```shell
+kubectl get rs
+```
+
+- to get the list of replication sets with wide output
+
+```shell
+kubectl get rs -o wide
+```
+
+- to replace a replication set using a file named `rs-def.yml`
+
+```shell
+kubectl replace -f rs-def.yml
+```
+
+- to scale a replication set named `myapp-rs` to 6 replicas
+
+```shell
+kubectl scale --replicas=6 replicaset myapp-rs
+```
+
+```shell
+kubectl scale --replicas=6 -f rs-def.yml
+```
+
+- to delete a replication set named `myapp-rs` (also deletes the underlying pods)
+
+```shell
+kubectl delete rs myapp-rs
+```
