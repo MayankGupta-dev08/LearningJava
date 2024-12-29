@@ -259,5 +259,49 @@ kubectl rollout history deployment myapp-deploy --revision=2
 - to rollback a deployment named `myapp-deploy` to a previous revision
 
 ```shell
+kubectl rollout undo deployment myapp-deploy
+```
+
+- to rollback a deployment named `myapp-deploy` to a specific revision
+
+```shell
 kubectl rollout undo deployment myapp-deploy --to-revision=2
+```
+
+### Services
+
+- to create a service using a file named `svc-def.yml`
+
+```shell
+kubectl create -f svc-def.yml
+```
+
+- to get the list of services
+
+```shell
+kubectl get services
+```
+
+- to get the list of services with wide output
+
+```shell
+kubectl get services -o wide
+```
+
+- to describe a service named `myapp-service`
+
+```shell
+kubectl describe service myapp-service
+```
+
+- to delete a service named `myapp-service`
+
+```shell
+kubectl delete service myapp-service
+```
+
+- to edit a service named `myapp-service`
+
+```shell
+kubectl edit service myapp-service
 ```
