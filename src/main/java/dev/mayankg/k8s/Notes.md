@@ -2,7 +2,18 @@
 
 Kubernetes also known as K8s was built by Google based on their experience running containers in production. It is now an open-source project and is arguably one of the best and most popular container orchestration technologies out there.
 
-[Download and Install K8s](https://kubernetes.io/releases/download/)
+## References
+
+- [Download and Install K8s](https://kubernetes.io/releases/download/)
+- [K8s Documentation](https://kubernetes.io/docs/home/)
+- [Install and set up the kubectl tool](https://kubernetes.io/docs/tasks/tools/)
+- [K8s Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+- [K8s Concepts](https://kubernetes.io/docs/concepts/)
+- [K8s Architecture](https://kubernetes.io/docs/concepts/overview/components/)
+- [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Minikube Tutorial](https://kubernetes.io/docs/tutorials/hello-minikube/)
+- [VirtualBox Linux Downloads](https://www.virtualbox.org/wiki/Linux_Downloads)
 
 ## K8s Architecture
 
