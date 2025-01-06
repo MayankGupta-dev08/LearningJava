@@ -41,3 +41,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+src/main/java/dev/mayankg/ds_algo_patterns/Solution.java
