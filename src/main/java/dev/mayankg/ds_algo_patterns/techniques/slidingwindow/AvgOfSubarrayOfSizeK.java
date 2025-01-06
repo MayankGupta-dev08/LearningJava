@@ -31,4 +31,21 @@ public class AvgOfSubarrayOfSizeK {
 
         return result;
     }
+
+    private static double findMaxAvgOfSubarrayOfSizeK(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k <= 0 || nums.length < k)
+            return 0;
+
+        double windowSum = 0;
+        for (int i = 0; i < k; i++)
+            windowSum += nums[i];
+
+        double maxSum = windowSum;
+        for (int i = k; i < nums.length; i++) {
+            windowSum += nums[i] - nums[i - k];
+            maxSum = Math.max(maxSum, windowSum);
+        }
+
+        return maxSum / k;
+    }
 }
