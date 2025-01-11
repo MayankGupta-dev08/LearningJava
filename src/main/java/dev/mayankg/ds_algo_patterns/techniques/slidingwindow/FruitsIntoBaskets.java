@@ -28,7 +28,7 @@ public class FruitsIntoBaskets {
             char fruit = arr[windowEnd];
             fruitFrequency.put(fruit, fruitFrequency.getOrDefault(fruit, 0) + 1);
 
-            while (fruitFrequency.size() > maxFruits) {
+            while (fruitFrequency.size() > maxFruits) { // for shrinking the window to make it valid again and get another candidate for maxLen
                 char aFruit = arr[windowStart];
                 fruitFrequency.put(aFruit, fruitFrequency.get(aFruit) - 1);
                 if (fruitFrequency.get(aFruit) == 0)
