@@ -25,11 +25,18 @@
     - `n ^ (1 << i)`
 - **Remove the last set bit**
     - `n & (n-1)` : result will have the last set bit removed from n
+    - since `n-1` will have all the bits flipped from the rightmost set bit to the right end
+    - and `&` operation will remove the rightmost set bit to the right end
+    - n = 12 (1100), n-1 = 11 (1011), n & (n-1) = 8 (1000)
 - **Check if a number is odd or even**
     - `n & 1` : res=0 => even, res=1 => odd
 - **Check if a number is power of 2**
-    - `n & (n-1) == 0` : res=0 => power of 2, res=1 => not power of 2
+    - `n & (n-1) == 0` : res=0 => power of 2, else => not power of 2
 - **Count the number of set bits**
     - `Integer.bitCount(n)`
     - `while(n>0) { n = n & (n-1); count++; }`
-- **Generate all the subsets of a set**
+- **XOR property**
+  - x^0 = x
+  - x^x = 0
+- **Find the missing number**
+    - `int missingNumber(int[] nums) { int n = nums.length; int res = 0; for(int i=0; i<n; i++) { res ^= i ^ nums[i]; } return res ^ n; }`
