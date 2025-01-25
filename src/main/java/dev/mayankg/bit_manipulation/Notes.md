@@ -8,7 +8,8 @@
 - `~` : **Bitwise NOT** - reverse the bits
 - `<<` : **Left Shift** - shift the bits to the left - `a << b` => `a * 2^b`
 - `>>` : **Right Shift** - shift the bits to the right - `a >> b` => `a / 2^b`
-- `>>>` : **Right Shift with Zero fill** - shift the bits to the right and fill the left bits with 0 - `a >>> b` => `a / 2^b`
+- `>>>` : **Right Shift with Zero fill** - shift the bits to the right and fill the left bits with 0 - `a >>> b` =>
+  `a / 2^b`
 
 ## Tricks and Techniques
 
@@ -36,7 +37,14 @@
     - `Integer.bitCount(n)`
     - `while(n>0) { n = n & (n-1); count++; }`
 - **XOR property**
-  - x^0 = x
-  - x^x = 0
+    - x^0 = x
+    - x^x = 0
 - **Find the missing number**
     - `int missingNumber(int[] nums) { int n = nums.length; int res = 0; for(int i=0; i<n; i++) { res ^= i ^ nums[i]; } return res ^ n; }`
+- **Rightmost set bit**
+    - `n & -n` : will only give the rightmost set bit
+    - `n & ~(n-1)` : will give the rightmost set bit
+- **Toggle the number**
+    - `~n` : will toggle all the bits
+- **2's complement**
+    - `-n = ~n + 1`
