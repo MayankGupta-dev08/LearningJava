@@ -1,4 +1,4 @@
-package dev.mayankg.ds_algo_patterns.dataStructures.hashmap;
+package dev.mayankg.ds_algo_patterns.dataStructures.hashtable.hashmap;
 
 import java.util.LinkedList;
 import java.util.List;

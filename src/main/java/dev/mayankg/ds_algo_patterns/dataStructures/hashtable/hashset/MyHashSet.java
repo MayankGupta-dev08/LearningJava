@@ -1,4 +1,4 @@
-package dev.mayankg.ds_algo_patterns.dataStructures.hashset;
+package dev.mayankg.ds_algo_patterns.dataStructures.hashtable.hashset;
 
 import java.util.*;
 
