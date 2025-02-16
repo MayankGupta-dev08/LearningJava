@@ -5,3 +5,7 @@
 
 ## Fast and Slow Pointers
 - [] Reorder List - https://leetcode.com/problems/reorder-list/ (also in LinkedList)
+
+## Priority Queue - Implementation from William Fiset
+## Red Black Tree - Implementation
+## AVL Tree - Implementation
