@@ -1,4 +1,4 @@
-# SQL Commands when working with MySQL
+# SQL Notes
 
 ## Type of SQL Language
 1. DDL (Data Definition Language)
@@ -14,12 +14,12 @@
 5. Show Tables
 6. Create Table
 7. Drop Table
-8. Insert Data
-9. Select Data
-10. Update Data
-11. Delete Data
-12. Alter Table
-13. Truncate Table
+8. Truncate Table
+9. Alter Table
+10. Insert Data
+11. Select Data
+12. Update Data
+13. Delete Data
 14. Constraints
 15. Joins
 16. Indexes
@@ -34,22 +34,91 @@
 25. User Privileges
 26. Backup and Restore
 
-### Show Databases
+## SQL Commands
+
+### Related to Database
+
+#### Show Databases
 ```sql
 SHOW DATABASES;
 ```
 
-### Create Database
+#### Create Database
 ```sql
 CREATE DATABASE <database_name>;
 ```
 
-### Drop Database
+#### Drop Database
 ```sql
 DROP DATABASE <database_name>;
 ```
 
-### Use Database
+#### Use Database
 ```sql
 USE <database_name>;
+```
+
+### Related to Tables
+
+#### Show Tables
+```sql
+SHOW TABLES;
+```
+
+#### Create Table
+```sql
+CREATE TABLE <table_name> (
+    column1 datatype,
+    column2 datatype,
+    ...
+);
+```
+
+#### Show columns of a Table
+```sql
+SHOW COLUMNS FROM <table_name>;
+```
+```sql
+DESC <table_name>;
+```
+
+#### Drop Table
+```sql
+DROP TABLE <table_name>;
+```
+
+#### Truncate Table
+```sql
+TRUNCATE TABLE <table_name>;
+```
+
+#### Alter Table
+```sql
+ALTER TABLE <table_name>
+ADD column_name datatype;
+```
+
+### Related to Data
+
+#### Insert Data
+```sql
+INSERT INTO <table_name> (column1, column2, ...)
+VALUES 
+    (value1, value2, ...),
+    (value11, value22, ...),
+    ...;
+```
+
+#### Select Data
+```sql
+SELECT column1, column2, ...
+FROM <table_name>
+WHERE condition;
+```
+
+#### Update Data
+```sql
+UPDATE <table_name>
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
 ```
