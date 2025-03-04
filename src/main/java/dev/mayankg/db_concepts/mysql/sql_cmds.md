@@ -73,6 +73,32 @@ CREATE TABLE <table_name> (
     ...
 );
 ```
+```sql
+CREATE TABLE <table_name> (
+    id INT NOT NULL PRIMARY KEY,
+    column1 datatype NOT NULL DEFAULT value,
+    column2 datatype,
+    ...
+);
+```
+```sql
+CREATE TABLE <table_name> (
+    id INT NOT NULL,
+    column1 datatype NOT NULL DEFAULT value,
+    column2 datatype,
+    PRIMARY KEY (id)
+    ...
+);
+```
+```sql
+CREATE TABLE <table_name> (
+    id INT NOT NULL AUTO_INCREMENT,
+    column1 datatype NOT NULL DEFAULT value,
+    column2 datatype,
+    PRIMARY KEY (id)
+    ...
+);
+```
 
 #### Show columns of a Table
 ```sql
