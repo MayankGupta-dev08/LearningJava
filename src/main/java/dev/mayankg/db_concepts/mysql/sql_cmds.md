@@ -1,5 +1,23 @@
 # SQL Notes
 
+## Connecting to MySQL
+
+```bash
+mysql -u <username> -p
+```
+
+```bash
+mysql -u <username> -p <database_name>
+```
+
+```bash
+mysql -u <username> -p -h <host> -P <port>
+```
+
+```bash
+mysql -u <username> -p -h <host> -P <port> <database_name>
+```
+
 ## Type of SQL Language
 1. DDL (Data Definition Language)
 2. DML (Data Manipulation Language)
