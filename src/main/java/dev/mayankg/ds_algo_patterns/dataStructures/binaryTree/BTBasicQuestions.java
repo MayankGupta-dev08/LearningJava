@@ -20,6 +20,7 @@ class BTBasicQuestions {
         printDepthOfBT(bt1);
         printDiameterOfBT(bt1);
         printSumOfNodesAtKthLevelInBT(bt1, 3);
+        // lowest common ancestor question
     }
 
     /**
@@ -148,7 +149,7 @@ class BTBasicQuestions {
      * Binary Tree class
      */
     static class BinaryTree {
-        private static int idxPtr = -1;
+        private int idxPtr = -1;
         private Node root;
 
         BinaryTree(int[] arr) {
@@ -225,15 +226,14 @@ class BTBasicQuestions {
             return root.data + sumOfNodes(root.left) + sumOfNodes(root.right);
         }
 
-        // depth or height of the BT
-
+        // depth or height of the BT, TC: O(n)
         int depthOfBT(Node root) {
             if (root == null) return 0;
 
             return 1 + Math.max(depthOfBT(root.left), depthOfBT(root.right));
         }
-        // O(n*n) approach
 
+        // O(n*n) approach
         int diameterOfBT(Node root) {
             if (root == null) return 0;
 
@@ -241,9 +241,9 @@ class BTBasicQuestions {
             int maxDiaOfSubTree = Math.max(diameterOfBT(root.left), diameterOfBT(root.right));
             return Math.max(maxDiaOfSubTree, 1 + depthOfBT(root.left) + depthOfBT(root.right));
         }
+
         // O(n) approach
         // Note: Height of root will be the max height of all the nodes, but the Diameter of root node may or may not be the maximum
-
         int diameterOfBT_optimized(Node root) {
             return heightAndDiameter(root).get_2(); //diameter
         }
