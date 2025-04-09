@@ -111,3 +111,42 @@ SELECT
 
 FROM employees
 ORDER BY overall_rank;
+
+-- ASSIGN EACH EMPLOYEE TO A SALARY QUARTILE (Q1–Q4)
+-- Uses NTILE(4) to divide employees into 4 equal salary-based buckets
+-- Computes quartiles both department-wise and across the entire organization
+SELECT
+    emp_no,
+    department,
+    salary,
+    NTILE(4) OVER(PARTITION BY department ORDER BY salary DESC) AS dept_salary_quartile,
+    NTILE(4) OVER(ORDER BY salary DESC) AS salary_quartile
+FROM employees;
+
+-- IDENTIFY THE HIGHEST-PAID EMPLOYEE PER DEPARTMENT AND OVERALL
+-- FIRST_VALUE returns the emp_no with the highest salary per partition
+SELECT
+    emp_no,
+    department,
+    salary,
+    FIRST_VALUE(emp_no) OVER(PARTITION BY department ORDER BY salary DESC) AS highest_paid_dept,
+    FIRST_VALUE(emp_no) OVER(ORDER BY salary DESC) AS highest_paid_overall
+FROM employees;
+
+-- CALCULATE SALARY DIFFERENCE COMPARED TO THE PREVIOUS EMPLOYEE IN DESCENDING SALARY ORDER (OVERALL)
+-- LAG() fetches the previous row’s salary for comparison
+SELECT
+    emp_no,
+    department,
+    salary,
+    salary - LAG(salary) OVER(ORDER BY salary DESC) AS salary_diff
+FROM employees;
+
+-- CALCULATE SALARY DIFFERENCE WITHIN EACH DEPARTMENT COMPARED TO THE NEXT LOWER PAID EMPLOYEE
+-- Uses LAG() within department partition to show gaps between adjacent salaries
+SELECT
+    emp_no,
+    department,
+    salary,
+    salary - LAG(salary) OVER(PARTITION BY department ORDER BY salary DESC) AS dept_salary_diff
+FROM employees;
